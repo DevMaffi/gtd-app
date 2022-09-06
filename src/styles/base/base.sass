@@ -1,8 +1,50 @@
+// Modules
+
+@use '../plugins/plugins-dir' as plugins
+
 /* BASE STYLES
 
+// box sizing
 *, 
 *:before, 
 *:after
   box-sizing: border-box
   padding: 0
   margin: 0
+
+// reset margins
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+picture 
+  margin: 0
+
+// set up the body
+body
+  min-height: 100vh
+  line-height: 1.5
+
+// make images easier to work with
+img,
+picture
+  display: block
+  max-width: 100%
+
+// make form elements easier to work with
+#{plugins.$all-buttons},
+#{plugins.$all-text-inputs}
+  font: inherit
+
+// remove animations for people who've turned them off
+@media (prefers-reduced-motion: reduce)
+  *,
+  *::before,
+  *::after 
+    animation-duration: 0.01ms !important
+    animation-iteration-count: 1 !important
+    transition-duration: 0.01ms !important
+    scroll-behavior: auto !important
