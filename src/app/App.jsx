@@ -1,9 +1,9 @@
 function App() {
   return (
     <div className="container grid">
-      <h1 className="fs-900 text-title">GTD App Design System</h1>
+      <h1 className="fs-900 text-light">GTD App Design System</h1>
 
-      <div className="box bg-grade text-title" style={{ padding: '1rem' }}>
+      <div className="box bg-grade text-light" style={{ padding: '1rem' }}>
         .bg-grade
       </div>
 
