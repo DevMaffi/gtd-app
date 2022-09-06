@@ -1,1 +1,29 @@
+// Modules
+
+// variables
+@use 'vars'
+
+// plugins
+@use '../plugins/plugins-dir' as plugins
+
 /* TYPOGRAPHY
+
++plugins.font-face('Nunito', '#{vars.$fonts-dir}/Nunito-Bold', ('woff2', 'woff'))
+  font:
+    style: normal
+    weight: 700
+
++plugins.font-face('Nunito', '#{vars.$fonts-dir}/Nunito-SemiBold', ('woff2', 'woff'))
+  font:
+    style: normal
+    weight: 600
+
++plugins.font-face('Nunito', '#{vars.$fonts-dir}/Nunito-Medium', ('woff2', 'woff'))
+  font:
+    style: normal
+    weight: 500
+
++plugins.font-face('Nunito', '#{vars.$fonts-dir}/Nunito-Regular', ('woff2', 'woff'))
+  font:
+    style: normal
+    weight: 400
