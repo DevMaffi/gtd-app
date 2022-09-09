@@ -1,3 +1,4 @@
+import Date from './Date'
 import { Heading, Button } from './UI'
 
 function Calendar() {
@@ -7,15 +8,7 @@ function Calendar() {
         <Heading className="calendar__month">
           September <span>2022</span>
         </Heading>
-        <div className="calendar__date flex">
-          <Button arrow>
-            <i className="ri-arrow-left-s-line"></i>
-          </Button>
-          <Button>Today</Button>
-          <Button arrow>
-            <i className="ri-arrow-right-s-line"></i>
-          </Button>
-        </div>
+        <Date />
         <Button className="calendar__add" type="button">
           +
         </Button>
