@@ -1,27 +1,24 @@
+import { Heading, Button } from './UI'
+
 function Calendar() {
   return (
     <div className="calendar container">
       <header className="calendar__header flex">
-        <h1 className="calendar__month fs-900 text-light">
+        <Heading className="calendar__month">
           September <span>2022</span>
-        </h1>
+        </Heading>
         <div className="calendar__date flex">
-          <button className="button button--arrow bg-container-light text-light">
-            <i class="ri-arrow-left-s-line"></i>
-          </button>
-          <button className="button bg-grade text-light" type="button">
-            Today
-          </button>
-          <button className="button button--arrow bg-container-light text-light">
-            <i class="ri-arrow-right-s-line"></i>
-          </button>
+          <Button arrow>
+            <i className="ri-arrow-left-s-line"></i>
+          </Button>
+          <Button>Today</Button>
+          <Button arrow>
+            <i className="ri-arrow-right-s-line"></i>
+          </Button>
         </div>
-        <button
-          className="calendar__add button bg-grade text-light"
-          type="button"
-        >
+        <Button className="calendar__add" type="button">
           +
-        </button>
+        </Button>
       </header>
     </div>
   )
