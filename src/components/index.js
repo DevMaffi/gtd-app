@@ -1,2 +1,2 @@
-export { default as Calendar } from './Calendar'
+export { default as CalendarView } from './CalendarView'
 export { default as MonthSelector } from './MonthSelector'
