@@ -44,6 +44,14 @@ function Calendar({ date, onDate }) {
 
     let prevDaysArr = []
 
+    if (firstDayIndex === 0) {
+      for (let i = 7; i > 1; i--) {
+        prevDaysArr.push(prevLastDay - i + 2)
+      }
+
+      return prevDaysArr
+    }
+
     for (let i = firstDayIndex; i > 1; i--) {
       prevDaysArr.push(prevLastDay - i + 2)
     }
@@ -60,8 +68,10 @@ function Calendar({ date, onDate }) {
 
     let nextDaysArr = []
 
-    for (let i = lastDayIndex; i < 7; i++) {
-      nextDaysArr.push(i - lastDayIndex + 1)
+    if (lastDayIndex === 0) return nextDaysArr
+
+    for (let i = 0; i < 7 - lastDayIndex; i++) {
+      nextDaysArr.push(i + 1)
     }
 
     return nextDaysArr
