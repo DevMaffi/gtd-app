@@ -1,5 +1,5 @@
+import Calendar from './Calendar'
 import MonthSelector from './MonthSelector'
-import { Calendar } from './Calendar'
 import { Heading, Button } from './UI'
 import { useToday } from '../hooks/useToday'
 
