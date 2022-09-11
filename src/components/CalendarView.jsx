@@ -13,7 +13,7 @@ function CalendarView({ date, onDate }) {
           Today is {today.day}, <span>{today.date}</span>
         </Heading>
         <MonthSelector date={date} onDate={onDate} />
-        <Button className="calendar__add" type="button">
+        <Button className="calendar__add" ripple>
           +
         </Button>
       </header>

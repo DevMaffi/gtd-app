@@ -14,7 +14,7 @@ function MonthSelector({ date, onDate }) {
       <Button onClick={() => changeMonth(-1)} arrow>
         <i className="ri-arrow-left-s-line"></i>
       </Button>
-      <Button className="calendar__dropdown">
+      <Button className="calendar__dropdown" ripple>
         {month} {date.getFullYear()}
       </Button>
       <Button onClick={() => changeMonth(1)} arrow>
