@@ -22,7 +22,12 @@
     transition: all .3s ease
     z-index: 1
 
-  &:hover:before
+  &:disabled
+    background: hsl(var(--clr-container-light))
+    color: hsl(var(--clr-text))
+    cursor: initial
+
+  &:hover:not(:disabled):before
     background-color: hsl(var(--clr-white) / .1)
 
 .button > span

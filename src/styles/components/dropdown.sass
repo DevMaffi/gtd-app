@@ -1,0 +1,49 @@
+// Modules
+
+@use '../plugins/plugins-dir' as plugins
+
+/* DROPDOWN
+
+.dropdown
+  --gap: 0
+
+  z-index: 1
+
+.dropdown.open .dropdown__menu-inner
+  display: grid
+
+.dropdown__button
+  width: 115px
+
+.dropdown__menu
+  background-color: hsl(var(--clr-first-light))
+  position: relative
+  order: -1
+
+.dropdown__menu-inner
+  --dropdown-item-size: 60px
+
+  display: none
+  grid-template-columns: repeat(3, var(--dropdown-item-size))
+  justify-content: space-between
+  gap: 8px 0
+  width: 252px
+  padding: 35px 15px 10px
+  border-radius: 15px
+  box-shadow: 2px 2px 6px 3px hsl(var(--clr-border))
+  +plugins.position(absolute, 25px null null -20px)
+  z-index: -1
+
+.dropdown__menu-item
+  display: flex
+  justify-content: center
+  align-items: center
+  width: var(--dropdown-item-size)
+  height: var(--dropdown-item-size)
+  border-radius: 50%
+  font-weight: 500
+  transition: all .3s ease
+  cursor: pointer
+
+  &:hover
+    background-color: hsl(var(--clr-container-light))

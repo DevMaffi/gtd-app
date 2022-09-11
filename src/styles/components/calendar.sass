@@ -5,6 +5,8 @@
 /* CALENDAR
 
 .calendar
+  --gap: 0
+
   margin-top: 60px
 
 .calendar__header
@@ -13,13 +15,12 @@
   border-bottom: 1px solid hsl(var(--clr-container-lighten)) 
 
 .calendar__date
-  margin-right: calc(60px - var(--gap, 1rem))
+  margin-right: 60px
 
 .calendar__month
-  align-items: center
+  --gap: 1rem
 
-.calendar__dropdown
-  width: 115px
+  align-items: center
 
 .calendar__add
   margin-left: auto
