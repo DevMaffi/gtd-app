@@ -1,12 +1,10 @@
 import { useMemo, useState } from 'react'
-import { DropdownMenu } from './Dropdown'
-import { Button } from './UI'
-import { getMonthName } from '../utils/date'
-import data from '../data.json'
+import MonthSwiper from './MonthSwiper'
+import { DropdownMenu } from '../Dropdown'
+import data from '../../data.json'
 
 function MonthSelector({ date, onDate }) {
   const [dropdownView, setDropdownView] = useState(null)
-  const month = useMemo(() => getMonthName(date.getMonth()).slice(0, 3), [date])
   const yearOptions = useMemo(() => {
     const now = new Date()
     const firstYear = now.getFullYear() - 3
@@ -16,13 +14,8 @@ function MonthSelector({ date, onDate }) {
 
     return options
   }, [])
-
+  const monthOptions = data.shortenings.months
   const rootClasses = ['dropdown', 'flex']
-
-  const swipeMonth = inc => {
-    if (dropdownView === 'year') setDropdownView('month')
-    onDate(new Date(date.getFullYear(), date.getMonth() + inc, date.getDate()))
-  }
 
   const selectMonth = optionIndex => {
     if (dropdownView === 'month') {
@@ -37,7 +30,7 @@ function MonthSelector({ date, onDate }) {
 
   const getOptions = () => {
     if (dropdownView === 'year') return yearOptions
-    return data.shortenings.months
+    return monthOptions
   }
 
   const getIsActiveHandler = () => {
@@ -51,25 +44,13 @@ function MonthSelector({ date, onDate }) {
 
   return (
     <div className={rootClasses.join(' ')}>
-      <div className="calendar__month flex">
-        <Button onClick={() => swipeMonth(-1)} arrow>
-          <i className="ri-arrow-left-s-line"></i>
-        </Button>
-        <Button
-          onClick={() => {
-            if (!dropdownView) return setDropdownView('month')
-            if (dropdownView === 'month') return setDropdownView('year')
-          }}
-          className="dropdown__button"
-          disabled={dropdownView === 'year'}
-          ripple
-        >
-          {!dropdownView && month} {date.getFullYear()}
-        </Button>
-        <Button onClick={() => swipeMonth(1)} arrow>
-          <i className="ri-arrow-right-s-line"></i>
-        </Button>
-      </div>
+      <MonthSwiper
+        date={date}
+        isOpen={dropdownView}
+        disabled={dropdownView === 'year'}
+        onDropdown={setDropdownView}
+        onDate={onDate}
+      />
       <DropdownMenu
         options={getOptions()}
         isActive={getIsActiveHandler()}

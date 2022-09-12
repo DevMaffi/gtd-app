@@ -1,18 +1,3 @@
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-]
-
 const days = [
   'Sunday',
   'Monday',
@@ -22,10 +7,6 @@ const days = [
   'Friday',
   'Saturday',
 ]
-
-export function getMonthName(monthIndex) {
-  return months[monthIndex]
-}
 
 export function getDayName(dayIndex) {
   return days[dayIndex]
