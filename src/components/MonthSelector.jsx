@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { DropdownMenu } from './Dropdown'
 import { Button } from './UI'
 import { getMonthName } from '../utils/date'
+import data from '../data.json'
 
 function MonthSelector({ date, onDate }) {
   const [dropdownView, setDropdownView] = useState(null)
@@ -36,21 +37,7 @@ function MonthSelector({ date, onDate }) {
 
   const getOptions = () => {
     if (dropdownView === 'year') return yearOptions
-
-    return [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ]
+    return data.shortenings.months
   }
 
   const getIsActiveHandler = () => {

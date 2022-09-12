@@ -1,7 +1,9 @@
+import data from '../../data.json'
+
 function CalendarDays() {
   return (
     <div className="calendar__days flex">
-      {['Mon', 'Tue', 'Wed', 'Thu', 'Fir', 'Sat', 'Sun'].map(m => (
+      {data.shortenings.days.map(m => (
         <div key={m} className="calendar__day bg-container-light fs-600">
           {m}
         </div>
