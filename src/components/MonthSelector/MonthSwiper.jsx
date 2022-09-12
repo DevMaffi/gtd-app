@@ -1,15 +1,22 @@
 import { Button } from '../UI'
 import data from '../../data.json'
 
-function MonthSwiper({ date, disabled, isOpen, onDropdown, onDate }) {
+function MonthSwiper({
+  date,
+  disabled,
+  isOpen,
+  dropdownView,
+  onDropdown,
+  onDate,
+}) {
   const swipeMonth = inc => {
-    if (isOpen === 'year') onDropdown('month')
+    if (dropdownView === 'year') onDropdown('month')
     onDate(new Date(date.getFullYear(), date.getMonth() + inc, date.getDate()))
   }
 
   const displayDropdown = () => {
     if (!isOpen) return onDropdown('month')
-    if (isOpen === 'month') return onDropdown('year')
+    if (dropdownView === 'month') return onDropdown('year')
   }
 
   return (
