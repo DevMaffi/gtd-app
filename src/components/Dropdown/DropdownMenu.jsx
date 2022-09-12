@@ -1,4 +1,4 @@
-import DropDownItem from './DropDownItem'
+import DropdownItem from './DropdownItem'
 
 function DropdownMenu({ options, isActive, onSelect }) {
   return (
@@ -8,7 +8,7 @@ function DropdownMenu({ options, isActive, onSelect }) {
           const active = isActive(i)
 
           return (
-            <DropDownItem
+            <DropdownItem
               key={o}
               data={o}
               onClick={() => onSelect(i)}

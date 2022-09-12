@@ -1,4 +1,4 @@
-function DropDownItem({ data, active, ...props }) {
+function DropdownItem({ data, active, ...props }) {
   const rootClasses = ['dropdown__menu-item', 'fs-300', 'text-light']
 
   if (active) rootClasses.push('bg-grade')
@@ -10,4 +10,4 @@ function DropDownItem({ data, active, ...props }) {
   )
 }
 
-export default DropDownItem
+export default DropdownItem
