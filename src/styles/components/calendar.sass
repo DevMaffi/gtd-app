@@ -5,25 +5,38 @@
 /* CALENDAR
 
 .calendar
-  --gap: 0
-
   margin-top: 60px
 
 .calendar__header
+  --gap: 0
+
   align-items: center
   padding-bottom: 15px
   border-bottom: 1px solid hsl(var(--clr-container-lighten)) 
 
-.calendar__date
-  margin-right: 60px
+.calendar__header-date
+  --gap: 40px
+
+  grid-template-columns: 300px max-content
+  align-items: center
+  margin-right: auto
+
+.calendar__title
+  position: relative
+
+.calendar__title.show-pill
+  align-self: flex-end
+
+.calendar__title.show-pill > .heading
+  font-size: calc(var(--fs-800) + .25rem)
+
+.calendar__back
+  +plugins.position(absolute, -100% null null 0)
 
 .calendar__month
   --gap: 1rem
 
   align-items: center
-
-.calendar__add
-  margin-left: auto
 
 .calendar__days
   --gap: 0

@@ -1,21 +1,16 @@
-import Calendar from './Calendar'
+import Calendar, { CalendarTitle } from './Calendar'
 import MonthSelector from './MonthSelector'
-import { Heading, Button } from './UI'
-import { useToday } from '../hooks/useToday'
+import { Button } from './UI'
 
 function CalendarView({ date, onDate }) {
-  const today = useToday()
-
   return (
     <div className="calendar container">
       <header className="calendar__header flex">
-        <Heading className="calendar__date">
-          Today is {today.day}, <span>{today.date}</span>
-        </Heading>
-        <MonthSelector date={date} onDate={onDate} />
-        <Button className="calendar__add" ripple>
-          +
-        </Button>
+        <div className="calendar__header-date grid">
+          <CalendarTitle date={date} onDate={onDate} />
+          <MonthSelector date={date} onDate={onDate} />
+        </div>
+        <Button ripple>+</Button>
       </header>
       <Calendar date={date} />
     </div>
