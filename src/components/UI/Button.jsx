@@ -1,15 +1,7 @@
-import { useRef } from 'react'
+import React from 'react'
+import withRipple from '../../hoc/withRipple'
 
-function Button({
-  children,
-  arrow,
-  pill,
-  className,
-  onClick,
-  ripple,
-  ...props
-}) {
-  const ref = useRef(null)
+function Button({ children, arrow, pill, className, ...props }, ref) {
   const rootClasses = ['button', 'text-light']
 
   if (arrow) rootClasses.push('button--arrow flex bg-container-light')
@@ -18,27 +10,10 @@ function Button({
 
   if (className) rootClasses.push(className)
 
-  const addRipple = e => {
-    const x = e.clientX - e.target.offsetLeft
-    const y = e.clientY - e.target.offsetTop
-
-    const ripple = document.createElement('span')
-    ripple.style.left = `${x}px`
-    ripple.style.top = `${y}px`
-
-    ripple.addEventListener('animationend', () => ripple.remove())
-
-    ref.current.appendChild(ripple)
-  }
-
   return (
     <button
       ref={ref}
       type="button"
-      onClick={e => {
-        if (ripple) addRipple(e)
-        if (onClick) onClick(e)
-      }}
       className={rootClasses.join(' ')}
       {...props}
     >
@@ -47,4 +22,4 @@ function Button({
   )
 }
 
-export default Button
+export default withRipple(React.forwardRef(Button))

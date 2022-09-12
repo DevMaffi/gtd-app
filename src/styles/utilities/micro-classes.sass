@@ -1,1 +1,13 @@
 /* MICRO CLASSES
+
+.ripple
+  position: relative
+  overflow: hidden
+
+.ripple > .ripple__blink
+  background-color: hsl(var(--clr-white) / .2)
+  border-radius: 50%
+  position: absolute
+  transform: translate(-50%, -50%)
+  animation: ripple .8s linear
+  pointer-events: none
