@@ -11,10 +11,7 @@ function MonthSelector({ date, onDate }) {
     const firstYear = now.getFullYear() - 3
 
     let options = []
-
-    for (let i = 0; i < 12; i++) {
-      options.push(firstYear + i)
-    }
+    for (let i = 0; i < 12; i++) options.push(firstYear + i)
 
     return options
   }, [])

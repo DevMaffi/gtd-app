@@ -17,16 +17,12 @@ export function usePrevDays(date) {
     let prevDaysArr = []
 
     if (firstDayIndex === 0) {
-      for (let i = 7; i > 1; i--) {
-        prevDaysArr.push(prevLastDay - i + 2)
-      }
-
+      for (let i = 7; i > 1; i--) prevDaysArr.push(prevLastDay - i + 2)
       return prevDaysArr
     }
 
-    for (let i = firstDayIndex; i > 1; i--) {
+    for (let i = firstDayIndex; i > 1; i--)
       prevDaysArr.push(prevLastDay - i + 2)
-    }
 
     return prevDaysArr
   }, [date])
@@ -43,10 +39,7 @@ export function useDays(date) {
     ).getDate()
 
     let daysArr = []
-
-    for (let i = 0; i < lastDay; i++) {
-      daysArr.push(i + 1)
-    }
+    for (let i = 0; i < lastDay; i++) daysArr.push(i + 1)
 
     return daysArr
   }, [date])
@@ -66,9 +59,7 @@ export function useNextDays(date) {
 
     if (lastDayIndex === 0) return nextDaysArr
 
-    for (let i = 0; i < 7 - lastDayIndex; i++) {
-      nextDaysArr.push(i + 1)
-    }
+    for (let i = 0; i < 7 - lastDayIndex; i++) nextDaysArr.push(i + 1)
 
     return nextDaysArr
   }, [date])
