@@ -1,16 +1,20 @@
 import PropTypes from 'prop-types'
 import { Heading, Button } from '../UI'
-import { useToday } from '../../hooks/useToday'
-import { compareDates } from '../../utils/date'
+import { getDateString, compareDates } from '../../utils/date'
+import data from '../../data.json'
 
 function CalendarTitle({ date, onDate }) {
-  const today = useToday()
+  const now = new Date()
+  const days = data.shortenings.days
+  const today = {
+    day: now.getDay() === 0 ? days[days.length - 1] : days[now.getDay() - 1],
+    date: getDateString(now.getDate()),
+  }
 
   let isNow = false
-  const now = new Date()
   const rootClasses = ['calendar__title']
 
-  const jumpBack = () => onDate(new Date())
+  const jumpBack = () => onDate(now)
 
   if (compareDates(date, now)) isNow = true
   else rootClasses.push('show-pill')
