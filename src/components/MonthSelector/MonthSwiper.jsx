@@ -11,12 +11,11 @@ function MonthSwiper({
   onDate,
 }) {
   const swipeMonth = inc => {
-    if (onDropdown && dropdownView === 'year') onDropdown('month')
+    if (dropdownView === 'year') onDropdown('month')
     onDate(new Date(date.getFullYear(), date.getMonth() + inc, date.getDate()))
   }
 
   const displayDropdown = () => {
-    if (!onDropdown) return
     if (!isOpen) return onDropdown('month')
     if (dropdownView === 'month') return onDropdown('year')
   }
@@ -47,7 +46,7 @@ MonthSwiper.propTypes = {
   disabled: PropTypes.bool,
   isOpen: PropTypes.bool,
   dropdownView: PropTypes.string,
-  onDropdown: PropTypes.func,
+  onDropdown: PropTypes.func.isRequired,
   onDate: PropTypes.func.isRequired,
 }
 
