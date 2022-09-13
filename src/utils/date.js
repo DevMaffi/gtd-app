@@ -1,3 +1,12 @@
+import data from '../data.json'
+
+export function getDayName(dayIndex) {
+  const { days } = data.shortenings
+
+  if (dayIndex === 0) return days[days.length - 1]
+  return days[dayIndex - 1]
+}
+
 export function getDateString(date) {
   switch (date) {
     case 1:

@@ -1,18 +1,16 @@
 import PropTypes from 'prop-types'
 import { Heading, Button } from '../UI'
-import { getDateString, compareDates } from '../../utils/date'
-import data from '../../data.json'
+import { getDayName, getDateString, compareDates } from '../../utils/date'
 
 function CalendarTitle({ date, onDate }) {
+  let isNow = false
+
   const now = new Date()
-  const days = data.shortenings.days
+  const rootClasses = ['calendar__title']
   const today = {
-    day: now.getDay() === 0 ? days[days.length - 1] : days[now.getDay() - 1],
+    day: getDayName(now.getDay()),
     date: getDateString(now.getDate()),
   }
-
-  let isNow = false
-  const rootClasses = ['calendar__title']
 
   const jumpBack = () => onDate(now)
 
