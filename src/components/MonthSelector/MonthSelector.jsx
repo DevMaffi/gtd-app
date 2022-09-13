@@ -45,17 +45,22 @@ function MonthSelector({ date, onDate }) {
     }
   }
 
-  const isDisabled = dropdownView => dropdownView === 'year'
-
   const selectMonth = (optionIndex, dropdownView, onDropdown) => {
+    const nextDate = new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate()
+    )
+
     if (dropdownView === 'month') {
-      onDate(new Date(date.getFullYear(), optionIndex, date.getDate()))
+      nextDate.setMonth(optionIndex)
       onDropdown(null)
-      return
+    } else {
+      nextDate.setFullYear(yearOptions[optionIndex])
+      onDropdown('month')
     }
 
-    onDate(new Date(yearOptions[optionIndex], date.getMonth(), date.getDate()))
-    onDropdown('month')
+    onDate(nextDate)
   }
 
   return (
@@ -73,7 +78,6 @@ function MonthSelector({ date, onDate }) {
       isActive={getIsActiveHandler}
       isDefault={getDefaultOption}
       setOptions={getOptions}
-      setDisabled={isDisabled}
       onSelect={selectMonth}
     />
   )
