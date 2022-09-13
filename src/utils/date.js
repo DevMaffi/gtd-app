@@ -24,3 +24,11 @@ export function getDateString(date) {
       return `${date}th`
   }
 }
+
+export function compareDates(prevDate, nextDate) {
+  return (
+    prevDate.getDate() === nextDate.getDate() &&
+    prevDate.getMonth() === nextDate.getMonth() &&
+    prevDate.getFullYear() === nextDate.getFullYear()
+  )
+}

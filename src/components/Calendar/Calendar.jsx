@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import CalendarDays from './CalendarDays'
 import CalendarGrid from './CalendarGrid'
+import { compareDates } from '../../utils/date'
 
 function Calendar({ date }) {
   return (
@@ -13,11 +14,7 @@ function Calendar({ date }) {
 }
 
 function calendarPropsAreEqual(prevProps, nextProps) {
-  return (
-    prevProps.date.getDate() === nextProps.date.getDate() &&
-    prevProps.date.getMonth() === nextProps.date.getMonth() &&
-    prevProps.date.getFullYear() === nextProps.date.getFullYear()
-  )
+  return compareDates(prevProps.date, nextProps.date)
 }
 
 Calendar.propTypes = {

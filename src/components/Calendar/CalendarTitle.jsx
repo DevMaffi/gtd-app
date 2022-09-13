@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { Heading, Button } from '../UI'
 import { useToday } from '../../hooks/useToday'
+import { compareDates } from '../../utils/date'
 
 function CalendarTitle({ date, onDate }) {
   const today = useToday()
@@ -11,14 +12,8 @@ function CalendarTitle({ date, onDate }) {
 
   const jumpBack = () => onDate(new Date())
 
-  if (
-    date.getDate() === now.getDate() &&
-    date.getMonth() === now.getMonth() &&
-    date.getFullYear() === now.getFullYear()
-  )
-    isNow = true
-
-  if (!isNow) rootClasses.push('show-pill')
+  if (compareDates(date, now)) isNow = true
+  else rootClasses.push('show-pill')
 
   return (
     <div className={rootClasses.join(' ')}>
