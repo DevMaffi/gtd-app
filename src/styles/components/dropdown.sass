@@ -42,8 +42,19 @@
   height: var(--dropdown-item-size)
   border-radius: 50%
   font-weight: 500
+  position: relative
   transition: all .3s ease
   cursor: pointer
 
   &:hover
     background-color: hsl(var(--clr-container-light))
+
+.dropdown__menu-item.default
+  &:before
+    content: ''
+    width: 4px
+    height: 4px
+    background-color: hsl(var(--clr-title))
+    border-radius: 50%
+    +plugins.position(absolute, null null 11px 50%)
+    transform: translateX(-50%)

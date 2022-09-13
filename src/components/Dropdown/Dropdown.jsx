@@ -2,7 +2,14 @@ import { useState } from 'react'
 import PropTypes from 'prop-types'
 import DropdownMenu from './DropdownMenu'
 
-function Dropdown({ setOptions, isActive, onSelect, on: render, setDisabled }) {
+function Dropdown({
+  setOptions,
+  isActive,
+  isDefault,
+  onSelect,
+  on: render,
+  setDisabled,
+}) {
   const [dropdownView, setDropdownView] = useState(null)
 
   const rootClasses = ['dropdown', 'flex']
@@ -23,6 +30,7 @@ function Dropdown({ setOptions, isActive, onSelect, on: render, setDisabled }) {
           onSelect(optionIndex, dropdownView, setDropdownView)
         }
         isActive={isActive(dropdownView)}
+        isDefault={isDefault(dropdownView)}
       />
     </div>
   )
@@ -32,6 +40,7 @@ Dropdown.propTypes = {
   setOptions: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired,
   isActive: PropTypes.func.isRequired,
+  isDefault: PropTypes.func.isRequired,
   setDisabled: PropTypes.func.isRequired,
   on: PropTypes.func.isRequired,
 }

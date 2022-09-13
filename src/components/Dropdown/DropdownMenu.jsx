@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import DropdownItem from './DropdownItem'
 
-function DropdownMenu({ options, isActive, onSelect }) {
+function DropdownMenu({ options, isActive, isDefault, onSelect }) {
   return (
     <div className="dropdown__menu">
       <div className="dropdown__menu-inner bg-container">
@@ -11,6 +11,7 @@ function DropdownMenu({ options, isActive, onSelect }) {
               key={o}
               data={o}
               onClick={() => onSelect(i)}
+              defaultOption={isDefault(i)}
               active={isActive(i)}
             />
           )
@@ -25,6 +26,7 @@ DropdownMenu.propTypes = {
     PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   ).isRequired,
   isActive: PropTypes.func.isRequired,
+  isDefault: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired,
 }
 

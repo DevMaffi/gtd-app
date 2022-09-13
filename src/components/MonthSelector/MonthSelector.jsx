@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import MonthSwiper from './MonthSwiper'
 import Dropdown from '../Dropdown'
+import { compareDates } from '../../utils/date'
 import data from '../../data.json'
 
 function MonthSelector({ date, onDate }) {
@@ -26,6 +27,22 @@ function MonthSelector({ date, onDate }) {
       return yearIndex => yearOptions[yearIndex] === date.getFullYear()
 
     return monthIndex => monthIndex === date.getMonth()
+  }
+
+  const getDefaultOption = dropdownView => {
+    const now = new Date()
+
+    if (dropdownView === 'year')
+      return yearIndex => yearOptions[yearIndex] === now.getFullYear()
+
+    return monthIndex => {
+      const optionDate = new Date(
+        date.getFullYear(),
+        monthIndex,
+        date.getDate()
+      )
+      return compareDates(optionDate, now)
+    }
   }
 
   const isDisabled = dropdownView => dropdownView === 'year'
@@ -54,6 +71,7 @@ function MonthSelector({ date, onDate }) {
         />
       )}
       isActive={getIsActiveHandler}
+      isDefault={getDefaultOption}
       setOptions={getOptions}
       setDisabled={isDisabled}
       onSelect={selectMonth}
