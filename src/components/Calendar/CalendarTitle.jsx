@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { Heading, Button } from '../UI'
 import { useToday } from '../../hooks/useToday'
 
@@ -34,6 +35,11 @@ function CalendarTitle({ date, onDate }) {
       </Heading>
     </div>
   )
+}
+
+CalendarTitle.propTypes = {
+  date: PropTypes.instanceOf(Date).isRequired,
+  onDate: PropTypes.func.isRequired,
 }
 
 export default CalendarTitle

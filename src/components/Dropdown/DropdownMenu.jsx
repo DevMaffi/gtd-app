@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import DropdownItem from './DropdownItem'
 
 function DropdownMenu({ options, isActive, onSelect }) {
@@ -5,20 +6,26 @@ function DropdownMenu({ options, isActive, onSelect }) {
     <div className="dropdown__menu">
       <div className="dropdown__menu-inner bg-container">
         {options.map((o, i) => {
-          const active = isActive(i)
-
           return (
             <DropdownItem
               key={o}
               data={o}
               onClick={() => onSelect(i)}
-              active={active}
+              active={isActive(i)}
             />
           )
         })}
       </div>
     </div>
   )
+}
+
+DropdownMenu.propTypes = {
+  options: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  ).isRequired,
+  isActive: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
 }
 
 export default DropdownMenu

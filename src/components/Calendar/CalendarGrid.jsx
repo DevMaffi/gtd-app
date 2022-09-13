@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { default as Cell } from './CalendarCell'
 import { usePrevDays, useDays, useNextDays } from '../../hooks/useCalendar'
 
@@ -9,7 +10,7 @@ function CalendarGrid({ date }) {
   return (
     <div className="calendar__cells grid">
       {prevDays.map(d => (
-        <Cell key={d} date={d} prev />
+        <Cell key={d} dateNumber={d} prev />
       ))}
       {days.map((d, i) => {
         const now = new Date()
@@ -22,13 +23,17 @@ function CalendarGrid({ date }) {
         )
           today = true
 
-        return <Cell key={d} date={d} today={today} />
+        return <Cell key={d} dateNumber={d} today={today} />
       })}
       {nextDays.map(d => (
-        <Cell key={d} date={d} next />
+        <Cell key={d} dateNumber={d} next />
       ))}
     </div>
   )
+}
+
+CalendarGrid.propTypes = {
+  date: PropTypes.instanceOf(Date).isRequired,
 }
 
 export default CalendarGrid

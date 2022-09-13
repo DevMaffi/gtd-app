@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { Button } from '../UI'
 import data from '../../data.json'
 
@@ -10,11 +11,12 @@ function MonthSwiper({
   onDate,
 }) {
   const swipeMonth = inc => {
-    if (dropdownView === 'year') onDropdown('month')
+    if (onDropdown && dropdownView === 'year') onDropdown('month')
     onDate(new Date(date.getFullYear(), date.getMonth() + inc, date.getDate()))
   }
 
   const displayDropdown = () => {
+    if (!onDropdown) return
     if (!isOpen) return onDropdown('month')
     if (dropdownView === 'month') return onDropdown('year')
   }
@@ -38,6 +40,15 @@ function MonthSwiper({
       </Button>
     </div>
   )
+}
+
+MonthSwiper.propTypes = {
+  date: PropTypes.instanceOf(Date).isRequired,
+  disabled: PropTypes.bool,
+  isOpen: PropTypes.bool,
+  dropdownView: PropTypes.string,
+  onDropdown: PropTypes.func,
+  onDate: PropTypes.func.isRequired,
 }
 
 export default MonthSwiper

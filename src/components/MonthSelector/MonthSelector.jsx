@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import PropTypes from 'prop-types'
 import MonthSwiper from './MonthSwiper'
 import Dropdown from '../Dropdown'
 import data from '../../data.json'
@@ -58,6 +59,11 @@ function MonthSelector({ date, onDate }) {
       onSelect={selectMonth}
     />
   )
+}
+
+MonthSelector.propTypes = {
+  date: PropTypes.instanceOf(Date).isRequired,
+  onDate: PropTypes.func.isRequired,
 }
 
 export default MonthSelector

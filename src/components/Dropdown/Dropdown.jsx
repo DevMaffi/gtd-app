@@ -1,21 +1,7 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 import DropdownMenu from './DropdownMenu'
 
-/**
- * Provides for renderProp:
- * ------
- * isOpen: !!dropdownView
- * dropdownView: dropdownView
- * disabled: setDisabled(dropdownView)
- * onDropdown: setDropdownView
- *
- * Consumer provides:
- * ------
- * isActive: (dropdownView) => boolean
- * setOptions: (dropdownView) => object
- * setDisabled: (dropdownView) => boolean
- * onSelect: (optionIndex, dropdownView, setDropdownView) => void
- */
 function Dropdown({ setOptions, isActive, onSelect, on: render, setDisabled }) {
   const [dropdownView, setDropdownView] = useState(null)
 
@@ -40,6 +26,14 @@ function Dropdown({ setOptions, isActive, onSelect, on: render, setDisabled }) {
       />
     </div>
   )
+}
+
+Dropdown.propTypes = {
+  setOptions: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
+  isActive: PropTypes.func.isRequired,
+  setDisabled: PropTypes.func.isRequired,
+  on: PropTypes.func.isRequired,
 }
 
 export default Dropdown

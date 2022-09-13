@@ -1,4 +1,6 @@
-function CalendarCell({ date, prev, next, today }) {
+import PropTypes from 'prop-types'
+
+function CalendarCell({ dateNumber, prev, next, today }) {
   const rootClasses = ['calendar__cell']
 
   if (!prev && !next) rootClasses.push('text-light')
@@ -7,9 +9,16 @@ function CalendarCell({ date, prev, next, today }) {
 
   return (
     <div className={rootClasses.join(' ')}>
-      <span>{date}</span>
+      <span>{dateNumber}</span>
     </div>
   )
+}
+
+CalendarCell.propTypes = {
+  dateNumber: PropTypes.number.isRequired,
+  prev: PropTypes.bool,
+  next: PropTypes.bool,
+  today: PropTypes.bool,
 }
 
 export default CalendarCell
