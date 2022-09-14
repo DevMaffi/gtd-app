@@ -30,7 +30,7 @@ function MonthSelector({ date, onDate }) {
   }
 
   const getDefaultOption = dropdownView => {
-    const now = new Date(process.env.REACT_APP_DATE)
+    const now = new Date(getEnvDate())
 
     if (dropdownView === 'year')
       return yearIndex => yearOptions[yearIndex] === now.getFullYear()
