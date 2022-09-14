@@ -21,6 +21,7 @@ function Dropdown({ setOptions, isActive, isDefault, onSelect, on: render }) {
         onSelect={optionIndex =>
           onSelect(optionIndex, dropdownView, setDropdownView)
         }
+        onDropdown={setDropdownView}
         isActive={isActive(dropdownView)}
         isDefault={isDefault(dropdownView)}
       />
