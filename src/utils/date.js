@@ -1,5 +1,12 @@
 import data from '../data.json'
 
+export function getEnvDate() {
+  if (process.env.NODE_ENV === 'development' && process.env.REACT_APP_DATE)
+    return new Date(process.env.REACT_APP_DATE)
+
+  return new Date()
+}
+
 export function getDayName(dayIndex) {
   const { days } = data.shortenings
 

@@ -2,12 +2,12 @@ import { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import MonthSwiper from './MonthSwiper'
 import Dropdown from '../Dropdown'
-import { compareDates } from '../../utils/date'
+import { getEnvDate, compareDates } from '../../utils/date'
 import data from '../../data.json'
 
 function MonthSelector({ date, onDate }) {
   const yearOptions = useMemo(() => {
-    const now = new Date()
+    const now = new Date(getEnvDate())
     const firstYear = now.getFullYear() - 3
 
     let options = []
@@ -30,7 +30,7 @@ function MonthSelector({ date, onDate }) {
   }
 
   const getDefaultOption = dropdownView => {
-    const now = new Date()
+    const now = new Date(process.env.REACT_APP_DATE)
 
     if (dropdownView === 'year')
       return yearIndex => yearOptions[yearIndex] === now.getFullYear()

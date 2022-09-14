@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types'
 import { default as Cell } from './CalendarCell'
 import { usePrevDays, useDays, useNextDays } from '../../hooks/useCalendar'
-import { compareDates } from '../../utils/date'
+import { getEnvDate, compareDates } from '../../utils/date'
 
 function CalendarGrid({ date }) {
   const prevDays = usePrevDays(date)
   const days = useDays(date)
   const nextDays = useNextDays(date)
 
-  const now = new Date()
+  const now = new Date(getEnvDate())
   const isCurrMonth = compareDates(date, now)
 
   return (

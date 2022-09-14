@@ -1,11 +1,16 @@
 import PropTypes from 'prop-types'
 import { Heading, Button } from '../UI'
-import { getDayName, getDateString, compareDates } from '../../utils/date'
+import {
+  getEnvDate,
+  getDayName,
+  getDateString,
+  compareDates,
+} from '../../utils/date'
 
 function CalendarTitle({ date, onDate }) {
   let isNow = false
 
-  const now = new Date()
+  const now = new Date(getEnvDate())
   const rootClasses = ['calendar__title']
   const today = {
     day: getDayName(now.getDay()),
