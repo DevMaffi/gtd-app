@@ -4,7 +4,7 @@ import DropdownItem from './DropdownItem'
 function DropdownMenu({ options, isActive, isDefault, onSelect, onDropdown }) {
   return (
     <div className="dropdown__menu">
-      <div className="dropdown__menu-inner bg-container">
+      <div className="dropdown__menu-inner bg-container-dark">
         {options.map((o, i) => {
           return (
             <DropdownItem
