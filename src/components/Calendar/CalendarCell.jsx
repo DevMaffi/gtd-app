@@ -5,7 +5,7 @@ function CalendarCell({ dateNumber, prev, next, today }) {
 
   if (!prev && !next) rootClasses.push('text-light')
 
-  if (today) rootClasses.push('calendar__cell--now')
+  if (today) rootClasses.push('now')
 
   return (
     <div className={rootClasses.join(' ')}>

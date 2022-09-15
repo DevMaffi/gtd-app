@@ -10,6 +10,7 @@
 .calendar__header
   --gap: 0
 
+  justify-content: space-between
   align-items: center
   padding-bottom: 15px
   border-bottom: 1px solid hsl(var(--clr-container-lighten)) 
@@ -19,7 +20,6 @@
 
   grid-template-columns: 300px max-content
   align-items: center
-  margin-right: auto
 
 .calendar__title
   position: relative
@@ -67,11 +67,11 @@
 
 .calendar__cell
   height: 140px
-  padding: 12px 14px 5px 5px
+  padding: 12px 14px 12px 12px
   border: inherit
   text-align: right
 
-.calendar__cell--now > span
+.calendar__cell.now > span
   display: inline-block
   position: relative
 
