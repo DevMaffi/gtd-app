@@ -66,10 +66,11 @@
   overflow: hidden
 
 .calendar__cell
-  height: 140px
+  height: 150px
   padding: 12px 14px 12px 12px
   border: inherit
   text-align: right
+  overflow: hidden
 
 .calendar__cell.now > span
   display: inline-block
@@ -84,3 +85,19 @@
     +plugins.position(absolute, 50% null null 50%)
     transform: translate(-50%, -50%)
     z-index: -1
+
+.calendar__cell.completed .calendar__task
+  background-color: hsl(var(--clr-container-light) / .5)
+  text-decoration: line-through
+  color: hsl(var(--clr-text))
+
+.calendar__tasks
+  --gap: 5px
+
+  margin-top: 8px
+  text-align: initial
+
+.calendar__task
+  padding: 3px 10px
+  border-radius: 6px
+  +plugins.ellipsis
