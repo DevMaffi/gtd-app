@@ -10,7 +10,7 @@ function DropdownMenu({ options, isActive, isDefault, onSelect, onDropdown }) {
             <DropdownItem
               key={o}
               data={o}
-              onClick={() => onSelect(i)}
+              onClick={onSelect(i)}
               defaultOption={isDefault(i)}
               active={isActive(i)}
             />

@@ -3,7 +3,7 @@ import { Button } from '../UI'
 import data from '../../data.json'
 
 function MonthSwiper({ date, isOpen, dropdownView, onDropdown, onDate }) {
-  const swipe = inc => {
+  const swipe = inc => () => {
     const nextDate = new Date(
       date.getFullYear(),
       date.getMonth(),
@@ -25,7 +25,7 @@ function MonthSwiper({ date, isOpen, dropdownView, onDropdown, onDate }) {
 
   return (
     <div className="calendar__month flex">
-      <Button onClick={() => swipe(-1)} arrow>
+      <Button onClick={swipe(-1)} arrow>
         <i className="ri-arrow-left-s-line"></i>
       </Button>
       <Button
@@ -37,7 +37,7 @@ function MonthSwiper({ date, isOpen, dropdownView, onDropdown, onDate }) {
         {!isOpen && data.shortenings.months[date.getMonth()]}{' '}
         {date.getFullYear()}
       </Button>
-      <Button onClick={() => swipe(1)} arrow>
+      <Button onClick={swipe(1)} arrow>
         <i className="ri-arrow-right-s-line"></i>
       </Button>
     </div>

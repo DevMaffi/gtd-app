@@ -45,7 +45,7 @@ function MonthSelector({ date, onDate }) {
     }
   }
 
-  const selectMonth = (optionIndex, dropdownView, onDropdown) => {
+  const selectMonth = (dropdownView, onDropdown) => optionIndex => () => {
     const nextDate = new Date(
       date.getFullYear(),
       date.getMonth(),
