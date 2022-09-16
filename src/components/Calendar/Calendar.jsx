@@ -4,11 +4,11 @@ import CalendarDays from './CalendarDays'
 import CalendarGrid from './CalendarGrid'
 import { compareDates } from '../../utils/date'
 
-function Calendar({ date, tasks }) {
+function Calendar(props) {
   return (
     <>
       <CalendarDays />
-      <CalendarGrid date={date} tasks={tasks} />
+      <CalendarGrid {...props} />
     </>
   )
 }
