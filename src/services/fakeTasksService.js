@@ -1,6 +1,6 @@
 class TasksService {
   static #tasks = {
-    [new Date(2020, 3, 12).toDateString()]: [
+    [new Date(2021, 11, 30).toDateString()]: [
       { _id: 1, title: 'Task 1' },
       { _id: 2, title: 'Task 2' },
       { _id: 3, title: 'Task 3' },
@@ -28,7 +28,7 @@ class TasksService {
       { _id: 2, title: 'Meet with friends' },
       { _id: 3, title: 'Complete project' },
     ],
-    [new Date(2023, 7, 10).toDateString()]: [
+    [new Date(2023, 0, 1).toDateString()]: [
       { _id: 1, title: 'Task 1' },
       { _id: 2, title: 'Task 2' },
       { _id: 3, title: 'Task 3' },

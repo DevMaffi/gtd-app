@@ -4,11 +4,11 @@ import CalendarDays from './CalendarDays'
 import CalendarGrid from './CalendarGrid'
 import { compareDates } from '../../utils/date'
 
-function Calendar(props) {
+function Calendar({ tasksUpdates, ...restProps }) {
   return (
     <>
       <CalendarDays />
-      <CalendarGrid {...props} />
+      <CalendarGrid {...restProps} />
     </>
   )
 }
@@ -16,13 +16,14 @@ function Calendar(props) {
 function calendarPropsAreEqual(prevProps, nextProps) {
   return (
     compareDates(prevProps.date, nextProps.date) &&
-    JSON.stringify(prevProps.tasks) === JSON.stringify(nextProps.tasks)
+    prevProps.tasksUpdates === nextProps.tasksUpdates
   )
 }
 
 Calendar.propTypes = {
   date: PropTypes.instanceOf(Date).isRequired,
   tasks: PropTypes.object.isRequired,
+  tasksUpdates: PropTypes.number.isRequired,
 }
 
 export default React.memo(Calendar, calendarPropsAreEqual)
