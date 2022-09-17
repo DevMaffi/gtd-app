@@ -1,7 +1,11 @@
 /* MICRO CLASSES
 
-.scroll-header
-  --header-height: 80px
+.scroll-header,
+.scroll-header ~ .calendar__container
+  --header-height: 90px
+
+.scroll-header ~ .calendar__container > .calendar__days
+  padding-top: calc(var(--header-height) + 10px)
 
 .ripple
   position: relative

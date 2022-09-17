@@ -12,6 +12,7 @@
   height: var(--header-height)
   +plugins.position(fixed, 0 null null 0)
   transition: var(--tr-ease)
+  z-index: var(--z-above)
 
 .calendar__header-inner
   width: 100% 
@@ -46,7 +47,9 @@
   --gap: 0
 
   justify-content: space-between
-  margin-top: calc(var(--header-height) + 25px)
+  padding-top: calc(var(--header-height) + 25px)
+  +plugins.position(sticky, 0 null null 0)
+  transition: var(--tr-ease)
 
   & > .calendar__day:first-of-type
     border-top-left-radius: 15px

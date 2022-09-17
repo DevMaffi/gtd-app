@@ -6,10 +6,10 @@ import { compareDates } from '../../utils/date'
 
 function Calendar({ tasksUpdates, ...restProps }) {
   return (
-    <>
+    <div className="calendar__container">
       <CalendarDays />
       <CalendarGrid {...restProps} />
-    </>
+    </div>
   )
 }
 
