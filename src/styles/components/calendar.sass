@@ -4,22 +4,26 @@
 
 /* CALENDAR
 
-.calendar
-  margin-top: 60px
-
 .calendar__header
   --gap: 0
 
-  justify-content: space-between
-  align-items: center
-  padding-bottom: 15px
+  align-items: flex-end
+  width: 100%
+  height: var(--header-height)
+  +plugins.position(fixed, 0 null null 0)
+  transition: var(--tr-ease)
+
+.calendar__header-inner
+  width: 100% 
   border-bottom: 1px solid hsl(var(--clr-container-lighten)) 
+  padding-bottom: 15px
 
 .calendar__header-date
   --gap: 40px
 
   grid-template-columns: 300px max-content
   align-items: center
+  margin-right: auto
 
 .calendar__title
   position: relative
@@ -42,7 +46,7 @@
   --gap: 0
 
   justify-content: space-between
-  margin-top: 25px
+  margin-top: calc(var(--header-height) + 25px)
 
   & > .calendar__day:first-of-type
     border-top-left-radius: 15px

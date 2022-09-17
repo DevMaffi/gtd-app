@@ -2,12 +2,15 @@ import { useEffect, useRef } from 'react'
 import { useState } from 'react'
 import { CalendarView } from '../components'
 import TasksService from '../services/fakeTasksService'
+import useObserver from '../hooks/useObserver'
 import { getEnvDate } from '../utils/date'
 
 function App() {
   const [date, setDate] = useState(getEnvDate())
+  const [scrollHeader, setScrollHeader] = useState(false)
   const [tasks, setTasks] = useState({})
 
+  const firstElement = useRef(null)
   const tasksUpdates = useRef(0)
   const prevYear = useRef(date.getFullYear())
 
@@ -15,6 +18,10 @@ function App() {
     tasksUpdates.current++
     setTasks(tasks)
   }
+
+  const onScrollHeader = value => () => setScrollHeader(value)
+
+  useObserver(firstElement, onScrollHeader(false), onScrollHeader(true))
 
   useEffect(() => {
     if (!tasksUpdates.current || date.getFullYear() !== prevYear.current) {
@@ -37,12 +44,23 @@ function App() {
   }, [date])
 
   return (
-    <CalendarView
-      date={date}
-      tasks={tasks}
-      tasksUpdates={tasksUpdates.current}
-      onDate={setDate}
-    />
+    <>
+      <div
+        ref={firstElement}
+        style={{
+          height: 20,
+          position: 'absolute',
+          top: 0,
+        }}
+      ></div>
+      <CalendarView
+        date={date}
+        scrollHeader={scrollHeader}
+        tasks={tasks}
+        tasksUpdates={tasksUpdates.current}
+        onDate={setDate}
+      />
+    </>
   )
 }
 
