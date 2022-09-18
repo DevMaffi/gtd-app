@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react'
 import { useState } from 'react'
-import { CalendarView } from '../components'
-import TasksService from '../services/fakeTasksService'
-import useObserver from '../hooks/useObserver'
-import { getEnvDate } from '../utils/date'
+import { CalendarView } from 'components'
+import TasksService from 'services/fakeTasksService'
+import useObserver from 'hooks/useObserver'
+import { getEnvDate } from 'utils/date'
 
 function App() {
   const [date, setDate] = useState(getEnvDate())

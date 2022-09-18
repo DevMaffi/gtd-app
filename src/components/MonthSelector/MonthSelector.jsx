@@ -1,9 +1,9 @@
 import { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import MonthSwiper from './MonthSwiper'
-import Dropdown from '../Dropdown'
-import { getEnvDate, compareDates } from '../../utils/date'
-import data from '../../data.json'
+import Dropdown from 'components/Dropdown'
+import { getEnvDate, compareDates } from 'utils/date'
+import data from 'data.json'
 
 function MonthSelector({ date, onDate }) {
   const yearOptions = useMemo(() => {

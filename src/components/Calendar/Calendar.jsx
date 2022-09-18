@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import CalendarDays from './CalendarDays'
 import CalendarGrid from './CalendarGrid'
-import { compareDates } from '../../utils/date'
+import { compareDates } from 'utils/date'
 
 function Calendar({ tasksUpdates, ...restProps }) {
   return (

@@ -1,4 +1,4 @@
-import data from '../data.json'
+import data from 'data.json'
 
 export function getEnvDate() {
   if (process.env.NODE_ENV === 'development' && process.env.REACT_APP_DATE)

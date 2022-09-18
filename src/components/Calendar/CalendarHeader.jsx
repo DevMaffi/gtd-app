@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import CalendarTitle from './CalendarTitle'
-import MonthSelector from '../MonthSelector'
-import { Button } from '../UI'
+import MonthSelector from 'components/MonthSelector'
+import { Button } from 'components/UI'
 
 function CalendarHeader({ scrollHeader, ...props }) {
   const rootClasses = ['calendar__header', 'container', 'flex', 'bg-body']

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { default as Cell } from './CalendarCell'
-import { usePrevDays, useDays, useNextDays } from '../../hooks/useCalendar'
-import { getEnvDate, compareDates } from '../../utils/date'
+import { usePrevDays, useDays, useNextDays } from 'hooks/useCalendar'
+import { getEnvDate, compareDates } from 'utils/date'
 
 function CalendarGrid({ date, tasks }) {
   const prevDays = usePrevDays(date)

@@ -1,5 +1,5 @@
 import React from 'react'
-import withRipple from '../../hoc/withRipple'
+import withRipple from 'hoc/withRipple'
 
 function Button({ children, arrow, pill, className, ...props }, ref) {
   const rootClasses = ['button', 'text-light']

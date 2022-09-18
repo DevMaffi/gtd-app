@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
-import { Button } from '../UI'
-import data from '../../data.json'
+import { Button } from 'components/UI'
+import data from 'data.json'
 
 function MonthSwiper({ date, isOpen, dropdownView, onDropdown, onDate }) {
   const swipe = inc => () => {
