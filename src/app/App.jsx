@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
 import { useState } from 'react'
-import { CalendarView } from 'components'
-import TasksService from 'services/fakeTasksService'
+import { CalendarView } from 'components/views'
 import { useObserver } from 'hooks'
+import TasksService from 'services/fakeTasksService'
 import { getEnvDate } from 'utils/date'
 
 function App() {

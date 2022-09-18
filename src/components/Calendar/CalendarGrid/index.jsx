@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { default as Cell } from './CalendarCell'
+import { CalendarCell as Cell } from 'components/calendar'
 import { usePrevDays, useDays, useNextDays } from 'hooks'
 import { getEnvDate, compareDates } from 'utils/date'
 

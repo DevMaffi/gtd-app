@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import CalendarTitle from './CalendarTitle'
+import { CalendarTitle } from 'components/calendar'
 import MonthSelector from 'components/MonthSelector'
 import { Button } from 'components/UI'
 
