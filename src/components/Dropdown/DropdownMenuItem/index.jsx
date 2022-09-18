@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-function DropdownItem({ data, defaultOption, active, ...props }) {
+function DropdownMenuItem({ data, defaultOption, active, ...props }) {
   const rootClasses = ['dropdown__menu-item', 'fs-300', 'text-light']
 
   if (active) rootClasses.push('bg-grade')
@@ -14,10 +14,10 @@ function DropdownItem({ data, defaultOption, active, ...props }) {
   )
 }
 
-DropdownItem.propTypes = {
+DropdownMenuItem.propTypes = {
   data: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   defaultOption: PropTypes.bool,
   active: PropTypes.bool,
 }
 
-export default DropdownItem
+export default DropdownMenuItem

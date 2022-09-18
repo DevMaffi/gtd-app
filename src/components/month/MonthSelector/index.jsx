@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import MonthSwiper from './MonthSwiper'
-import Dropdown from 'components/Dropdown'
+import { DropdownItem as Dropdown } from 'components/dropdown'
+import { MonthSwiper } from 'components/month'
 import { getEnvDate, compareDates } from 'utils/date'
 import data from 'data.json'
 

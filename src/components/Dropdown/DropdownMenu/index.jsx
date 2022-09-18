@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import DropdownItem from './DropdownItem'
+import { DropdownMenuItem } from 'components/dropdown'
 
 function DropdownMenu({ options, isActive, isDefault, onSelect, onDropdown }) {
   return (
@@ -7,7 +7,7 @@ function DropdownMenu({ options, isActive, isDefault, onSelect, onDropdown }) {
       <div className="dropdown__menu-inner bg-container-dark">
         {options.map((o, i) => {
           return (
-            <DropdownItem
+            <DropdownMenuItem
               key={o}
               data={o}
               onClick={onSelect(i)}

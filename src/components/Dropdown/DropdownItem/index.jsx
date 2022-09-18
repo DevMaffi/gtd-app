@@ -1,8 +1,14 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import DropdownMenu from './DropdownMenu'
+import { DropdownMenu } from 'components/dropdown'
 
-function Dropdown({ setOptions, isActive, isDefault, onSelect, on: render }) {
+function DropdownItem({
+  setOptions,
+  isActive,
+  isDefault,
+  onSelect,
+  on: render,
+}) {
   const [dropdownView, setDropdownView] = useState(null)
 
   const rootClasses = ['dropdown', 'flex']
@@ -27,7 +33,7 @@ function Dropdown({ setOptions, isActive, isDefault, onSelect, on: render }) {
   )
 }
 
-Dropdown.propTypes = {
+DropdownItem.propTypes = {
   setOptions: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired,
   isActive: PropTypes.func.isRequired,
@@ -35,4 +41,4 @@ Dropdown.propTypes = {
   on: PropTypes.func.isRequired,
 }
 
-export default Dropdown
+export default DropdownItem

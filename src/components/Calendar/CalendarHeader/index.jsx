@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { CalendarTitle } from 'components/calendar'
-import MonthSelector from 'components/MonthSelector'
+import { MonthSelector } from 'components/month'
 import { Button } from 'components/UI'
 
 function CalendarHeader({ scrollHeader, ...props }) {
