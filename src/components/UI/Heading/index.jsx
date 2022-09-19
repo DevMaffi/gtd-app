@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import './heading.sass'
 
 function Heading({ children, className }) {
   const rootClasses = ['heading', 'fs-900', 'text-light']
