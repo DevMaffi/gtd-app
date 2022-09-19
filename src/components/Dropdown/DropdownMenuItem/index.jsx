@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 function DropdownMenuItem({ data, defaultOption, active, ...props }) {
   const rootClasses = ['dropdown__menu-item', 'fs-300', 'text-light']
 
-  if (active) rootClasses.push('bg-grade')
+  if (active) rootClasses.push('active bg-first')
 
   if (defaultOption) rootClasses.push('default')
 

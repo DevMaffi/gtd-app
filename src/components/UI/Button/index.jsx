@@ -6,7 +6,7 @@ function Button({ children, arrow, pill, className, ...props }, ref) {
 
   if (arrow) rootClasses.push('button--arrow flex bg-container-light')
   else if (pill) rootClasses.push('button--pill flex bg-container-light fs-200')
-  else rootClasses.push('bg-grade')
+  else rootClasses.push('bg-first')
 
   if (className) rootClasses.push(className)
 
