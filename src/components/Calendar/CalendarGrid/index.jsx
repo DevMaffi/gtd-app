@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { CalendarCell as Cell } from 'components/calendar'
 import { usePrevDays, useDays, useNextDays } from 'hooks'
 import { getEnvDate, compareDates } from 'utils/date'
+import './calendarGrid.sass'
 
 function CalendarGrid({ date, tasks }) {
   const prevDays = usePrevDays(date)
@@ -49,7 +50,7 @@ function CalendarGrid({ date, tasks }) {
   }
 
   return (
-    <div className="calendar__cells grid">
+    <div className="calendar__grid grid">
       {renderCells(prevDays, 'prev')}
       {renderCells(days)}
       {renderCells(nextDays, 'next')}

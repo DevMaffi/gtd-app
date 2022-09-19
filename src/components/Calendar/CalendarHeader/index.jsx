@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { CalendarTitle } from 'components/calendar'
 import { MonthSelector } from 'components/month'
 import { Button } from 'components/UI'
+import './calendarHeader.sass'
 
 function CalendarHeader({ scrollHeader, ...props }) {
   const rootClasses = ['calendar__header', 'container', 'flex', 'bg-body']

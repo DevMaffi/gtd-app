@@ -1,0 +1,27 @@
+// Modules
+
+@use '~styles/plugins/plugins-dir' as plugins
+
+/* CALENDAR HEADER
+
+.calendar__header
+  --gap: 0
+
+  align-items: flex-end
+  width: 100%
+  height: var(--header-height)
+  +plugins.position(fixed, 0 null null 0)
+  transition: var(--tr-ease)
+  z-index: var(--z-above)
+
+.calendar__header-inner
+  width: 100% 
+  border-bottom: 1px solid hsl(var(--clr-container-lighten)) 
+  padding-bottom: 15px
+
+.calendar__header-date
+  --gap: 40px
+
+  grid-template-columns: 300px max-content
+  align-items: center
+  margin-right: auto

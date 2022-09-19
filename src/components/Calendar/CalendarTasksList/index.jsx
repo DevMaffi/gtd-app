@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import './calendarTasks.sass'
 
 function CalendarTasksList({ tasks }) {
   return (

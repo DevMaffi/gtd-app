@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { Button } from 'components/UI'
 import data from 'data.json'
+import './monthSwiper.sass'
 
 function MonthSwiper({ date, isOpen, dropdownView, onDropdown, onDate }) {
   const swipe = inc => () => {
@@ -24,7 +25,7 @@ function MonthSwiper({ date, isOpen, dropdownView, onDropdown, onDate }) {
   const isDisabled = () => dropdownView === 'year'
 
   return (
-    <div className="calendar__month flex">
+    <div className="month-swiper flex">
       <Button onClick={swipe(-1)} arrow>
         <i className="ri-arrow-left-s-line"></i>
       </Button>

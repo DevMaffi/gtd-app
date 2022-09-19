@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { Heading, Button } from 'components/UI'
 import { getEnvDate, getDayName, getDateString, compareDates } from 'utils/date'
+import './calendarTitle.sass'
 
 function CalendarTitle({ date, onDate }) {
   let isNow = false
@@ -20,7 +21,7 @@ function CalendarTitle({ date, onDate }) {
   return (
     <div className={rootClasses.join(' ')}>
       {!isNow && (
-        <div className="calendar__back">
+        <div className="calendar__title-back">
           <Button onClick={jumpBack} pill>
             <i className="ri-arrow-go-back-line"></i>
             jump back

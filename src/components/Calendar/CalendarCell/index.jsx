@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { CalendarTasksList } from 'components/calendar'
+import './calendarCell.sass'
 
 function CalendarCell({ dateNumber, tasks, prev, next, today, completed }) {
   const rootClasses = ['calendar__cell']

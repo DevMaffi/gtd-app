@@ -1,4 +1,5 @@
 import data from 'data.json'
+import './calendarDays.sass'
 
 function CalendarDays() {
   return (
