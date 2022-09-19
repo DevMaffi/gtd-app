@@ -1,23 +1,32 @@
 import React from 'react'
 import withRipple from 'hoc/withRipple'
+import RootClasses from 'utils/rootClasses'
 import './button.sass'
 
-function Button({ children, arrow, pill, className, ...props }, ref) {
-  const rootClasses = ['button', 'text-light']
-
-  if (arrow) rootClasses.push('button--arrow flex bg-container-light')
-
-  if (pill) rootClasses.push('button--pill flex bg-container-light fs-200')
-
-  if (!arrow && !pill) rootClasses.push('bg-first')
-
-  if (className) rootClasses.push(className)
+function Button({ children, arrow, danger, pill, className, ...props }, ref) {
+  const rootClasses = new RootClasses(['button', 'text-light'])
+    .add({
+      condition: arrow,
+      className: 'button--arrow flex bg-container-light',
+    })
+    .add({
+      condition: danger,
+      className: 'bg-second',
+    })
+    .add({
+      condition: pill,
+      className: 'button--pill flex bg-container-light fs-200',
+      alwaysPrimary: false,
+      remove: 'bg-second',
+    })
+    .add({ condition: className, className, alwaysPrimary: true })
+    .addPrimary('bg-first')
 
   return (
     <button
       ref={ref}
       type="button"
-      className={rootClasses.join(' ')}
+      className={rootClasses.toClassNameString()}
       {...props}
     >
       {children}
