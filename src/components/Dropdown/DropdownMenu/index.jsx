@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { DropdownMenuItem } from 'components/dropdown'
+import './dropdownMenu.sass'
 
 function DropdownMenu({ options, isActive, isDefault, onSelect, onDropdown }) {
   return (

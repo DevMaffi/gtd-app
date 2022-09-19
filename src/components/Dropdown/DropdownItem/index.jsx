@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { DropdownMenu } from 'components/dropdown'
+import './dropdown.sass'
 
 function DropdownItem({
   setOptions,

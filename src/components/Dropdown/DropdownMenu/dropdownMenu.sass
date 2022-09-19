@@ -1,0 +1,23 @@
+// Modules
+
+@use '~styles/plugins/plugins-dir' as plugins
+
+/* DROPDOWN MENU
+
+.dropdown__menu
+  position: relative
+  order: -1
+
+.dropdown__menu-inner
+  --dropdown-item-size: 60px
+
+  display: none
+  grid-template-columns: repeat(3, var(--dropdown-item-size))
+  justify-content: space-between
+  gap: 8px 0
+  width: 252px
+  padding: 35px 15px 10px
+  border-radius: 15px
+  box-shadow: 0px 2px 6px 2px hsl(var(--clr-border) / .5)
+  +plugins.position(absolute, 25px null null -20px)
+  z-index: var(--z-backdrop)

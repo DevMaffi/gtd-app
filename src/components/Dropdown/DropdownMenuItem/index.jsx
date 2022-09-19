@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import './dropdownMenuItem.sass'
 
 function DropdownMenuItem({ data, defaultOption, active, ...props }) {
   const rootClasses = ['dropdown__menu-item', 'fs-300', 'text-light']

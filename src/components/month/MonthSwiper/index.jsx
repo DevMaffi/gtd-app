@@ -32,7 +32,7 @@ function MonthSwiper({ date, isOpen, dropdownView, onDropdown, onDate }) {
       <Button
         onClick={displayDropdown}
         disabled={isDisabled()}
-        className="dropdown__button"
+        className="month-swiper__button"
         ripple
       >
         {!isOpen && data.shortenings.months[date.getMonth()]}{' '}
