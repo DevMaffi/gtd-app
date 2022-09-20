@@ -4,17 +4,19 @@ import RootClasses from 'utils/rootClasses'
 import './button.sass'
 
 function Button(
-  { children, arrow, danger, pill, className, label, ...props },
+  { children, danger, arrow, pill, className, label, ...props },
   ref
 ) {
   const rootClasses = new RootClasses(['button', 'text-light'])
     .add({
-      condition: arrow,
-      className: 'button--arrow flex bg-container-light',
-    })
-    .add({
       condition: danger,
       className: 'bg-second',
+    })
+    .add({
+      condition: arrow,
+      className: 'button--arrow flex bg-container-light',
+      alwaysPrimary: false,
+      remove: 'bg-second',
     })
     .add({
       condition: pill,
