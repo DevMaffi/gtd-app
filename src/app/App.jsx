@@ -29,18 +29,18 @@ function App() {
 
       const fetchTasks = async () => {
         /**
-         * @type {Date}     last month of prev year
+         * @type {Date} - Last month of prev year
          */
         const startDate = new Date(date.getFullYear(), -1, 1)
 
         /**
-         * @type {Date}     first month of next year
+         * @type {Date} - First month of next year
          */
         const endDate = new Date(date.getFullYear() + 1, 1, -1)
 
         /**
-         * @type {object}   object of tasks that are in between last month of
-         *                  prev year and first month of next year
+         * @type {Object} - Object of tasks that are in between last month of
+         * prev year and first month of next year
          */
         const response = await TasksService.getByInterval(startDate, endDate)
         onTasks(response)
