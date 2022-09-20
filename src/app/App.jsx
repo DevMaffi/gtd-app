@@ -1,5 +1,4 @@
-import { useEffect, useRef } from 'react'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { CalendarView } from 'components/views'
 import { useObserver } from 'hooks'
 import TasksService from 'services/fakeTasksService'
