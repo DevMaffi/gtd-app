@@ -14,15 +14,14 @@ export function usePrevDays(date) {
       1
     ).getDay()
 
-    let prevDaysArr = []
+    const prevDaysArr = []
 
-    if (firstDayIndex === 0) {
-      for (let i = 7; i > 1; i--) prevDaysArr.push(prevLastDay - i + 2)
-      return prevDaysArr
-    }
+    let daysAmount = 0
+    if (firstDayIndex === 0) daysAmount = 6
+    else daysAmount = firstDayIndex - 1
 
-    for (let i = firstDayIndex; i > 1; i--)
-      prevDaysArr.push(prevLastDay - i + 2)
+    const rangeReverse = [...Array(daysAmount).keys()].reverse()
+    rangeReverse.forEach(i => prevDaysArr.push(prevLastDay - i))
 
     return prevDaysArr
   }, [date])
@@ -38,8 +37,11 @@ export function useDays(date) {
       0
     ).getDate()
 
-    let daysArr = []
-    for (let i = 0; i < lastDay; i++) daysArr.push(i + 1)
+    const daysArr = []
+
+    const daysAmount = lastDay
+    const range = [...Array(daysAmount).keys()]
+    range.forEach(i => daysArr.push(i + 1))
 
     return daysArr
   }, [date])
@@ -55,11 +57,13 @@ export function useNextDays(date) {
       0
     ).getDay()
 
-    let nextDaysArr = []
+    const nextDaysArr = []
 
     if (lastDayIndex === 0) return nextDaysArr
 
-    for (let i = 0; i < 7 - lastDayIndex; i++) nextDaysArr.push(i + 1)
+    const daysAmount = 7 - lastDayIndex
+    const range = [...Array(daysAmount).keys()]
+    range.forEach(i => nextDaysArr.push(i + 1))
 
     return nextDaysArr
   }, [date])
