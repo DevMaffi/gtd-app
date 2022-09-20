@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { DropdownMenu } from 'components/dropdown'
+import RootClasses from 'utils/rootClasses'
 import './dropdown.sass'
 
 function DropdownItem({
@@ -12,12 +13,14 @@ function DropdownItem({
 }) {
   const [dropdownView, setDropdownView] = useState(null)
 
-  const rootClasses = ['dropdown', 'flex']
-
-  if (dropdownView) rootClasses.push('open')
+  const rootClasses = new RootClasses('dropdown flex').add({
+    condition: dropdownView,
+    type: 'dropdownView',
+    className: 'open',
+  })
 
   return (
-    <div className={rootClasses.join(' ')}>
+    <div className={rootClasses.toClassNameString()}>
       {render({
         dropdownView,
         isOpen: !!dropdownView,

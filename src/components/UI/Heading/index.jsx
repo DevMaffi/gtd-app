@@ -1,12 +1,15 @@
 import PropTypes from 'prop-types'
+import RootClasses from 'utils/rootClasses'
 import './heading.sass'
 
 function Heading({ children, className }) {
-  const rootClasses = ['heading', 'fs-900', 'text-light']
+  const rootClasses = new RootClasses('heading fs-900 text-light').add({
+    condition: className,
+    type: 'extra',
+    className,
+  })
 
-  if (className) rootClasses.push(className)
-
-  return <h1 className={rootClasses.join(' ')}>{children}</h1>
+  return <h1 className={rootClasses.toClassNameString()}>{children}</h1>
 }
 
 Heading.propTypes = {

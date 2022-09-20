@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types'
 import { Heading, Button } from 'components/UI'
 import { getEnvDate, getDayName, getDateString, compareDates } from 'utils/date'
+import RootClasses from 'utils/rootClasses'
 import './calendarTitle.sass'
 
 function CalendarTitle({ date, onDate }) {
   let isNow = false
 
   const now = new Date(getEnvDate())
-  const rootClasses = ['calendar__title']
+  const rootClasses = new RootClasses('calendar__title')
   const today = {
     day: getDayName(now.getDay()),
     date: getDateString(now.getDate()),
@@ -16,10 +17,15 @@ function CalendarTitle({ date, onDate }) {
   const jumpBack = () => onDate(now)
 
   if (compareDates(date, now)) isNow = true
-  else rootClasses.push('show-pill')
+  else
+    rootClasses.add({
+      condition: true,
+      type: 'showPill',
+      className: 'show-pill',
+    })
 
   return (
-    <div className={rootClasses.join(' ')}>
+    <div className={rootClasses.toClassNameString()}>
       {!isNow && (
         <div className="calendar__title-back">
           <Button onClick={jumpBack} pill>

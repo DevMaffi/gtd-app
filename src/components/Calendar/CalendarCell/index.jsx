@@ -1,18 +1,28 @@
 import PropTypes from 'prop-types'
 import { CalendarTasksList } from 'components/calendar'
+import RootClasses from 'utils/rootClasses'
 import './calendarCell.sass'
 
 function CalendarCell({ dateNumber, tasks, prev, next, today, completed }) {
-  const rootClasses = ['calendar__cell']
-
-  if (!prev && !next) rootClasses.push('text-light')
-
-  if (today) rootClasses.push('now')
-
-  if (completed) rootClasses.push('completed')
+  const rootClasses = new RootClasses('calendar__cell')
+    .add({
+      condition: !prev && !next,
+      type: 'curr',
+      className: 'text-light',
+    })
+    .add({
+      condition: today,
+      type: 'today',
+      className: 'now',
+    })
+    .add({
+      condition: completed,
+      type: 'completed',
+      className: 'completed',
+    })
 
   return (
-    <div className={rootClasses.join(' ')}>
+    <div className={rootClasses.toClassNameString()}>
       <span>{dateNumber}</span>
       {tasks && <CalendarTasksList tasks={tasks} />}
     </div>

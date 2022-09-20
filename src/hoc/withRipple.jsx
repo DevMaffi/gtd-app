@@ -1,10 +1,15 @@
 import { useRef } from 'react'
+import RootClasses from 'utils/rootClasses'
 
 function withRipple(Component) {
   return function ({ ripple, className, ...props }) {
     const ref = useRef(null)
 
-    const rootClasses = ['ripple']
+    const rootClasses = new RootClasses('ripple').add({
+      condition: className,
+      type: 'extra',
+      className,
+    })
 
     const addRipple = e => {
       if (ripple) {
@@ -23,11 +28,13 @@ function withRipple(Component) {
       }
     }
 
-    if (className) rootClasses.push(className)
-
     return (
       <div onClick={addRipple}>
-        <Component ref={ref} className={rootClasses.join(' ')} {...props} />
+        <Component
+          ref={ref}
+          className={rootClasses.toClassNameString()}
+          {...props}
+        />
       </div>
     )
   }
