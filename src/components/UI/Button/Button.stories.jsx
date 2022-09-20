@@ -12,12 +12,13 @@ const Story = args => <StyledButton {...args}>Button</StyledButton>
 
 export const Primary = Story.bind({})
 Primary.args = {
+  ripple: true,
   danger: false,
-  pill: false,
 }
 
 export const Danger = Story.bind({})
 Danger.args = {
+  ripple: true,
   danger: true,
 }
 
