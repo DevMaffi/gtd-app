@@ -15,6 +15,8 @@ Primary.args = {
   label: 'Button',
   ripple: true,
   danger: false,
+  arrow: false,
+  pill: false,
 }
 
 export const Danger = Story.bind({})

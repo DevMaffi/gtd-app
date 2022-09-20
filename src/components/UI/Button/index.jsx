@@ -7,24 +7,35 @@ function Button(
   { children, danger, arrow, pill, className, label, ...props },
   ref
 ) {
-  const rootClasses = new RootClasses(['button', 'text-light'])
+  const rootClasses = new RootClasses('button text-light')
     .add({
       condition: danger,
+      type: 'danger',
       className: 'bg-second',
     })
     .add({
       condition: arrow,
+      type: 'arrow',
       className: 'button--arrow flex bg-container-light',
       alwaysPrimary: false,
-      remove: 'bg-second',
     })
     .add({
       condition: pill,
+      type: 'pill',
       className: 'button--pill flex bg-container-light fs-200',
       alwaysPrimary: false,
-      remove: 'bg-second',
+      remove: ['arrow'],
     })
-    .add({ condition: className, className, alwaysPrimary: true })
+    .add({
+      condition: className,
+      type: 'extra',
+      className,
+      alwaysPrimary: true,
+    })
+    .remove({
+      condition: arrow || pill,
+      types: ['danger'],
+    })
     .addPrimary('bg-first')
 
   if (children && label)
