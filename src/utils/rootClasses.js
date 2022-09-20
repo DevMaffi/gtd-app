@@ -38,16 +38,17 @@ class RootClasses {
    * @returns {RootClasses} - Current instance of RootClasses
    */
   add = ({ condition, type, className, alwaysPrimary, remove }) => {
+    if (!type)
+      console.warn(
+        '[RootClasses] => Provide a "type" prop. "className" value will be added to extra section, where it can be rewritten by other extras.'
+      )
+
     if (!condition) return this
     if (!alwaysPrimary) this.#primary = false
     if (remove) this.remove({ condition: true, types: remove, alwaysPrimary })
 
-    if (!type) {
-      console.warn(
-        '[RootClasses] => Provide a "type" prop. "className" value was added to extra section, where it can be rewritten by other extras.'
-      )
-      this.#cl.extra = className
-    } else this.#cl[type] = className
+    if (!type) this.#cl.extra = className
+    else this.#cl[type] = className
 
     return this
   }
