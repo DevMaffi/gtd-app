@@ -1,4 +1,5 @@
 import { CalendarHeader, CalendarItem } from 'components/calendar'
+import withScrollHeader from 'hoc/withScrollHeader'
 
 function CalendarView({ date, scrollHeader, tasks, tasksUpdates, onDate }) {
   return (
@@ -9,4 +10,4 @@ function CalendarView({ date, scrollHeader, tasks, tasksUpdates, onDate }) {
   )
 }
 
-export default CalendarView
+export default withScrollHeader(CalendarView)
