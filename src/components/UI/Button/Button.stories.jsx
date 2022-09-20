@@ -8,22 +8,25 @@ export default {
   component: StyledButton,
 }
 
-const Story = args => <StyledButton {...args}>Button</StyledButton>
+const Story = args => <StyledButton {...args} />
 
 export const Primary = Story.bind({})
 Primary.args = {
+  label: 'Button',
   ripple: true,
   danger: false,
 }
 
 export const Danger = Story.bind({})
 Danger.args = {
+  label: 'Button',
   ripple: true,
   danger: true,
 }
 
 export const Pill = Story.bind({})
 Pill.args = {
+  label: 'pill button',
   pill: true,
 }
 

@@ -3,7 +3,10 @@ import withRipple from 'hoc/withRipple'
 import RootClasses from 'utils/rootClasses'
 import './button.sass'
 
-function Button({ children, arrow, danger, pill, className, ...props }, ref) {
+function Button(
+  { children, arrow, danger, pill, className, label, ...props },
+  ref
+) {
   const rootClasses = new RootClasses(['button', 'text-light'])
     .add({
       condition: arrow,
@@ -22,6 +25,11 @@ function Button({ children, arrow, danger, pill, className, ...props }, ref) {
     .add({ condition: className, className, alwaysPrimary: true })
     .addPrimary('bg-first')
 
+  if (children && label)
+    console.warn(
+      '[BUTTON] => Property "label" is depreciated by children element, because of its lower priority. Use either "children element" or "label prop".'
+    )
+
   return (
     <button
       ref={ref}
@@ -29,7 +37,7 @@ function Button({ children, arrow, danger, pill, className, ...props }, ref) {
       className={rootClasses.toClassNameString()}
       {...props}
     >
-      {children}
+      {children || label}
     </button>
   )
 }
