@@ -14,6 +14,9 @@
   transition: var(--tr-ease)
   z-index: var(--z-above)
 
+.calendar__header + .calendar__container > .calendar__days
+  padding-top: calc(var(--header-height) + 25px)
+
 .calendar__header-inner
   width: 100% 
   border-bottom: 1px solid hsl(var(--clr-container-lighten)) 
