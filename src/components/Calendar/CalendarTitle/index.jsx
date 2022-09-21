@@ -28,7 +28,7 @@ function CalendarTitle({ date, onDate }) {
     <div className={rootClasses.toClassNameString()}>
       {!isNow && (
         <div className="calendar__title-back">
-          <Button onClick={jumpBack} pill>
+          <Button onClick={jumpBack} variant="pill">
             <i className="ri-arrow-go-back-line"></i>
             jump back
           </Button>

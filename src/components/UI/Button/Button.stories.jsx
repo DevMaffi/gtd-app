@@ -3,42 +3,70 @@ import withRootStyles from 'hoc/withRootStyles'
 
 const StyledButton = withRootStyles(Button)
 
+const arrows = {
+  arrowLeft: <i className="ri-arrow-left-s-line"></i>,
+  arrowRight: <i className="ri-arrow-right-s-line"></i>,
+}
+
 export default {
   title: 'Components/Button',
   component: StyledButton,
+  argTypes: {
+    label: { control: 'text', if: { arg: 'variant', neq: 'arrow' } },
+    children: {
+      options: Object.keys(arrows),
+      mapping: arrows,
+      control: 'check',
+      if: { arg: 'variant', eq: 'arrow' },
+    },
+    variant: {
+      options: ['primary', 'danger', 'pill', 'arrow'],
+      control: 'select',
+    },
+    ripple: { control: 'boolean' },
+  },
 }
 
-const Story = args => <StyledButton {...args} />
+const Story = ({ children, label, ...args }) => {
+  if (children?.length) {
+    return (
+      <div className="flex">
+        {children.length &&
+          children.map(ch => (
+            <StyledButton key={ch} children={arrows[ch]} {...args} />
+          ))}
+      </div>
+    )
+  }
+
+  if (children?.type) return <StyledButton children={children} {...args} />
+
+  return <StyledButton label={label ?? 'Button'} {...args} />
+}
 
 export const Primary = Story.bind({})
 Primary.args = {
   label: 'Button',
+  children: 'arrowLeft',
+  variant: 'primary',
   ripple: true,
-  danger: false,
-  arrow: false,
-  pill: false,
 }
 
 export const Danger = Story.bind({})
 Danger.args = {
   label: 'Button',
+  variant: 'danger',
   ripple: true,
-  danger: true,
 }
 
 export const Pill = Story.bind({})
 Pill.args = {
   label: 'pill button',
-  pill: true,
+  variant: 'pill',
 }
 
-export const Arrow = () => (
-  <div className="flex">
-    <StyledButton arrow>
-      <i className="ri-arrow-left-s-line"></i>
-    </StyledButton>
-    <StyledButton arrow>
-      <i className="ri-arrow-right-s-line"></i>
-    </StyledButton>
-  </div>
-)
+export const Arrow = Story.bind({})
+Arrow.args = {
+  children: 'arrowRight',
+  variant: 'arrow',
+}
