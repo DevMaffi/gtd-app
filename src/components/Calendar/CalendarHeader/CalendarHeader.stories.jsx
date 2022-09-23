@@ -4,7 +4,7 @@ import withRootStyles from 'hoc/withRootStyles'
 import { getEnvDate } from 'utils/date'
 
 export default {
-  title: 'Components/CalendarHeader',
+  title: 'Components/Calendar/Header',
   component: CalendarHeader,
   argTypes: {
     scrollHeader: { control: 'boolean' },

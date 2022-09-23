@@ -9,7 +9,7 @@ const arrows = {
 }
 
 export default {
-  title: 'Components/Button',
+  title: 'Components/UI/Button',
   component: StyledButton,
   argTypes: {
     label: { control: 'text', if: { arg: 'variant', neq: 'arrow' } },

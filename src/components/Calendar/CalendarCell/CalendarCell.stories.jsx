@@ -4,7 +4,7 @@ import withRootStyles from 'hoc/withRootStyles'
 const StyledCalendarCell = withRootStyles(CalendarCell)
 
 export default {
-  title: 'Components/CalendarCell',
+  title: 'Components/Calendar/Cell',
   component: StyledCalendarCell,
   decorators: [
     Story => (

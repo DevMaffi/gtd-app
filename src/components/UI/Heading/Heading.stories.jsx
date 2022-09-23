@@ -13,7 +13,7 @@ const headings = {
 }
 
 export default {
-  title: 'Components/Heading',
+  title: 'Components/UI/Heading',
   component: StyledHeading,
   argTypes: {
     children: {

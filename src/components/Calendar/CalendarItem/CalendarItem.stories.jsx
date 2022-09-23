@@ -5,7 +5,7 @@ import { getEnvDate } from 'utils/date'
 const StyledCalendarItem = withRootStyles(CalendarItem)
 
 export default {
-  title: 'Components/CalendarItem',
+  title: 'Components/Calendar/Item',
   component: StyledCalendarItem,
   argTypes: {
     date: { control: 'date' },
