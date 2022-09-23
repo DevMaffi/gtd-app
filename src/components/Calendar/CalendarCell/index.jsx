@@ -33,8 +33,8 @@ CalendarCell.propTypes = {
   dateNumber: PropTypes.number.isRequired,
   tasks: PropTypes.arrayOf(
     PropTypes.shape({
-      _id: PropTypes.number,
-      title: PropTypes.string,
+      _id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
     })
   ),
   prev: PropTypes.bool,

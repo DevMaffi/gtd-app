@@ -19,8 +19,8 @@ function CalendarTasksList({ tasks }) {
 CalendarTasksList.propTypes = {
   tasks: PropTypes.arrayOf(
     PropTypes.shape({
-      _id: PropTypes.number,
-      title: PropTypes.string,
+      _id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
     })
   ).isRequired,
 }

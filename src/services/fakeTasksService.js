@@ -1,37 +1,39 @@
+import { v4 } from 'uuid'
+
 class TasksService {
   static #tasks = {
     [new Date(2021, 11, 30).toDateString()]: [
-      { _id: 1, title: 'Task 1' },
-      { _id: 2, title: 'Task 2' },
-      { _id: 3, title: 'Task 3' },
+      { _id: v4(), title: 'Task 1' },
+      { _id: v4(), title: 'Task 2' },
+      { _id: v4(), title: 'Task 3' },
     ],
     [new Date(2022, 6, 6).toDateString()]: [
-      { _id: 1, title: 'Task 1' },
-      { _id: 2, title: 'Task 2' },
+      { _id: v4(), title: 'Task 1' },
+      { _id: v4(), title: 'Task 2' },
     ],
     [new Date(2022, 7, 30).toDateString()]: [
-      { _id: 1, title: 'Watch movie' },
-      { _id: 2, title: 'Buy new books' },
+      { _id: v4(), title: 'Watch movie' },
+      { _id: v4(), title: 'Buy new books' },
     ],
     [new Date(2022, 8, 15).toDateString()]: [
-      { _id: 1, title: 'Morning running' },
-      { _id: 2, title: 'Start learning React JS library' },
-      { _id: 3, title: 'Spend time with family' },
-      { _id: 4, title: 'New task+' },
+      { _id: v4(), title: 'Morning running' },
+      { _id: v4(), title: 'Start learning React JS library' },
+      { _id: v4(), title: 'Spend time with family' },
+      { _id: v4(), title: 'New task+' },
     ],
     [new Date(2022, 8, 16).toDateString()]: [
-      { _id: 1, title: 'Read book' },
-      { _id: 2, title: 'Go to gym' },
+      { _id: v4(), title: 'Read book' },
+      { _id: v4(), title: 'Go to gym' },
     ],
     [new Date(2022, 9, 1).toDateString()]: [
-      { _id: 1, title: 'Visit courses' },
-      { _id: 2, title: 'Meet with friends' },
-      { _id: 3, title: 'Complete project' },
+      { _id: v4(), title: 'Visit courses' },
+      { _id: v4(), title: 'Meet with friends' },
+      { _id: v4(), title: 'Complete project' },
     ],
     [new Date(2023, 0, 1).toDateString()]: [
-      { _id: 1, title: 'Task 1' },
-      { _id: 2, title: 'Task 2' },
-      { _id: 3, title: 'Task 3' },
+      { _id: v4(), title: 'Task 1' },
+      { _id: v4(), title: 'Task 2' },
+      { _id: v4(), title: 'Task 3' },
     ],
   }
 
