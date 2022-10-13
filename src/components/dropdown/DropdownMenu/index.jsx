@@ -5,7 +5,7 @@ import './dropdownMenu.sass'
 function DropdownMenu({ options, isActive, isDefault, onSelect, onDropdown }) {
   return (
     <div className="dropdown__menu">
-      <div className="dropdown__menu-inner bg-container-dark">
+      <div className="dropdown__menu-inner bg-container">
         {options.map((o, i) => {
           return (
             <DropdownMenuItem
