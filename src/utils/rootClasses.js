@@ -99,7 +99,7 @@ class RootClasses {
    */
   toClassNameString() {
     return Object.keys(this.#cl)
-      .reduce((sum, key) => (sum += `${this.#cl[key]} `), '')
+      .reduce((acc, key) => (acc += `${this.#cl[key]} `), '')
       .trim()
   }
 }
