@@ -19,8 +19,8 @@
 
 .calendar__header-inner
   width: 100% 
-  border-bottom: 1px solid hsl(var(--clr-container-lighten)) 
   padding-bottom: 15px
+  border-bottom: 1px solid hsl(var(--clr-text) / .1) 
 
 .calendar__header-date
   --gap: 40px
@@ -28,3 +28,14 @@
   grid-template-columns: 300px max-content
   align-items: center
   margin-right: auto
+
+.calendar__header-button
+  justify-content: center
+  align-items: center
+  width: 44px
+  height: 44px
+  padding: initial
+  border-radius: 50%
+
+.calendar__header-button i
+  font-size: 1.125rem

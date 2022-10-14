@@ -21,7 +21,9 @@ function CalendarHeader({ scrollHeader, ...props }) {
           <CalendarTitle {...props} />
           <MonthSelector {...props} />
         </div>
-        <Button ripple>+</Button>
+        <Button className="calendar__header-button flex" ripple>
+          <i className="ri-add-line"></i>
+        </Button>
       </div>
     </header>
   )

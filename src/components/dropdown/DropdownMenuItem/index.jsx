@@ -3,7 +3,9 @@ import RootClasses from 'utils/rootClasses'
 import './dropdownMenuItem.sass'
 
 function DropdownMenuItem({ data, defaultOption, active, ...props }) {
-  const rootClasses = new RootClasses('dropdown__menu-item fs-300 text-light')
+  const rootClasses = new RootClasses(
+    'dropdown__menu-item flex fs-300 text-light'
+  )
     .add({
       condition: active,
       type: 'active',
