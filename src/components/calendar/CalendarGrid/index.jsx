@@ -16,24 +16,20 @@ function CalendarGrid({ date, tasks }) {
     let monthInc = 0
     if (type) monthInc = type === 'prev' ? -1 : 1
 
-    return days.map((d, i) => {
+    return days.map(d => {
       let today = false
-      if (isCurrMonth && !type) today = i === now.getDate() - 1
+      if (isCurrMonth && !type) today = d === now.getDate()
 
       const taskDueDate = new Date(
         date.getFullYear(),
         date.getMonth() + monthInc,
-        d + 1
+        d
       )
 
       let completed = false
       if (taskDueDate.getTime() < now.getTime()) completed = true
 
-      const cellId = new Date(
-        date.getFullYear(),
-        date.getMonth() + monthInc,
-        d
-      ).toDateString()
+      const cellId = taskDueDate.toDateString()
 
       return (
         <Cell
