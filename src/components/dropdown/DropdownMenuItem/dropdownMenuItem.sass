@@ -8,7 +8,7 @@
   justify-content: center
   align-items: center
   width: var(--dropdown-item-size)
-  height: var(--dropdown-item-size)
+  aspect-ratio: 1 / 1
   border-radius: 50%
   font-weight: 500
   position: relative
@@ -22,7 +22,7 @@
   &:before
     content: ''
     width: 3px
-    height: 3px
+    aspect-ratio: 1 / 1
     background-color: hsl(var(--clr-title))
     border-radius: 50%
     +plugins.position(absolute, null null 10px 50%)
