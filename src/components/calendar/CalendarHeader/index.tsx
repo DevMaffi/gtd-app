@@ -20,7 +20,7 @@ const CalendarHeader: React.FC<CalendarHeaderProps> = ({
     condition: scrollHeader,
     type: 'scrollHeader',
     className: 'scroll-header',
-  } as any)
+  })
 
   return (
     <header className={rootClasses.toClassNameString()}>
