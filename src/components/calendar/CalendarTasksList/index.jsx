@@ -6,7 +6,7 @@ function CalendarTasksList({ tasks }) {
   return (
     <div className="calendar__tasks grid">
       {tasks.slice(0, 3).map(t => (
-        <CalendarTaskItem task={t} />
+        <CalendarTaskItem key={t._id} task={t} />
       ))}
     </div>
   )

@@ -3,10 +3,7 @@ import './calendarTaskItem.sass'
 
 function CalendarTaskItem({ task }) {
   return (
-    <span
-      key={task._id}
-      className="calendar__task bg-container-light fs-300 text-light"
-    >
+    <span className="calendar__task bg-container-light fs-300 text-light">
       {task.title}
     </span>
   )
