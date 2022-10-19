@@ -4,7 +4,7 @@ import TasksService from 'services/fakeTasksService'
 import { getEnvDate } from 'utils/date'
 import { TasksResponse } from 'types'
 
-function App() {
+const App: React.FC = () => {
   const [date, setDate] = useState<Date>(getEnvDate())
   const [tasks, setTasks] = useState<TasksResponse>({})
 
