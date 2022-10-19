@@ -4,13 +4,16 @@ import { TasksResponse } from 'types'
 
 interface CalendarViewProps {
   date: Date
-  scrollHeader: boolean
   tasks: TasksResponse
   tasksUpdates: number
   onDate: (date: Date) => void
 }
 
-const CalendarView: React.FC<CalendarViewProps> = ({
+interface CalendarViewPropsWithScrollHeader extends CalendarViewProps {
+  scrollHeader: boolean
+}
+
+const CalendarView: React.FC<CalendarViewPropsWithScrollHeader> = ({
   date,
   scrollHeader,
   tasks,
@@ -25,4 +28,4 @@ const CalendarView: React.FC<CalendarViewProps> = ({
   )
 }
 
-export default withScrollHeader(CalendarView)
+export default withScrollHeader<CalendarViewProps>(CalendarView)
