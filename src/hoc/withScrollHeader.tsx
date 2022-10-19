@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { useObserver } from 'hooks'
 
-interface WithScrollHeaderProps {
+export interface WithScrollHeaderProps {
   topOffset: number
 }
 

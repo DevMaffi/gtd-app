@@ -1,4 +1,4 @@
-interface AddMethodArgs {
+export interface AddMethodArgs {
   condition: boolean
   type: string
   className: string
@@ -6,13 +6,13 @@ interface AddMethodArgs {
   remove?: string[]
 }
 
-interface RemoveMethodArgs {
+export interface RemoveMethodArgs {
   condition: boolean
   types: string[]
   alwaysPrimary?: boolean
 }
 
-interface RootClassesService<T> {
+export interface RootClassesService<T> {
   add: (args: AddMethodArgs) => T
   addPrimary: (className: string) => T
   remove: (args: RemoveMethodArgs) => T

@@ -2,14 +2,14 @@ import { CalendarHeader, CalendarItem } from 'components/calendar'
 import withScrollHeader from 'hoc/withScrollHeader'
 import { TasksResponse } from 'types'
 
-interface CalendarViewProps {
+export interface CalendarViewProps {
   date: Date
   tasks: TasksResponse
   tasksUpdates: number
   onDate: (date: Date) => void
 }
 
-interface CalendarViewPropsWithScrollHeader extends CalendarViewProps {
+export interface CalendarViewPropsWithScrollHeader extends CalendarViewProps {
   scrollHeader: boolean
 }
 
