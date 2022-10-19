@@ -2,15 +2,16 @@ import { useEffect, useRef, useState } from 'react'
 import { CalendarView } from 'components/views'
 import TasksService from 'services/fakeTasksService'
 import { getEnvDate } from 'utils/date'
+import { TasksResponse } from 'types'
 
 function App() {
-  const [date, setDate] = useState(getEnvDate())
-  const [tasks, setTasks] = useState({})
+  const [date, setDate] = useState<Date>(getEnvDate())
+  const [tasks, setTasks] = useState<TasksResponse>({})
 
-  const tasksUpdates = useRef(0)
-  const prevYear = useRef(date.getFullYear())
+  const tasksUpdates = useRef<number>(0)
+  const prevYear = useRef<number>(date.getFullYear())
 
-  const onTasks = tasks => {
+  const onTasks = (tasks: TasksResponse): void => {
     tasksUpdates.current++
     setTasks(tasks)
   }
@@ -19,7 +20,7 @@ function App() {
     if (!tasksUpdates.current || date.getFullYear() !== prevYear.current) {
       prevYear.current = date.getFullYear()
 
-      const fetchTasks = async () => {
+      const fetchTasks = async (): Promise<void> => {
         /**
          * @type {Date} - Last month of prev year
          */
@@ -34,7 +35,10 @@ function App() {
          * @type {Object} - Object of tasks that are in between last month of
          * prev year and first month of next year
          */
-        const response = await TasksService.getByInterval(startDate, endDate)
+        const response = (await TasksService.getByInterval(
+          startDate,
+          endDate
+        )) as TasksResponse
         onTasks(response)
       }
 
