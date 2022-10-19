@@ -1,18 +1,26 @@
-import PropTypes from 'prop-types'
 import { CalendarTitle } from 'components/calendar'
 import { MonthSelector } from 'components/month'
 import { Button } from 'components/UI'
 import RootClasses from 'utils/rootClasses'
 import './calendarHeader.sass'
 
-function CalendarHeader({ scrollHeader, ...props }) {
+interface CalendarHeaderProps {
+  date: Date
+  scrollHeader: boolean
+  onDate: (date: Date) => void
+}
+
+const CalendarHeader: React.FC<CalendarHeaderProps> = ({
+  scrollHeader,
+  ...props
+}) => {
   const rootClasses = new RootClasses(
     'calendar__header container flex bg-body'
   ).add({
     condition: scrollHeader,
     type: 'scrollHeader',
     className: 'scroll-header',
-  })
+  } as any)
 
   return (
     <header className={rootClasses.toClassNameString()}>
@@ -27,10 +35,6 @@ function CalendarHeader({ scrollHeader, ...props }) {
       </div>
     </header>
   )
-}
-
-CalendarHeader.propTypes = {
-  scrollHeader: PropTypes.bool,
 }
 
 export default CalendarHeader
