@@ -4,7 +4,7 @@ import { Button } from 'components/UI'
 import RootClasses from 'utils/rootClasses'
 import './calendarHeader.sass'
 
-interface CalendarHeaderProps {
+export interface CalendarHeaderProps {
   date: Date
   scrollHeader: boolean
   onDate: (date: Date) => void

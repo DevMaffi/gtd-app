@@ -1,7 +1,7 @@
 import 'styles/index.sass'
 
-function withRootStyles(Component) {
-  return function (props) {
+function withRootStyles<T>(Component: any) {
+  return function (props: T) {
     return <Component {...props} />
   }
 }
