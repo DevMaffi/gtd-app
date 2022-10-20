@@ -11,7 +11,7 @@ function withScrollHeader<T>(Component: any) {
     ...props
   }) => {
     const [scrollHeader, setScrollHeader] = useState<boolean>(false)
-    const firstElement = useRef<HTMLDivElement | null>(null)
+    const firstElement = useRef<HTMLDivElement>(null)
 
     const onScrollHeader = (value: boolean) => () => setScrollHeader(value)
 
