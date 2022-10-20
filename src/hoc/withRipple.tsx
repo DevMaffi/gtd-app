@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import RootClasses from 'utils/rootClasses'
 
-interface WithRippleProps {
+export interface WithRippleProps {
   ripple?: boolean
 }
 
