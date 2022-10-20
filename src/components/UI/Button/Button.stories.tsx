@@ -1,7 +1,8 @@
-import { Button } from 'components/UI'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
+import Button, { ButtonProps } from 'components/UI/Button'
 import withRootStyles from 'hoc/withRootStyles'
 
-const StyledButton = withRootStyles(Button)
+const StyledButton = withRootStyles<ButtonProps>(Button)
 
 const arrows = {
   arrowLeft: <i className="ri-arrow-left-s-line"></i>,
@@ -16,7 +17,7 @@ export default {
     children: {
       options: Object.keys(arrows),
       mapping: arrows,
-      control: 'check',
+      control: 'select',
       if: { arg: 'variant', eq: 'arrow' },
     },
     variant: {
@@ -25,21 +26,10 @@ export default {
     },
     ripple: { control: 'boolean' },
   },
-}
+} as ComponentMeta<typeof Button>
 
-const Story = ({ children, label, ...args }) => {
-  if (children?.length) {
-    return (
-      <div className="flex">
-        {children.length &&
-          children.map(ch => (
-            <StyledButton key={ch} children={arrows[ch]} {...args} />
-          ))}
-      </div>
-    )
-  }
-
-  if (children?.type) return <StyledButton children={children} {...args} />
+const Story: ComponentStory<typeof Button> = ({ children, label, ...args }) => {
+  if (children) return <StyledButton children={children} {...args} />
 
   return <StyledButton label={label ?? 'Button'} {...args} />
 }

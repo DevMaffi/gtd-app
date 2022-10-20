@@ -3,7 +3,7 @@ import withRipple from 'hoc/withRipple'
 import RootClasses from 'utils/rootClasses'
 import './button.sass'
 
-export type ButtonVariant = 'danger' | 'arrow' | 'pill'
+export type ButtonVariant = 'primary' | 'danger' | 'arrow' | 'pill'
 
 export interface BaseProps {
   variant?: ButtonVariant
