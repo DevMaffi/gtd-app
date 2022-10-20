@@ -5,6 +5,8 @@ import CalendarHeader, {
 import withRootStyles from 'hoc/withRootStyles'
 import { getEnvDate } from 'utils/date'
 
+const StyledCalendarHeader = withRootStyles<CalendarHeaderProps>(CalendarHeader)
+
 export default {
   title: 'Components/Calendar/Header',
   component: CalendarHeader,
@@ -14,10 +16,8 @@ export default {
   },
 } as ComponentMeta<typeof CalendarHeader>
 
-const Wrapper = withRootStyles<CalendarHeaderProps>(CalendarHeader)
-
 const Story: ComponentStory<typeof CalendarHeader> = args => (
-  <Wrapper {...args} />
+  <StyledCalendarHeader {...args} />
 )
 
 export const Primary = Story.bind({})
