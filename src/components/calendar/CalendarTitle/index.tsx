@@ -1,10 +1,14 @@
-import PropTypes from 'prop-types'
 import { Heading, Button } from 'components/UI'
 import { getEnvDate, getDayName, getDateString, compareDates } from 'utils/date'
 import RootClasses from 'utils/rootClasses'
 import './calendarTitle.sass'
 
-function CalendarTitle({ date, onDate }) {
+export interface CalendarTitleProps {
+  date: Date
+  onDate: (date: Date) => void
+}
+
+const CalendarTitle: React.FC<CalendarTitleProps> = ({ date, onDate }) => {
   let isNow = false
 
   const now = new Date(getEnvDate())
@@ -14,7 +18,7 @@ function CalendarTitle({ date, onDate }) {
     date: getDateString(now.getDate()),
   }
 
-  const jumpBack = () => onDate(now)
+  const jumpBack = (): void => onDate(now)
 
   if (compareDates(date, now)) isNow = true
   else
@@ -39,11 +43,6 @@ function CalendarTitle({ date, onDate }) {
       </Heading>
     </div>
   )
-}
-
-CalendarTitle.propTypes = {
-  date: PropTypes.instanceOf(Date).isRequired,
-  onDate: PropTypes.func.isRequired,
 }
 
 export default CalendarTitle

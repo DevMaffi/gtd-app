@@ -3,7 +3,22 @@ import withRipple from 'hoc/withRipple'
 import RootClasses from 'utils/rootClasses'
 import './button.sass'
 
-function Button({ children, variant, className, label, ...props }, ref) {
+export type ButtonVariant = 'danger' | 'arrow' | 'pill'
+
+export interface BaseProps {
+  variant?: ButtonVariant
+  className?: string
+  children?: React.ReactNode
+  label?: string
+}
+
+export type ButtonProps = BaseProps &
+  Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof BaseProps>
+
+const Button: React.FC<ButtonProps> = React.forwardRef<
+  HTMLButtonElement,
+  ButtonProps
+>(({ children, variant, className, label, ...props }, ref) => {
   const rootClasses = new RootClasses('button text-light')
     .add({
       condition: variant === 'danger',
@@ -21,9 +36,9 @@ function Button({ children, variant, className, label, ...props }, ref) {
       className: 'button--pill flex bg-container-light fs-200',
     })
     .add({
-      condition: className,
+      condition: !!className,
       type: 'extra',
-      className,
+      className: className ?? '',
       alwaysPrimary: true,
     })
     .addPrimary('bg-first')
@@ -43,6 +58,6 @@ function Button({ children, variant, className, label, ...props }, ref) {
       {children || label}
     </button>
   )
-}
+})
 
-export default withRipple(React.forwardRef(Button))
+export default withRipple<HTMLButtonElement, ButtonProps>(Button)
