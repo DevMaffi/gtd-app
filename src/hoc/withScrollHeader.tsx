@@ -5,6 +5,10 @@ export interface WithScrollHeaderProps {
   topOffset: number
 }
 
+export interface IWithScrollHeader {
+  scrollHeader: boolean
+}
+
 function withScrollHeader<T>(Component: any) {
   const WithScrollHeader: React.FC<WithScrollHeaderProps & T> = ({
     topOffset,

@@ -1,5 +1,5 @@
 import { CalendarHeader, CalendarItem } from 'components/calendar'
-import withScrollHeader from 'hoc/withScrollHeader'
+import withScrollHeader, { IWithScrollHeader } from 'hoc/withScrollHeader'
 import { TasksResponse } from 'types'
 
 export interface CalendarViewProps {
@@ -9,9 +9,8 @@ export interface CalendarViewProps {
   onDate: (date: Date) => void
 }
 
-export interface CalendarViewPropsWithScrollHeader extends CalendarViewProps {
-  scrollHeader: boolean
-}
+export type CalendarViewPropsWithScrollHeader = IWithScrollHeader &
+  CalendarViewProps
 
 const CalendarView: React.FC<CalendarViewPropsWithScrollHeader> = ({
   date,
