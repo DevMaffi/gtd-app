@@ -1,20 +1,37 @@
 import { useState } from 'react'
-import PropTypes from 'prop-types'
 import { DropdownMenu } from 'components/dropdown'
 import RootClasses from 'utils/rootClasses'
+import { ArrowFn, DropdownRenderPropArgs } from 'types'
 import './dropdown.sass'
 
-function DropdownItem({
+export type DropdownRenderProp = ({
+  isOpen,
+  dropdownView,
+  onDropdown,
+}: DropdownRenderPropArgs) => React.ReactNode
+
+export interface DropdownProps {
+  setOptions: (dropdownView: any) => any[]
+  isActive: (dropdownView: any) => ArrowFn
+  isDefault: (dropdownView: any) => ArrowFn
+  onSelect: (
+    dropdownView: any,
+    onDropdown: (dropdownView: any) => void
+  ) => ArrowFn
+  on: DropdownRenderProp
+}
+
+const Dropdown: React.FC<DropdownProps> = ({
   setOptions,
   isActive,
   isDefault,
   onSelect,
   on: render,
-}) {
-  const [dropdownView, setDropdownView] = useState(null)
+}) => {
+  const [dropdownView, setDropdownView] = useState<any>(null)
 
   const rootClasses = new RootClasses('dropdown flex').add({
-    condition: dropdownView,
+    condition: !!dropdownView,
     type: 'dropdownView',
     className: 'open',
   })
@@ -37,12 +54,4 @@ function DropdownItem({
   )
 }
 
-DropdownItem.propTypes = {
-  setOptions: PropTypes.func.isRequired,
-  onSelect: PropTypes.func.isRequired,
-  isActive: PropTypes.func.isRequired,
-  isDefault: PropTypes.func.isRequired,
-  on: PropTypes.func.isRequired,
-}
-
-export default DropdownItem
+export default Dropdown

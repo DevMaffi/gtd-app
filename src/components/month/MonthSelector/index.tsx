@@ -1,16 +1,17 @@
 import { useMemo } from 'react'
-import { DropdownItem as Dropdown } from 'components/dropdown'
+import { Dropdown } from 'components/dropdown'
 import { MonthSwiper } from 'components/month'
 import { getEnvDate, compareDates } from 'utils/date'
+import { DropdownRenderPropArgs } from 'types'
 import data from 'data.json'
+
+export type DropdownView = 'year' | 'month' | null
+export type DropdownOption = string | number
 
 export interface MonthSelectorProps {
   date: Date
   onDate: (date: Date) => void
 }
-
-export type DropdownView = 'year' | 'month' | null
-export type Options = string | number
 
 const MonthSelector: React.FC<MonthSelectorProps> = ({ date, onDate }) => {
   const yearOptions = useMemo<number[]>(() => {
@@ -26,7 +27,7 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({ date, onDate }) => {
   }, [])
   const monthOptions = data.shortenings.months
 
-  const getOptions = (dropdownView: DropdownView): Options[] => {
+  const getOptions = (dropdownView: DropdownView): DropdownOption[] => {
     if (dropdownView === 'year') return yearOptions
     return monthOptions
   }
@@ -81,7 +82,7 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({ date, onDate }) => {
 
   return (
     <Dropdown
-      on={({ isOpen, dropdownView, onDropdown }) => (
+      on={({ isOpen, dropdownView, onDropdown }: DropdownRenderPropArgs) => (
         <MonthSwiper
           date={date}
           isOpen={isOpen}
