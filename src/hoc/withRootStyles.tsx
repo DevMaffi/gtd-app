@@ -1,9 +1,11 @@
 import 'styles/index.sass'
 
 function withRootStyles<T>(Component: any) {
-  return function (props: T) {
+  const WithRootStyles: React.FC<T> = props => {
     return <Component {...props} />
   }
+
+  return WithRootStyles
 }
 
 export default withRootStyles
