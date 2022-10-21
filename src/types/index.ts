@@ -4,8 +4,10 @@ export interface TasksResponse {
   [dueDate: string]: { _id: string; title: string }[]
 }
 
+export type SetDropdownFn = (dropdownView: any) => void
+
 export interface DropdownRenderPropArgs {
   isOpen: boolean
   dropdownView: any
-  onDropdown: (dropdownView: any) => void
+  onDropdown: SetDropdownFn
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { DropdownMenu } from 'components/dropdown'
 import RootClasses from 'utils/rootClasses'
-import { ArrowFn, DropdownRenderPropArgs } from 'types'
+import { ArrowFn, SetDropdownFn, DropdownRenderPropArgs } from 'types'
 import './dropdown.sass'
 
 export type DropdownRenderProp = ({
@@ -12,12 +12,12 @@ export type DropdownRenderProp = ({
 
 export interface DropdownProps {
   setOptions: (dropdownView: any) => any[]
-  isActive: (dropdownView: any) => ArrowFn
-  isDefault: (dropdownView: any) => ArrowFn
+  isActive: (dropdownView: any) => ArrowFn<boolean>
+  isDefault: (dropdownView: any) => ArrowFn<boolean>
   onSelect: (
     dropdownView: any,
-    onDropdown: (dropdownView: any) => void
-  ) => ArrowFn
+    onDropdown: SetDropdownFn
+  ) => ArrowFn<(optionIndex: number) => any>
   on: DropdownRenderProp
 }
 

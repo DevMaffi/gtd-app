@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { Dropdown } from 'components/dropdown'
 import { MonthSwiper } from 'components/month'
 import { getEnvDate, compareDates } from 'utils/date'
-import { DropdownRenderPropArgs } from 'types'
+import { DropdownRenderPropArgs, SetDropdownFn } from 'types'
 import data from 'data.json'
 
 export type DropdownView = 'year' | 'month' | null
@@ -57,10 +57,7 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({ date, onDate }) => {
   }
 
   const selectMonth =
-    (
-      dropdownView: DropdownView,
-      onDropdown: (dropdownView: DropdownView) => void
-    ) =>
+    (dropdownView: DropdownView, onDropdown: SetDropdownFn) =>
     (optionIndex: number) =>
     () => {
       const nextDate = new Date(

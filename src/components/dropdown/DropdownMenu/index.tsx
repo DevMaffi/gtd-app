@@ -1,13 +1,13 @@
 import { DropdownMenuItem } from 'components/dropdown'
-import { ArrowFn } from 'types'
+import { ArrowFn, SetDropdownFn } from 'types'
 import './dropdownMenu.sass'
 
 export interface DropdownMenuProps {
   options: any[]
   isActive: (optionIndex: number) => boolean
   isDefault: (optionIndex: number) => boolean
-  onSelect: (optionIndex: number) => ArrowFn
-  onDropdown: (dropdownView: any) => void
+  onSelect: (optionIndex: number) => ArrowFn<void>
+  onDropdown: SetDropdownFn
 }
 
 const DropdownMenu: React.FC<DropdownMenuProps> = ({
