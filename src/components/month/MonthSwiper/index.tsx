@@ -1,10 +1,26 @@
-import PropTypes from 'prop-types'
 import { Button } from 'components/UI'
+import { MonthSelectorDropdownView as DropdownView } from 'types'
 import data from 'data.json'
 import './monthSwiper.sass'
 
-function MonthSwiper({ date, isOpen, dropdownView, onDropdown, onDate }) {
-  const swipe = inc => () => {
+export interface MonthSwiperProps {
+  date: Date
+  isOpen: boolean
+  dropdownView: DropdownView
+  onDropdown: (dropdownView: DropdownView) => void
+  onDate: (date: Date) => void
+}
+
+const MonthSwiper: React.FC<MonthSwiperProps> = ({
+  date,
+  isOpen,
+  dropdownView,
+  onDropdown,
+  onDate,
+}) => {
+  type SwipeIncrementOptions = 1 | -1
+
+  const swipe = (inc: SwipeIncrementOptions) => () => {
     const nextDate = new Date(
       date.getFullYear(),
       date.getMonth(),
@@ -17,12 +33,12 @@ function MonthSwiper({ date, isOpen, dropdownView, onDropdown, onDate }) {
     onDate(nextDate)
   }
 
-  const displayDropdown = () => {
+  const displayDropdown = (): void => {
     if (!isOpen) return onDropdown('month')
     if (dropdownView === 'month') return onDropdown('year')
   }
 
-  const isDisabled = () => dropdownView === 'year'
+  const isDisabled = (): boolean => dropdownView === 'year'
 
   return (
     <div className="month-swiper flex">
@@ -43,14 +59,6 @@ function MonthSwiper({ date, isOpen, dropdownView, onDropdown, onDate }) {
       </Button>
     </div>
   )
-}
-
-MonthSwiper.propTypes = {
-  date: PropTypes.instanceOf(Date).isRequired,
-  isOpen: PropTypes.bool,
-  dropdownView: PropTypes.string,
-  onDropdown: PropTypes.func.isRequired,
-  onDate: PropTypes.func.isRequired,
 }
 
 export default MonthSwiper

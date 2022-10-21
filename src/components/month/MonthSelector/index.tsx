@@ -2,11 +2,13 @@ import { useMemo } from 'react'
 import { Dropdown } from 'components/dropdown'
 import { MonthSwiper } from 'components/month'
 import { getEnvDate, compareDates } from 'utils/date'
-import { DropdownRenderPropArgs, SetDropdownFn } from 'types'
+import {
+  MonthSelectorDropdownView as DropdownView,
+  MonthSelectorDropdownOption as DropdownOption,
+  DropdownRenderPropArgs,
+  SetDropdownFn,
+} from 'types'
 import data from 'data.json'
-
-export type DropdownView = 'year' | 'month' | null
-export type DropdownOption = string | number
 
 export interface MonthSelectorProps {
   date: Date
