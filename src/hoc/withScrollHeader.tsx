@@ -19,7 +19,11 @@ function withScrollHeader<T>(Component: any) {
 
     const onScrollHeader = (value: boolean) => () => setScrollHeader(value)
 
-    useObserver(firstElement, onScrollHeader(false), onScrollHeader(true))
+    useObserver({
+      ref: firstElement,
+      onEnter: onScrollHeader(false),
+      onLeave: onScrollHeader(true),
+    })
 
     return (
       <>
