@@ -1,8 +1,22 @@
-import PropTypes from 'prop-types'
 import { DropdownMenuItem } from 'components/dropdown'
+import { ArrowFn } from 'types'
 import './dropdownMenu.sass'
 
-function DropdownMenu({ options, isActive, isDefault, onSelect, onDropdown }) {
+export interface DropdownMenuProps {
+  options: any[]
+  isActive: (optionIndex: number) => boolean
+  isDefault: (optionIndex: number) => boolean
+  onSelect: (optionIndex: number) => ArrowFn
+  onDropdown: (dropdownView: any) => void
+}
+
+const DropdownMenu: React.FC<DropdownMenuProps> = ({
+  options,
+  isActive,
+  isDefault,
+  onSelect,
+  onDropdown,
+}) => {
   return (
     <div className="dropdown__menu">
       <div className="dropdown__menu-inner bg-container">
@@ -24,16 +38,6 @@ function DropdownMenu({ options, isActive, isDefault, onSelect, onDropdown }) {
       ></div>
     </div>
   )
-}
-
-DropdownMenu.propTypes = {
-  options: PropTypes.arrayOf(
-    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-  ).isRequired,
-  isActive: PropTypes.func.isRequired,
-  isDefault: PropTypes.func.isRequired,
-  onSelect: PropTypes.func.isRequired,
-  onDropdown: PropTypes.func.isRequired,
 }
 
 export default DropdownMenu
