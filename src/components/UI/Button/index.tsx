@@ -5,15 +5,15 @@ import './button.sass'
 
 export type ButtonVariant = 'primary' | 'danger' | 'arrow' | 'pill'
 
-export interface BaseProps {
+export interface BaseButtonProps {
   variant?: ButtonVariant
   className?: string
   children?: React.ReactNode
   label?: string
 }
 
-export type ButtonProps = BaseProps &
-  Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof BaseProps>
+export type ButtonProps = BaseButtonProps &
+  Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof BaseButtonProps>
 
 const Button: React.FC<ButtonProps> = React.forwardRef<
   HTMLButtonElement,
