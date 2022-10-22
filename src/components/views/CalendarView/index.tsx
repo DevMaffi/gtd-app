@@ -1,4 +1,4 @@
-import { CalendarHeader, CalendarItem } from 'components/calendar'
+import { CalendarHeader, Calendar } from 'components/calendar'
 import withScrollHeader, { IWithScrollHeader } from 'hoc/withScrollHeader'
 import { TasksResponse } from 'types'
 
@@ -22,7 +22,7 @@ const CalendarView: React.FC<CalendarViewPropsWithScrollHeader> = ({
   return (
     <div className="calendar container">
       <CalendarHeader date={date} scrollHeader={scrollHeader} onDate={onDate} />
-      <CalendarItem date={date} tasks={tasks} tasksUpdates={tasksUpdates} />
+      <Calendar date={date} tasks={tasks} tasksUpdates={tasksUpdates} />
     </div>
   )
 }

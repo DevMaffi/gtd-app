@@ -1,9 +1,15 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { CalendarDays, CalendarGrid } from 'components/calendar'
 import { compareDates } from 'utils/date'
+import { TasksResponse } from 'types'
 
-function CalendarItem({ tasksUpdates, ...restProps }) {
+export interface CalendarProps {
+  date: Date
+  tasks: TasksResponse
+  tasksUpdates: number
+}
+
+const Calendar: React.FC<CalendarProps> = ({ tasksUpdates, ...restProps }) => {
   return (
     <div className="calendar__container">
       <CalendarDays />
@@ -12,17 +18,14 @@ function CalendarItem({ tasksUpdates, ...restProps }) {
   )
 }
 
-function calendarPropsAreEqual(prevProps, nextProps) {
+function calendarPropsAreEqual(
+  prevProps: CalendarProps,
+  nextProps: CalendarProps
+) {
   return (
     compareDates(prevProps.date, nextProps.date) &&
     prevProps.tasksUpdates === nextProps.tasksUpdates
   )
 }
 
-CalendarItem.propTypes = {
-  date: PropTypes.instanceOf(Date).isRequired,
-  tasks: PropTypes.object.isRequired,
-  tasksUpdates: PropTypes.number.isRequired,
-}
-
-export default React.memo(CalendarItem, calendarPropsAreEqual)
+export default React.memo<CalendarProps>(Calendar, calendarPropsAreEqual)

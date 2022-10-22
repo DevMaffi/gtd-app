@@ -1,6 +1,6 @@
 export { default as CalendarHeader } from './CalendarHeader'
 export { default as CalendarTitle } from './CalendarTitle'
-export { default as CalendarItem } from './CalendarItem'
+export { default as Calendar } from './CalendarItem'
 export { default as CalendarGrid } from './CalendarGrid'
 export { default as CalendarDays } from './CalendarDays'
 export { default as CalendarCell } from './CalendarCell'
