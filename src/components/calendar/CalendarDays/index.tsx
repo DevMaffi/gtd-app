@@ -1,7 +1,7 @@
 import data from 'data.json'
 import './calendarDays.sass'
 
-function CalendarDays() {
+const CalendarDays: React.FC = () => {
   return (
     <div className="calendar__days flex bg-body">
       {data.shortenings.days.map(m => (
