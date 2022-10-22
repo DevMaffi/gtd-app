@@ -1,3 +1,5 @@
+import { Bind } from 'types/decorators'
+
 export interface AddMethodArgs {
   condition: boolean
   type: string
@@ -13,10 +15,10 @@ export interface RemoveMethodArgs {
 }
 
 export interface RootClassesService<T> {
-  add: (args: AddMethodArgs) => T
-  addPrimary: (className: string) => T
-  remove: (args: RemoveMethodArgs) => T
-  toClassNameString: () => string
+  add(args: AddMethodArgs): T
+  addPrimary(className: string): T
+  remove(args: RemoveMethodArgs): T
+  toClassNameString(): string
 }
 
 class RootClasses implements RootClassesService<RootClasses> {
@@ -27,13 +29,8 @@ class RootClasses implements RootClassesService<RootClasses> {
     this.cl.base = baseClasses
   }
 
-  add = ({
-    condition,
-    type,
-    className,
-    alwaysPrimary,
-    remove,
-  }: AddMethodArgs) => {
+  @Bind
+  add({ condition, type, className, alwaysPrimary, remove }: AddMethodArgs) {
     if (!condition) return this
     if (!alwaysPrimary) this.primary = false
     if (remove) console.log('remove')
@@ -43,12 +40,14 @@ class RootClasses implements RootClassesService<RootClasses> {
     return this
   }
 
-  addPrimary = (className: string) => {
+  @Bind
+  addPrimary(className: string) {
     if (this.primary) this.cl.primary = className
     return this
   }
 
-  remove = ({ condition, types, alwaysPrimary }: RemoveMethodArgs) => {
+  @Bind
+  remove({ condition, types, alwaysPrimary }: RemoveMethodArgs) {
     if (!condition) return this
     if (!alwaysPrimary) this.primary = false
 
@@ -57,7 +56,8 @@ class RootClasses implements RootClassesService<RootClasses> {
     return this
   }
 
-  toClassNameString = () => {
+  @Bind
+  toClassNameString() {
     return Object.keys(this.cl)
       .reduce((acc, key) => (acc += `${this.cl[key]} `), '')
       .trim()
