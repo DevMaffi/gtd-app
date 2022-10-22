@@ -1,7 +1,12 @@
 export type ArrowFn<T = any> = (...args: any[]) => T
 
+export interface ITask {
+  _id: string
+  title: string
+}
+
 export interface TasksResponse {
-  [dueDate: string]: { _id: string; title: string }[]
+  [dueDate: string]: ITask[]
 }
 
 export type MonthSelectorDropdownView = 'year' | 'month' | null
