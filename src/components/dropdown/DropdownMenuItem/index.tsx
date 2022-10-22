@@ -1,4 +1,3 @@
-import React from 'react'
 import RootClasses from 'utils/rootClasses'
 import './dropdownMenuItem.sass'
 
