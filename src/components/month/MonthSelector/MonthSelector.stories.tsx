@@ -18,7 +18,7 @@ export default {
     ),
   ],
   argTypes: {
-    date: { defaultValue: getEnvDate() },
+    date: { control: 'object' },
     onDate: { action: 'clicked', table: { disable: true } },
   },
 } as ComponentMeta<typeof MonthSelector>
@@ -28,3 +28,6 @@ const Story: ComponentStory<typeof MonthSelector> = args => {
 }
 
 export const Primary = Story.bind({})
+Primary.args = {
+  date: getEnvDate(),
+}

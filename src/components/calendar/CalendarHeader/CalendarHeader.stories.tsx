@@ -11,7 +11,7 @@ export default {
   title: 'Components/Calendar/Header',
   component: CalendarHeader,
   argTypes: {
-    date: { defaultValue: getEnvDate() },
+    date: { control: 'object' },
     onDate: { action: 'clicked', table: { disable: true } },
   },
 } as ComponentMeta<typeof CalendarHeader>
@@ -21,8 +21,12 @@ const Story: ComponentStory<typeof CalendarHeader> = args => (
 )
 
 export const Primary = Story.bind({})
+Primary.args = {
+  date: getEnvDate(),
+}
 
 export const ScrollHeader = Story.bind({})
 ScrollHeader.args = {
+  date: getEnvDate(),
   scrollHeader: true,
 }
