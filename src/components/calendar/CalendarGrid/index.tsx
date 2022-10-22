@@ -1,17 +1,24 @@
-import PropTypes from 'prop-types'
 import { CalendarCell as Cell } from 'components/calendar'
 import { usePrevDays, useDays, useNextDays } from 'hooks'
 import { getEnvDate, compareDates } from 'utils/date'
+import { TasksResponse } from 'types'
 import './calendarGrid.sass'
 
-function CalendarGrid({ date, tasks }) {
+export interface CalendarGridProps {
+  date: Date
+  tasks: TasksResponse
+}
+
+const CalendarGrid: React.FC<CalendarGridProps> = ({ date, tasks }) => {
   const prevDays = usePrevDays(date)
   const days = useDays(date)
   const nextDays = useNextDays(date)
 
   const now = new Date(getEnvDate())
 
-  const renderCells = (days, type) => {
+  type CellType = 'prev' | 'next'
+
+  const renderCells = (days: number[], type?: CellType): JSX.Element[] => {
     let monthInc = 0
     if (type) monthInc = type === 'prev' ? -1 : 1
 
@@ -47,11 +54,6 @@ function CalendarGrid({ date, tasks }) {
       {renderCells(nextDays, 'next')}
     </div>
   )
-}
-
-CalendarGrid.propTypes = {
-  date: PropTypes.instanceOf(Date).isRequired,
-  tasks: PropTypes.object.isRequired,
 }
 
 export default CalendarGrid
