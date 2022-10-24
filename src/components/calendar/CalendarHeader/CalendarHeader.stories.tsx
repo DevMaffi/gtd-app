@@ -9,14 +9,14 @@ const StyledCalendarHeader = withRootStyles<CalendarHeaderProps>(CalendarHeader)
 
 export default {
   title: 'Components/Calendar/Header',
-  component: CalendarHeader,
+  component: StyledCalendarHeader,
   argTypes: {
     date: { control: 'object' },
     onDate: { action: 'clicked', table: { disable: true } },
   },
-} as ComponentMeta<typeof CalendarHeader>
+} as ComponentMeta<typeof StyledCalendarHeader>
 
-const Story: ComponentStory<typeof CalendarHeader> = args => (
+const Story: ComponentStory<typeof StyledCalendarHeader> = args => (
   <StyledCalendarHeader {...args} />
 )
 
