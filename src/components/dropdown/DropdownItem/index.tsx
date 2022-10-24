@@ -10,25 +10,25 @@ export type DropdownRenderProp = ({
   onDropdown,
 }: DropdownRenderPropArgs) => React.ReactNode
 
-export interface DropdownProps {
-  setOptions: (dropdownView: any) => any[]
-  isActive: (dropdownView: any) => ArrowFn<boolean>
-  isDefault: (dropdownView: any) => ArrowFn<boolean>
+export interface DropdownProps<V, O> {
+  setOptions: (dropdownView: V) => O[]
+  isActive: (dropdownView: V) => ArrowFn<boolean>
+  isDefault: (dropdownView: V) => ArrowFn<boolean>
   onSelect: (
-    dropdownView: any,
+    dropdownView: V,
     onDropdown: SetDropdownFn
   ) => ArrowFn<(optionIndex: number) => any>
   on: DropdownRenderProp
 }
 
-const Dropdown: React.FC<DropdownProps> = ({
+const Dropdown = <V, O>({
   setOptions,
   isActive,
   isDefault,
   onSelect,
   on: render,
-}) => {
-  const [dropdownView, setDropdownView] = useState<any>(null)
+}: DropdownProps<V, O>) => {
+  const [dropdownView, setDropdownView] = useState<V>(null!)
 
   const rootClasses = new RootClasses('dropdown flex').add({
     condition: !!dropdownView,

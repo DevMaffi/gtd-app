@@ -94,7 +94,7 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({ date, onDate }) => {
   )
 
   return (
-    <Dropdown
+    <Dropdown<DropdownView, DropdownOption>
       on={renderProp}
       isActive={getIsActiveHandler}
       isDefault={getDefaultOption}
