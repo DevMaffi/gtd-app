@@ -6,7 +6,7 @@ import './calendarHeader.sass'
 
 export interface CalendarHeaderProps {
   date: Date
-  scrollHeader: boolean
+  scrollHeader?: boolean
   onDate: (date: Date) => void
 }
 
@@ -17,7 +17,7 @@ const CalendarHeader: React.FC<CalendarHeaderProps> = ({
   const rootClasses = new RootClasses(
     'calendar__header container flex bg-body'
   ).add({
-    condition: scrollHeader,
+    condition: !!scrollHeader,
     type: 'scrollHeader',
     className: 'scroll-header',
   })
