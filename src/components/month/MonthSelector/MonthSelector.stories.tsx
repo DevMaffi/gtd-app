@@ -21,9 +21,9 @@ export default {
     date: { control: 'object' },
     onDate: { action: 'clicked', table: { disable: true } },
   },
-} as ComponentMeta<typeof MonthSelector>
+} as ComponentMeta<typeof StyledMonthSelector>
 
-const Story: ComponentStory<typeof MonthSelector> = args => {
+const Story: ComponentStory<typeof StyledMonthSelector> = args => {
   return <StyledMonthSelector {...args} />
 }
 
