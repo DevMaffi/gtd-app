@@ -5,15 +5,19 @@ export interface WithRippleProps {
   ripple?: boolean
 }
 
-function withRipple<T extends HTMLElement, P extends { className?: string }>(
-  Component: any
-) {
-  const WithRipple: React.FC<WithRippleProps & P> = ({
+export type WithRippleReturnType<T> = React.FC<
+  WithRippleProps & Omit<T, keyof WithRippleProps>
+>
+
+function withRipple<R extends HTMLElement, P extends { className?: string }>(
+  Component: React.FC<any>
+): WithRippleReturnType<P> {
+  const WithRipple: WithRippleReturnType<P> = ({
     ripple,
     className,
     ...props
   }) => {
-    const ref = useRef<T>(null)
+    const ref = useRef<R>(null)
 
     const rootClasses = new RootClasses('ripple').add({
       condition: !!className,
