@@ -1,8 +1,12 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Button, { ButtonProps } from 'components/UI/Button'
+import { WithRippleProps } from 'hoc/withRipple'
 import withRootStyles from 'hoc/withRootStyles'
 
-const StyledButton = withRootStyles<ButtonProps>(Button)
+type StyledButtonProps = WithRippleProps &
+  Omit<ButtonProps, keyof WithRippleProps>
+
+const StyledButton = withRootStyles<StyledButtonProps>(Button)
 
 const arrows = {
   arrowLeft: <i className="ri-arrow-left-s-line"></i>,
@@ -26,9 +30,13 @@ export default {
     },
     ripple: { control: 'boolean' },
   },
-} as ComponentMeta<typeof Button>
+} as ComponentMeta<typeof StyledButton>
 
-const Story: ComponentStory<typeof Button> = ({ children, label, ...args }) => {
+const Story: ComponentStory<typeof StyledButton> = ({
+  children,
+  label,
+  ...args
+}) => {
   if (children) return <StyledButton children={children} {...args} />
 
   return <StyledButton label={label ?? 'Button'} {...args} />
@@ -37,7 +45,6 @@ const Story: ComponentStory<typeof Button> = ({ children, label, ...args }) => {
 export const Primary = Story.bind({})
 Primary.args = {
   label: 'Button',
-  children: 'arrowLeft',
   variant: 'primary',
   ripple: true,
 }
