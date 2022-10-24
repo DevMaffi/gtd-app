@@ -9,8 +9,14 @@ export interface IWithScrollHeader {
   scrollHeader: boolean
 }
 
-function withScrollHeader<T>(Component: any) {
-  const WithScrollHeader: React.FC<WithScrollHeaderProps & T> = ({
+export type WithScrollHeaderReturnType<T> = React.FC<
+  WithScrollHeaderProps & Omit<T, keyof WithScrollHeaderProps>
+>
+
+function withScrollHeader<T>(
+  Component: React.FC<any>
+): WithScrollHeaderReturnType<T> {
+  const WithScrollHeader: WithScrollHeaderReturnType<T> = ({
     topOffset,
     ...props
   }) => {
