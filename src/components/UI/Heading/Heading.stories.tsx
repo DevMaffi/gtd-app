@@ -23,9 +23,11 @@ export default {
       control: 'radio',
     },
   },
-} as ComponentMeta<typeof Heading>
+} as ComponentMeta<typeof StyledHeading>
 
-const Story: ComponentStory<typeof Heading> = args => <Heading {...args} />
+const Story: ComponentStory<typeof StyledHeading> = args => (
+  <Heading {...args} />
+)
 
 export const Primary = Story.bind({})
 Primary.args = {
