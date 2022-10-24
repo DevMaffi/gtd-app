@@ -79,17 +79,23 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({ date, onDate }) => {
       onDate(nextDate)
     }
 
+  const renderProp = ({
+    isOpen,
+    dropdownView,
+    onDropdown,
+  }: DropdownRenderPropArgs): React.ReactNode => (
+    <MonthSwiper
+      date={date}
+      isOpen={isOpen}
+      dropdownView={dropdownView}
+      onDropdown={onDropdown}
+      onDate={onDate}
+    />
+  )
+
   return (
     <Dropdown
-      on={({ isOpen, dropdownView, onDropdown }: DropdownRenderPropArgs) => (
-        <MonthSwiper
-          date={date}
-          isOpen={isOpen}
-          dropdownView={dropdownView}
-          onDropdown={onDropdown}
-          onDate={onDate}
-        />
-      )}
+      on={renderProp}
       isActive={getIsActiveHandler}
       isDefault={getDefaultOption}
       setOptions={getOptions}
