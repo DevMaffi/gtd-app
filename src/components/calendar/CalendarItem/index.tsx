@@ -21,7 +21,7 @@ const Calendar: React.FC<CalendarProps> = ({ tasksUpdates, ...restProps }) => {
 function calendarPropsAreEqual(
   prevProps: CalendarProps,
   nextProps: CalendarProps
-) {
+): boolean {
   return (
     compareDates(prevProps.date, nextProps.date) &&
     prevProps.tasksUpdates === nextProps.tasksUpdates

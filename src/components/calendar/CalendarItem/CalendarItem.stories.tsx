@@ -1,6 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { v4 } from 'uuid'
 import Calendar, { CalendarProps } from 'components/calendar/CalendarItem'
 import withRootStyles from 'hoc/withRootStyles'
+import { TasksResponse } from 'types'
 import { getEnvDate } from 'utils/date'
 
 const StyledCalendarItem = withRootStyles<CalendarProps>(Calendar)
@@ -13,26 +15,32 @@ export default {
     tasks: { control: 'object' },
     tasksUpdates: { control: 'number', min: 0 },
   },
-} as ComponentMeta<typeof Calendar>
+} as ComponentMeta<typeof StyledCalendarItem>
 
-const Story: ComponentStory<typeof Calendar> = args => (
+const Story: ComponentStory<typeof StyledCalendarItem> = args => (
   <StyledCalendarItem {...args} />
 )
+
+const tasks: TasksResponse = {
+  [new Date(2022, 9, 26).toDateString()]: [
+    { _id: v4(), title: 'Present version two to reviewers' },
+    { _id: v4(), title: 'Share with UX team' },
+    { _id: v4(), title: 'Build!' },
+    { _id: v4(), title: 'Ship!' },
+  ],
+  [new Date(2022, 9, 28).toDateString()]: [
+    { _id: v4(), title: 'Take 🐶 out for a walk' },
+    { _id: v4(), title: 'Meet with friends' },
+  ],
+  [new Date(2022, 9, 29).toDateString()]: [
+    { _id: v4(), title: 'Debug queries' },
+    { _id: v4(), title: 'Database tuning' },
+  ],
+}
 
 export const Primary = Story.bind({})
 Primary.args = {
   date: getEnvDate(),
-  tasks: {
-    [new Date(2022, 8, 7).toDateString()]: [
-      { _id: '1', title: 'Morning running' },
-      { _id: '2', title: 'Start learning React JS library' },
-      { _id: '3', title: 'Spend time with family' },
-      { _id: '4', title: 'New task+' },
-    ],
-    [new Date(2022, 8, 16).toDateString()]: [
-      { _id: '1', title: 'Read book' },
-      { _id: '2', title: 'Go to gym' },
-    ],
-  },
+  tasks,
   tasksUpdates: 0,
 }
