@@ -1,34 +1,39 @@
 import { useState } from 'react'
 import { DropdownMenu } from 'components/dropdown'
 import RootClasses from 'utils/rootClasses'
-import { ArrowFn, SetDropdownFn, DropdownRenderPropArgs } from 'types'
+import {
+  ArrowFn,
+  DropdownOption,
+  SetDropdownFn,
+  DropdownRenderPropArgs,
+} from 'types'
 import './dropdown.sass'
 
-export type DropdownRenderProp = ({
+export type DropdownRenderProp<T> = ({
   isOpen,
   dropdownView,
   onDropdown,
-}: DropdownRenderPropArgs) => React.ReactNode
+}: DropdownRenderPropArgs<T>) => React.ReactNode
 
-export interface DropdownProps<V, O> {
-  setOptions: (dropdownView: V) => O[]
-  isActive: (dropdownView: V) => ArrowFn<boolean>
-  isDefault: (dropdownView: V) => ArrowFn<boolean>
+export interface DropdownProps<T> {
+  setOptions: (dropdownView: T) => DropdownOption[]
+  isActive: (dropdownView: T) => ArrowFn<boolean>
+  isDefault: (dropdownView: T) => ArrowFn<boolean>
   onSelect: (
-    dropdownView: V,
-    onDropdown: SetDropdownFn
+    dropdownView: T,
+    onDropdown: SetDropdownFn<T>
   ) => ArrowFn<(optionIndex: number) => any>
-  on: DropdownRenderProp
+  on: DropdownRenderProp<T>
 }
 
-const Dropdown = <V, O>({
+const Dropdown = <T,>({
   setOptions,
   isActive,
   isDefault,
   onSelect,
   on: render,
-}: DropdownProps<V, O>) => {
-  const [dropdownView, setDropdownView] = useState<V>(null!)
+}: DropdownProps<T>) => {
+  const [dropdownView, setDropdownView] = useState<T>(null!)
 
   const rootClasses = new RootClasses('dropdown flex').add({
     condition: !!dropdownView,
@@ -43,7 +48,7 @@ const Dropdown = <V, O>({
         isOpen: !!dropdownView,
         onDropdown: setDropdownView,
       })}
-      <DropdownMenu
+      <DropdownMenu<T>
         options={setOptions(dropdownView)}
         onSelect={onSelect(dropdownView, setDropdownView)}
         onDropdown={setDropdownView}

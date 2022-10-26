@@ -4,7 +4,7 @@ import { MonthSwiper } from 'components/month'
 import { getEnvDate, compareDates } from 'utils/date'
 import {
   MonthSelectorDropdownView as DropdownView,
-  MonthSelectorDropdownOption as DropdownOption,
+  DropdownOption,
   DropdownRenderPropArgs,
   SetDropdownFn,
 } from 'types'
@@ -16,17 +16,20 @@ export interface MonthSelectorProps {
 }
 
 const MonthSelector: React.FC<MonthSelectorProps> = ({ date, onDate }) => {
-  const yearOptions = useMemo<number[]>(() => {
+  const yearOptions = useMemo<DropdownOption[]>(() => {
     const now = new Date(getEnvDate())
     const firstYear = now.getFullYear() - 3
 
-    const options: number[] = []
+    const options: DropdownOption[] = []
 
     const range = [...Array(12).keys()]
-    range.forEach(i => options.push(firstYear + i))
+    range.forEach(i =>
+      options.push({ _id: (i + 1).toString(), value: firstYear + i })
+    )
 
     return options
   }, [])
+
   const monthOptions = data.shortenings.months
 
   const getOptions = (dropdownView: DropdownView): DropdownOption[] => {
@@ -37,7 +40,7 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({ date, onDate }) => {
   const getIsActiveHandler = (dropdownView: DropdownView) => {
     if (dropdownView === 'year')
       return (yearIndex: number) =>
-        yearOptions[yearIndex] === date.getFullYear()
+        yearOptions[yearIndex].value === date.getFullYear()
 
     return (monthIndex: number) => monthIndex === date.getMonth()
   }
@@ -46,7 +49,8 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({ date, onDate }) => {
     const now = new Date(getEnvDate())
 
     if (dropdownView === 'year')
-      return (yearIndex: number) => yearOptions[yearIndex] === now.getFullYear()
+      return (yearIndex: number) =>
+        yearOptions[yearIndex].value === now.getFullYear()
 
     return (monthIndex: number) => {
       const optionDate = new Date(
@@ -59,7 +63,7 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({ date, onDate }) => {
   }
 
   const selectMonth =
-    (dropdownView: DropdownView, onDropdown: SetDropdownFn) =>
+    (dropdownView: DropdownView, onDropdown: SetDropdownFn<DropdownView>) =>
     (optionIndex: number) =>
     () => {
       const nextDate = new Date(
@@ -72,7 +76,11 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({ date, onDate }) => {
         nextDate.setMonth(optionIndex)
         onDropdown(null)
       } else {
-        nextDate.setFullYear(yearOptions[optionIndex])
+        const nextYear = yearOptions[optionIndex].value
+        nextDate.setFullYear(
+          typeof nextYear === 'string' ? parseInt(nextYear) : nextYear
+        )
+
         onDropdown('month')
       }
 
@@ -83,7 +91,7 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({ date, onDate }) => {
     isOpen,
     dropdownView,
     onDropdown,
-  }: DropdownRenderPropArgs): React.ReactNode => (
+  }: DropdownRenderPropArgs<DropdownView>): React.ReactNode => (
     <MonthSwiper
       date={date}
       isOpen={isOpen}
@@ -94,7 +102,7 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({ date, onDate }) => {
   )
 
   return (
-    <Dropdown<DropdownView, DropdownOption>
+    <Dropdown<DropdownView>
       on={renderProp}
       isActive={getIsActiveHandler}
       isDefault={getDefaultOption}

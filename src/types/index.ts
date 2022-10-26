@@ -9,13 +9,17 @@ export interface TasksResponse {
   [dueDate: string]: ITask[]
 }
 
-export type MonthSelectorDropdownView = 'year' | 'month' | null
-export type MonthSelectorDropdownOption = string | number
-
-export type SetDropdownFn = (dropdownView: any) => void
-
-export interface DropdownRenderPropArgs {
-  isOpen: boolean
-  dropdownView: any
-  onDropdown: SetDropdownFn
+export type DropdownOption = {
+  _id: string
+  value: string | number
 }
+
+export type SetDropdownFn<T> = (dropdownView: T) => void
+
+export interface DropdownRenderPropArgs<T> {
+  isOpen: boolean
+  dropdownView: T
+  onDropdown: SetDropdownFn<T>
+}
+
+export type MonthSelectorDropdownView = 'year' | 'month' | null

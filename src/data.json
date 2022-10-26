@@ -1,18 +1,18 @@
 {
   "shortenings": {
     "months": [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec"
+      { "_id": "1", "value": "Jan" },
+      { "_id": "2", "value": "Feb" },
+      { "_id": "3", "value": "Mar" },
+      { "_id": "4", "value": "Apr" },
+      { "_id": "5", "value": "May" },
+      { "_id": "6", "value": "Jun" },
+      { "_id": "7", "value": "Jul" },
+      { "_id": "8", "value": "Aug" },
+      { "_id": "9", "value": "Sep" },
+      { "_id": "10", "value": "Oct" },
+      { "_id": "11", "value": "Nov" },
+      { "_id": "12", "value": "Dec" }
     ],
     "days": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
   }
