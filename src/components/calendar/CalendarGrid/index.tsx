@@ -10,13 +10,13 @@ export interface CalendarGridProps {
 }
 
 const CalendarGrid: React.FC<CalendarGridProps> = ({ date, tasks }) => {
+  type CellType = 'prev' | 'next'
+
   const prevDays = usePrevDays(date)
   const days = useDays(date)
   const nextDays = useNextDays(date)
 
   const now = new Date(getEnvDate())
-
-  type CellType = 'prev' | 'next'
 
   const renderCells = (days: number[], type?: CellType): JSX.Element[] => {
     let monthInc = 0
