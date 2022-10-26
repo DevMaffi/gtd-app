@@ -7,7 +7,7 @@ export interface UseObserverProps {
   onLeave: ArrowFn<void>
 }
 
-function useObserver({ ref, onEnter, onLeave }: UseObserverProps) {
+function useObserver({ ref, onEnter, onLeave }: UseObserverProps): void {
   const observer = useRef<IntersectionObserver | null>(null)
 
   useEffect(() => {
