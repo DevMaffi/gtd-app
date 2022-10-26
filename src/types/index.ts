@@ -9,9 +9,11 @@ export interface TasksResponse {
   [dueDate: string]: ITask[]
 }
 
+export type DropdownOptionValue = string | number
+
 export type DropdownOption = {
   _id: string
-  value: string | number
+  value: DropdownOptionValue
 }
 
 export type SetDropdownFn<T> = (dropdownView: T) => void

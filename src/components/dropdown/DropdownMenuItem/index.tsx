@@ -1,8 +1,9 @@
 import RootClasses from 'utils/rootClasses'
+import { DropdownOptionValue } from 'types'
 import './dropdownMenuItem.sass'
 
 export interface BaseDropdownMenuItemProps {
-  data: any
+  data: DropdownOptionValue
   defaultOption: boolean
   active: boolean
   className?: string
