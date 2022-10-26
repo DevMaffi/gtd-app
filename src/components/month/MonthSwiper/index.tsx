@@ -18,9 +18,9 @@ const MonthSwiper: React.FC<MonthSwiperProps> = ({
   onDropdown,
   onDate,
 }) => {
-  type SwipeIncrementOptions = 1 | -1
+  type SwipeIncrementOption = 1 | -1
 
-  const swipe = (inc: SwipeIncrementOptions) => () => {
+  const swipe = (inc: SwipeIncrementOption) => () => {
     const nextDate = new Date(
       date.getFullYear(),
       date.getMonth(),
