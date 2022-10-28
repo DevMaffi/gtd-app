@@ -1,6 +1,6 @@
 import { CalendarTasksList } from 'components/calendar'
 import RootClasses from 'utils/rootClasses'
-import { ITask } from 'types'
+import { ITask } from 'model/interfaces'
 import './calendarCell.sass'
 
 export interface CalendarCellProps {

@@ -1,5 +1,5 @@
 import { CalendarTaskItem } from 'components/calendar'
-import { ITask } from 'types'
+import { ITask } from 'model/interfaces'
 import './calendarTasks.sass'
 
 export interface CalendarTasksListProps {

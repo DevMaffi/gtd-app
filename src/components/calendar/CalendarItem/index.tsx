@@ -1,7 +1,7 @@
 import React from 'react'
 import { CalendarDays, CalendarGrid } from 'components/calendar'
 import { compareDates } from 'utils/date'
-import { TasksResponse } from 'types'
+import { TasksResponse } from 'model/interfaces'
 
 export interface CalendarProps {
   date: Date

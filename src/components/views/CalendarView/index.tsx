@@ -1,6 +1,6 @@
 import { CalendarHeader, Calendar } from 'components/calendar'
 import withScrollHeader, { IWithScrollHeader } from 'hoc/withScrollHeader'
-import { TasksResponse } from 'types'
+import { TasksResponse } from 'model/interfaces'
 
 export interface CalendarViewProps {
   date: Date

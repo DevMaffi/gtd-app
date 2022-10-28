@@ -1,4 +1,4 @@
-import { ITask } from 'types'
+import { ITask } from 'model/interfaces'
 import './calendarTaskItem.sass'
 
 export interface CalendarTaskItemProps {

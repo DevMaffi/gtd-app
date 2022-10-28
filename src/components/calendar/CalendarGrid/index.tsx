@@ -1,7 +1,7 @@
 import { CalendarCell as Cell } from 'components/calendar'
 import { usePrevDays, useDays, useNextDays } from 'hooks'
 import { getEnvDate, compareDates } from 'utils/date'
-import { TasksResponse } from 'types'
+import { TasksResponse } from 'model/interfaces'
 import './calendarGrid.sass'
 
 export interface CalendarGridProps {

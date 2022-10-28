@@ -2,9 +2,12 @@ import { useEffect, useRef, useState } from 'react'
 import { CalendarView } from 'components/views'
 import TasksService from 'services/fakeTasksService'
 import { getEnvDate } from 'utils/date'
-import { TasksResponse } from 'types'
+import { TasksResponse } from 'model/interfaces'
+import { TasksApi } from 'model/classes'
 
 const App: React.FC = () => {
+  const tasksService = new TasksService(new TasksApi())
+
   const [date, setDate] = useState<Date>(getEnvDate())
   const [tasks, setTasks] = useState<TasksResponse>({})
 
@@ -35,10 +38,7 @@ const App: React.FC = () => {
          * @type {Object} - Object of tasks that are in between last month of
          * prev year and first month of next year
          */
-        const response = (await TasksService.getByInterval(
-          startDate,
-          endDate
-        )) as TasksResponse
+        const response = await tasksService.getByInterval(startDate, endDate)
         onTasks(response)
       }
 

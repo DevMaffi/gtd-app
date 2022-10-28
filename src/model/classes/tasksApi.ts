@@ -1,7 +1,9 @@
 import { v4 } from 'uuid'
+import { ITask, TasksResponse, ITasksClient } from 'model/interfaces'
+import { Bind } from 'types/decorators'
 
-class TasksService {
-  static #tasks = {
+class TasksApi implements ITasksClient {
+  private tasks = {
     [new Date(2022, 8, 27).toDateString()]: [
       { _id: v4(), title: 'Prepare for meeting' },
       { _id: v4(), title: 'Take 🐶 out for a walk' },
@@ -99,9 +101,13 @@ class TasksService {
     ],
   }
 
-  static getAll = async () => this.#tasks
+  @Bind
+  async getAll(): Promise<TasksResponse> {
+    return this.tasks
+  }
 
-  static getByInterval = async (startDate, endDate) => {
+  @Bind
+  async getByInterval(startDate: Date, endDate: Date): Promise<TasksResponse> {
     const start = new Date(
       startDate.getFullYear(),
       startDate.getMonth(),
@@ -114,10 +120,10 @@ class TasksService {
       endDate.getDate() + 1
     )
 
-    const response = {}
+    const response: TasksResponse = {}
 
     while (start.getTime() <= end.getTime()) {
-      const tasks = this.#tasks[start.toDateString()]
+      const tasks: ITask[] = this.tasks[start.toDateString()]
       if (tasks) response[start.toDateString()] = tasks
 
       start.setDate(start.getDate() + 1)
@@ -127,4 +133,4 @@ class TasksService {
   }
 }
 
-export default TasksService
+export default TasksApi

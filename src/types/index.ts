@@ -1,14 +1,5 @@
 export type ArrowFn<T = any> = (...args: any[]) => T
 
-export interface ITask {
-  _id: string
-  title: string
-}
-
-export interface TasksResponse {
-  [dueDate: string]: ITask[]
-}
-
 export type DropdownOptionValue = string | number
 
 export type DropdownOption = {
