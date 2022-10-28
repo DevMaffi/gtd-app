@@ -101,6 +101,14 @@ class TasksApi implements ITasksClient {
     ],
   }
 
+  async delay(delay: number): Promise<void> {
+    return new Promise(res =>
+      setTimeout(() => {
+        res()
+      }, delay)
+    )
+  }
+
   @Bind
   async getAll(): Promise<TasksResponse> {
     return this.tasks
@@ -108,6 +116,8 @@ class TasksApi implements ITasksClient {
 
   @Bind
   async getByInterval(startDate: Date, endDate: Date): Promise<TasksResponse> {
+    await this.delay(100)
+
     const start = new Date(
       startDate.getFullYear(),
       startDate.getMonth(),

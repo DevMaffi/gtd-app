@@ -10,6 +10,7 @@ const App: React.FC = () => {
 
   const [date, setDate] = useState<Date>(getEnvDate())
   const [tasks, setTasks] = useState<TasksResponse>({})
+  const [areTasksLoading, setAreTasksLoading] = useState<boolean>(false)
 
   const tasksUpdates = useRef<number>(0)
   const prevYear = useRef<number>(date.getFullYear())
@@ -19,29 +20,32 @@ const App: React.FC = () => {
     setTasks(tasks)
   }
 
+  const fetchTasks = async (): Promise<void> => {
+    /**
+     * @type {Date} - Last month of prev year
+     */
+    const startDate = new Date(date.getFullYear(), -1, 1)
+
+    /**
+     * @type {Date} - First month of next year
+     */
+    const endDate = new Date(date.getFullYear() + 1, 1, -1)
+
+    setAreTasksLoading(true)
+
+    /**
+     * @type {Object} - Object of tasks that are in between last month of
+     * prev year and first month of next year
+     */
+    const response = await tasksService.getByInterval(startDate, endDate)
+    onTasks(response)
+
+    setAreTasksLoading(false)
+  }
+
   useEffect(() => {
     if (!tasksUpdates.current || date.getFullYear() !== prevYear.current) {
       prevYear.current = date.getFullYear()
-
-      const fetchTasks = async (): Promise<void> => {
-        /**
-         * @type {Date} - Last month of prev year
-         */
-        const startDate = new Date(date.getFullYear(), -1, 1)
-
-        /**
-         * @type {Date} - First month of next year
-         */
-        const endDate = new Date(date.getFullYear() + 1, 1, -1)
-
-        /**
-         * @type {Object} - Object of tasks that are in between last month of
-         * prev year and first month of next year
-         */
-        const response = await tasksService.getByInterval(startDate, endDate)
-        onTasks(response)
-      }
-
       fetchTasks()
     }
   }, [date])
@@ -52,6 +56,7 @@ const App: React.FC = () => {
       date={date}
       tasks={tasks}
       tasksUpdates={tasksUpdates.current}
+      loading={areTasksLoading}
       onDate={setDate}
     />
   )

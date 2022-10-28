@@ -7,13 +7,19 @@ export interface CalendarProps {
   date: Date
   tasks: TasksResponse
   tasksUpdates: number
+  loading: boolean
 }
 
-const Calendar: React.FC<CalendarProps> = ({ tasksUpdates, ...restProps }) => {
+const Calendar: React.FC<CalendarProps> = ({
+  tasksUpdates,
+  loading,
+  ...restProps
+}) => {
   return (
     <div className="calendar__container">
       <CalendarDays />
       <CalendarGrid {...restProps} />
+      {loading && <span>Loading...</span>}
     </div>
   )
 }
@@ -24,7 +30,8 @@ function calendarPropsAreEqual(
 ): boolean {
   return (
     compareDates(prevProps.date, nextProps.date) &&
-    prevProps.tasksUpdates === nextProps.tasksUpdates
+    prevProps.tasksUpdates === nextProps.tasksUpdates &&
+    prevProps.loading === nextProps.loading
   )
 }
 
