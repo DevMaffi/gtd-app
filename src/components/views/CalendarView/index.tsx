@@ -7,6 +7,7 @@ export interface CalendarViewProps {
   tasks: TasksResponse
   tasksUpdates: number
   loading: boolean
+  tasksError: string
   onDate: (date: Date) => void
 }
 
@@ -19,6 +20,7 @@ const CalendarView: React.FC<CalendarViewPropsWithScrollHeader> = ({
   tasks,
   tasksUpdates,
   loading,
+  tasksError,
   onDate,
 }) => {
   return (
@@ -29,6 +31,7 @@ const CalendarView: React.FC<CalendarViewPropsWithScrollHeader> = ({
         tasks={tasks}
         tasksUpdates={tasksUpdates}
         loading={loading}
+        tasksError={tasksError}
       />
     </div>
   )
