@@ -101,7 +101,7 @@ class TasksApi implements ITasksClient {
     ],
   }
 
-  async delay(delay: number): Promise<void> {
+  private async delay(delay: number): Promise<void> {
     return new Promise(res =>
       setTimeout(() => {
         res()
