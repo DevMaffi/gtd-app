@@ -18,7 +18,7 @@ const DropdownMenu = <T,>({
   onDropdown,
 }: DropdownMenuProps<T>) => {
   return (
-    <div className="dropdown__menu">
+    <>
       <div className="dropdown__menu-inner bg-container">
         {options.map((o, i) => {
           return (
@@ -36,7 +36,7 @@ const DropdownMenu = <T,>({
         onClick={() => onDropdown(null!)}
         className="dropdown__menu-cover"
       ></div>
-    </div>
+    </>
   )
 }
 
