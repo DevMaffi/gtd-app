@@ -1,6 +1,6 @@
 import { Bind } from 'types/decorators'
 
-export interface AddMethodArgs {
+interface AddMethodArgs {
   condition: boolean
   type: string
   className: string
@@ -8,20 +8,20 @@ export interface AddMethodArgs {
   remove?: string[]
 }
 
-export interface RemoveMethodArgs {
+interface RemoveMethodArgs {
   condition: boolean
   types: string[]
   alwaysPrimary?: boolean
 }
 
-export interface RootClassesService<T> {
-  add(args: AddMethodArgs): T
-  addPrimary(className: string): T
-  remove(args: RemoveMethodArgs): T
+export interface RootClassesService {
+  add(args: AddMethodArgs): this
+  addPrimary(className: string): this
+  remove(args: RemoveMethodArgs): this
   toClassNameString(): string
 }
 
-class RootClasses implements RootClassesService<RootClasses> {
+class RootClasses implements RootClassesService {
   private primary = true
   private cl: { [type: string]: string } = {}
 
