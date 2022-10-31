@@ -1,10 +1,9 @@
 import { useEffect, useRef } from 'react'
-import { ArrowFn } from 'types'
 
 export interface UseObserverProps {
   ref: React.RefObject<Element>
-  onEnter: ArrowFn<void>
-  onLeave: ArrowFn<void>
+  onEnter: () => void
+  onLeave: () => void
 }
 
 function useObserver({ ref, onEnter, onLeave }: UseObserverProps): void {
