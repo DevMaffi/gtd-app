@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { v4 } from 'uuid'
 import Calendar, { CalendarProps } from 'components/calendar/CalendarItem'
 import withRootStyles from 'hoc/withRootStyles'
-import { TasksResponse } from 'model/interfaces'
+import { ITasksResponse } from 'model/interfaces'
 import { getEnvDate } from 'utils/date'
 
 const StyledCalendarItem = withRootStyles<CalendarProps>(Calendar)
@@ -21,7 +21,7 @@ const Story: ComponentStory<typeof StyledCalendarItem> = args => (
   <StyledCalendarItem {...args} />
 )
 
-const tasks: TasksResponse = {
+const tasks: ITasksResponse = {
   [new Date(2022, 9, 26).toDateString()]: [
     { _id: v4(), title: 'Present version two to reviewers' },
     { _id: v4(), title: 'Share with UX team' },

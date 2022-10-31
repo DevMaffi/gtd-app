@@ -1,11 +1,11 @@
 import React from 'react'
 import { CalendarDays, CalendarGrid } from 'components/calendar'
 import { compareDates } from 'utils/date'
-import { TasksResponse } from 'model/interfaces'
+import { ITasksResponse } from 'model/interfaces'
 
 export interface CalendarProps {
   date: Date
-  tasks: TasksResponse
+  tasks: ITasksResponse
   tasksUpdates: number
   loading: boolean
   tasksError: string

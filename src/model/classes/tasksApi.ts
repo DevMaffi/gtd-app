@@ -1,5 +1,5 @@
 import { v4 } from 'uuid'
-import { ITask, TasksResponse, ITasksClient } from 'model/interfaces'
+import { ITask, ITasksResponse, ITasksClient } from 'model/interfaces'
 import { Bind } from 'types/decorators'
 
 class TasksApi implements ITasksClient {
@@ -110,12 +110,12 @@ class TasksApi implements ITasksClient {
   }
 
   @Bind
-  async getAll(): Promise<TasksResponse> {
+  async getAll(): Promise<ITasksResponse> {
     return this.tasks
   }
 
   @Bind
-  async getByInterval(startDate: Date, endDate: Date): Promise<TasksResponse> {
+  async getByInterval(startDate: Date, endDate: Date): Promise<ITasksResponse> {
     await this.delay(100)
 
     const start = new Date(
@@ -130,7 +130,7 @@ class TasksApi implements ITasksClient {
       endDate.getDate() + 1
     )
 
-    const response: TasksResponse = {}
+    const response: ITasksResponse = {}
 
     while (start.getTime() <= end.getTime()) {
       const tasks: ITask[] = this.tasks[start.toDateString()]

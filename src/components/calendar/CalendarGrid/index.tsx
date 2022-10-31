@@ -1,12 +1,12 @@
 import { CalendarCell as Cell } from 'components/calendar'
 import { usePrevDays, useDays, useNextDays } from 'hooks'
 import { getEnvDate, compareDates } from 'utils/date'
-import { TasksResponse } from 'model/interfaces'
+import { ITasksResponse } from 'model/interfaces'
 import './calendarGrid.sass'
 
 export interface CalendarGridProps {
   date: Date
-  tasks: TasksResponse
+  tasks: ITasksResponse
 }
 
 const CalendarGrid: React.FC<CalendarGridProps> = ({ date, tasks }) => {

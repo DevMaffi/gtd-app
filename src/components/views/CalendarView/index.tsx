@@ -1,10 +1,10 @@
 import { CalendarHeader, Calendar } from 'components/calendar'
 import withScrollHeader, { IWithScrollHeader } from 'hoc/withScrollHeader'
-import { TasksResponse } from 'model/interfaces'
+import { ITasksResponse } from 'model/interfaces'
 
 export interface CalendarViewProps {
   date: Date
-  tasks: TasksResponse
+  tasks: ITasksResponse
   tasksUpdates: number
   loading: boolean
   tasksError: string

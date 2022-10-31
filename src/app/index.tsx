@@ -3,14 +3,14 @@ import { CalendarView } from 'components/views'
 import TasksService from 'services/fakeTasksService'
 import { useHttp } from 'hooks'
 import { getEnvDate } from 'utils/date'
-import { TasksResponse } from 'model/interfaces'
+import { ITasksResponse } from 'model/interfaces'
 import { TasksApi } from 'model/classes'
 
 const App: React.FC = () => {
   const tasksService = new TasksService(new TasksApi())
 
   const [date, setDate] = useState<Date>(getEnvDate())
-  const [tasks, setTasks] = useState<TasksResponse>({})
+  const [tasks, setTasks] = useState<ITasksResponse>({})
 
   const tasksUpdates = useRef<number>(0)
   const prevYear = useRef<number>(date.getFullYear())
@@ -36,7 +36,7 @@ const App: React.FC = () => {
     }
   )
 
-  const onTasks = (tasks: TasksResponse): void => {
+  const onTasks = (tasks: ITasksResponse): void => {
     tasksUpdates.current++
     setTasks(tasks)
   }

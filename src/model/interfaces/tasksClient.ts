@@ -3,11 +3,11 @@ export interface ITask {
   title: string
 }
 
-export interface TasksResponse {
+export interface ITasksResponse {
   [dueDate: string]: ITask[]
 }
 
 export interface ITasksClient {
-  getAll(): Promise<TasksResponse>
-  getByInterval(startDate: Date, endDate: Date): Promise<TasksResponse>
+  getAll(): Promise<ITasksResponse>
+  getByInterval(startDate: Date, endDate: Date): Promise<ITasksResponse>
 }
