@@ -66,11 +66,8 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({ date, onDate }) => {
     (dropdownView: DropdownView, onDropdown: SetDropdownFn<DropdownView>) =>
     (optionIndex: number) =>
     () => {
-      const nextDate = new Date(
-        date.getFullYear(),
-        date.getMonth(),
-        date.getDate()
-      )
+      const now = getEnvDate()
+      const nextDate = new Date(date.getFullYear(), date.getMonth())
 
       if (dropdownView === 'month') {
         nextDate.setMonth(optionIndex)
@@ -83,6 +80,9 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({ date, onDate }) => {
 
         onDropdown('month')
       }
+
+      if (nextDate.getMonth() === now.getMonth())
+        nextDate.setDate(now.getDate())
 
       onDate(nextDate)
     }

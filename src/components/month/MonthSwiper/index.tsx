@@ -1,5 +1,6 @@
 import { Button } from 'components/UI'
 import { MonthSelectorDropdownView as DropdownView } from 'types'
+import { getEnvDate } from 'utils/date'
 import data from 'data.json'
 import './monthSwiper.sass'
 
@@ -21,14 +22,13 @@ const MonthSwiper: React.FC<MonthSwiperProps> = ({
   type SwipeIncrementOption = 1 | -1
 
   const swipe = (inc: SwipeIncrementOption) => () => {
-    const nextDate = new Date(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate()
-    )
+    const now = getEnvDate()
+    const nextDate = new Date(date.getFullYear(), date.getMonth())
 
     if (dropdownView === 'year') nextDate.setFullYear(date.getFullYear() + inc)
     else nextDate.setMonth(date.getMonth() + inc)
+
+    if (nextDate.getMonth() === now.getMonth()) nextDate.setDate(now.getDate())
 
     onDate(nextDate)
   }
