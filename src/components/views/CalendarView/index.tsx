@@ -11,10 +11,10 @@ export interface CalendarViewProps {
   onDate: (date: Date) => void
 }
 
-export type CalendarViewPropsWithScrollHeader = IWithScrollHeader &
+export type CalendarViewWithScrollHeaderProps = IWithScrollHeader &
   CalendarViewProps
 
-const CalendarView: React.FC<CalendarViewPropsWithScrollHeader> = ({
+const CalendarView: React.FC<CalendarViewWithScrollHeaderProps> = ({
   date,
   scrollHeader,
   tasks,
