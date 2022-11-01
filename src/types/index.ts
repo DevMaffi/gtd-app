@@ -3,7 +3,7 @@ export type ArrowFn<T = any> = (...args: any[]) => T
 export type DropdownOptionValue = string | number
 
 export type DropdownOption = {
-  _id: string
+  readonly _id: string
   value: DropdownOptionValue
 }
 

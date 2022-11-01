@@ -1,5 +1,5 @@
 export interface ITask {
-  _id: string
+  readonly _id: string
   title: string
 }
 
