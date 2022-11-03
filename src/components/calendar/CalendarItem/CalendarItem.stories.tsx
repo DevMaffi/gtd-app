@@ -22,17 +22,17 @@ const Story: ComponentStory<typeof StyledCalendarItem> = args => (
 )
 
 const tasks: ITasksResponse = {
-  [new Date(2022, 9, 26).toDateString()]: [
+  [new Date(2022, 10, 8).toDateString()]: [
     { _id: v4(), title: 'Present version two to reviewers' },
     { _id: v4(), title: 'Share with UX team' },
     { _id: v4(), title: 'Build!' },
     { _id: v4(), title: 'Ship!' },
   ],
-  [new Date(2022, 9, 28).toDateString()]: [
+  [new Date(2022, 10, 10).toDateString()]: [
     { _id: v4(), title: 'Take 🐶 out for a walk' },
     { _id: v4(), title: 'Meet with friends' },
   ],
-  [new Date(2022, 9, 29).toDateString()]: [
+  [new Date(2022, 10, 11).toDateString()]: [
     { _id: v4(), title: 'Debug queries' },
     { _id: v4(), title: 'Database tuning' },
   ],
