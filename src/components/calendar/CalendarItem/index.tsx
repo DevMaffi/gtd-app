@@ -13,7 +13,6 @@ export interface CalendarProps {
 
 const Calendar: React.FC<CalendarProps> = ({
   tasksUpdates,
-  loading,
   tasksError,
   ...restProps
 }) => {
@@ -21,7 +20,6 @@ const Calendar: React.FC<CalendarProps> = ({
     <div className="calendar__container">
       <CalendarDays />
       <CalendarGrid {...restProps} />
-      {loading && <span>Loading...</span>}
       {tasksError && <span>Error caused: {tasksError}</span>}
     </div>
   )

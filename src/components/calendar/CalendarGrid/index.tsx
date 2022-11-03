@@ -1,4 +1,5 @@
 import { CalendarCell as Cell } from 'components/calendar'
+import { Loader } from 'components/UI'
 import { usePrevDays, useDays, useNextDays } from 'hooks'
 import { getEnvDate, compareDates } from 'utils/date'
 import { ITasksResponse } from 'model/interfaces'
@@ -7,9 +8,14 @@ import './calendarGrid.sass'
 export interface CalendarGridProps {
   date: Date
   tasks: ITasksResponse
+  loading: boolean
 }
 
-const CalendarGrid: React.FC<CalendarGridProps> = ({ date, tasks }) => {
+const CalendarGrid: React.FC<CalendarGridProps> = ({
+  date,
+  tasks,
+  loading,
+}) => {
   type CellType = 'prev' | 'next'
 
   const prevDays = usePrevDays(date)
@@ -48,10 +54,17 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({ date, tasks }) => {
   }
 
   return (
-    <div className="calendar__grid grid">
-      {renderCells(prevDays, 'prev')}
-      {renderCells(days)}
-      {renderCells(nextDays, 'next')}
+    <div className="calendar__grid ">
+      {loading && (
+        <div className="calendar__grid-loader flex">
+          <Loader />
+        </div>
+      )}
+      <div className="calendar__grid-inner grid">
+        {renderCells(prevDays, 'prev')}
+        {renderCells(days)}
+        {renderCells(nextDays, 'next')}
+      </div>
     </div>
   )
 }
