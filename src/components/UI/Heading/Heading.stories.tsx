@@ -26,7 +26,7 @@ export default {
 } as ComponentMeta<typeof StyledHeading>
 
 const Story: ComponentStory<typeof StyledHeading> = args => (
-  <Heading {...args} />
+  <StyledHeading {...args} />
 )
 
 export const Primary = Story.bind({})
