@@ -7,7 +7,7 @@ import {
   DropdownOption,
   DropdownRenderPropArgs,
   SetDropdownFn,
-} from 'types'
+} from 'types/common'
 import data from 'data.json'
 
 export interface MonthSelectorProps {

@@ -6,7 +6,7 @@ import {
   DropdownOption,
   SetDropdownFn,
   DropdownRenderPropArgs,
-} from 'types'
+} from 'types/common'
 import './dropdown.sass'
 
 export type DropdownRenderProp<T> = ({

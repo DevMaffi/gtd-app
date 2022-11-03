@@ -1,5 +1,5 @@
 import { Button } from 'components/UI'
-import { MonthSelectorDropdownView as DropdownView } from 'types'
+import { MonthSelectorDropdownView as DropdownView } from 'types/common'
 import { getEnvDate } from 'utils/date'
 import data from 'data.json'
 import './monthSwiper.sass'

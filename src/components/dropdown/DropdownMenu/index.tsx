@@ -1,5 +1,5 @@
 import { DropdownMenuItem } from 'components/dropdown'
-import { ArrowFn, DropdownOption, SetDropdownFn } from 'types'
+import { ArrowFn, DropdownOption, SetDropdownFn } from 'types/common'
 import './dropdownMenu.sass'
 
 export interface DropdownMenuProps<T> {

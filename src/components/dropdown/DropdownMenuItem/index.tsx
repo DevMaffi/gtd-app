@@ -1,5 +1,5 @@
 import RootClasses from 'utils/rootClasses'
-import { DropdownOptionValue } from 'types'
+import { DropdownOptionValue } from 'types/common'
 import './dropdownMenuItem.sass'
 
 export interface BaseDropdownMenuItemProps {
