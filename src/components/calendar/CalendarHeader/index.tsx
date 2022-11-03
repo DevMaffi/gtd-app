@@ -12,7 +12,7 @@ export interface CalendarHeaderProps {
 
 const CalendarHeader: React.FC<CalendarHeaderProps> = ({
   scrollHeader,
-  ...props
+  ...restProps
 }) => {
   const rootClasses = new RootClasses(
     'calendar__header container flex bg-body'
@@ -26,8 +26,8 @@ const CalendarHeader: React.FC<CalendarHeaderProps> = ({
     <header className={rootClasses.toClassNameString()}>
       <div className="calendar__header-inner flex">
         <div className="calendar__header-date grid">
-          <CalendarTitle {...props} />
-          <MonthSelector {...props} />
+          <CalendarTitle {...restProps} />
+          <MonthSelector {...restProps} />
         </div>
         <Button className="calendar__header-button flex" ripple>
           <i className="ri-add-line"></i>

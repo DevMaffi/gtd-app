@@ -18,7 +18,7 @@ function withScrollHeader<T>(
 ): WithScrollHeaderReturnType<T> {
   const WithScrollHeader: WithScrollHeaderReturnType<T> = ({
     topOffset,
-    ...props
+    ...restProps
   }) => {
     const [scrollHeader, setScrollHeader] = useState<boolean>(false)
     const firstElement = useRef<HTMLDivElement>(null)
@@ -41,7 +41,7 @@ function withScrollHeader<T>(
             top: 0,
           }}
         ></div>
-        <Component scrollHeader={scrollHeader} {...props} />
+        <Component scrollHeader={scrollHeader} {...restProps} />
       </>
     )
   }

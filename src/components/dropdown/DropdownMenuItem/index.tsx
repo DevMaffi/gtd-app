@@ -20,7 +20,7 @@ const DropdownMenuItem: React.FC<DropdownMenuItemProps> = ({
   defaultOption,
   active,
   className,
-  ...props
+  ...restProps
 }) => {
   const rootClasses = new RootClasses(
     'dropdown__menu-item flex fs-300 text-light'
@@ -42,7 +42,7 @@ const DropdownMenuItem: React.FC<DropdownMenuItemProps> = ({
     })
 
   return (
-    <span className={rootClasses.toClassNameString()} {...props}>
+    <span className={rootClasses.toClassNameString()} {...restProps}>
       {data}
     </span>
   )

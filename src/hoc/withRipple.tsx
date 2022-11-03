@@ -15,7 +15,7 @@ function withRipple<R extends HTMLElement, P extends { className?: string }>(
   const WithRipple: WithRippleReturnType<P> = ({
     ripple,
     className,
-    ...props
+    ...restProps
   }) => {
     const ref = useRef<R>(null)
 
@@ -48,7 +48,7 @@ function withRipple<R extends HTMLElement, P extends { className?: string }>(
         <Component
           ref={ref}
           className={rootClasses.toClassNameString()}
-          {...props}
+          {...restProps}
         />
       </div>
     )

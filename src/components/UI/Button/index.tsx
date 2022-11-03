@@ -18,7 +18,7 @@ export type ButtonProps = BaseButtonProps &
 const Button: React.FC<ButtonProps> = React.forwardRef<
   HTMLButtonElement,
   ButtonProps
->(({ children, variant = 'primary', className, label, ...props }, ref) => {
+>(({ children, variant = 'primary', className, label, ...restProps }, ref) => {
   const rootClasses = new RootClasses('button text-light')
     .add({
       condition: variant === 'danger',
@@ -53,7 +53,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef<
       ref={ref}
       type="button"
       className={rootClasses.toClassNameString()}
-      {...props}
+      {...restProps}
     >
       {children || label}
     </button>
