@@ -16,7 +16,7 @@ export default {
   component: StyledCalendarCell,
   decorators: [
     Story => (
-      <div style={{ maxWidth: '200px' }}>
+      <div style={{ maxWidth: 200 }}>
         <Story />
       </div>
     ),
