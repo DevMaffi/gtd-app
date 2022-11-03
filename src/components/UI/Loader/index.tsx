@@ -1,7 +1,11 @@
 import { LottieOptions, useLottie } from 'lottie-react'
 import animationData from 'resources/lotties/loader.json'
 
-const Loader: React.FC = () => {
+export interface LoaderProps {
+  size?: string | number
+}
+
+const Loader: React.FC<LoaderProps> = ({ size }) => {
   const options: LottieOptions = {
     animationData: animationData,
     loop: true,
@@ -9,7 +13,15 @@ const Loader: React.FC = () => {
 
   const { View } = useLottie(options)
 
-  return <>{View}</>
+  return (
+    <div
+      style={{
+        width: size ?? 150,
+      }}
+    >
+      {View}
+    </div>
+  )
 }
 
 export default Loader
