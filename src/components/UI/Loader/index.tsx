@@ -5,7 +5,7 @@ export interface LoaderProps {
   size?: string | number
 }
 
-const Loader: React.FC<LoaderProps> = ({ size }) => {
+const Loader: React.FC<LoaderProps> = ({ size = 150 }) => {
   const options: LottieOptions = {
     animationData: animationData,
     loop: true,
@@ -16,7 +16,7 @@ const Loader: React.FC<LoaderProps> = ({ size }) => {
   return (
     <div
       style={{
-        width: size ?? 150,
+        width: size,
       }}
     >
       {View}
