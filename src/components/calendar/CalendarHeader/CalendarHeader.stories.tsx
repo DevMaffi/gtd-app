@@ -12,6 +12,7 @@ export default {
   component: StyledCalendarHeader,
   argTypes: {
     date: { control: 'object' },
+    scrollHeader: { control: 'boolean' },
     onDate: { action: 'clicked', table: { disable: true } },
   },
 } as ComponentMeta<typeof StyledCalendarHeader>
