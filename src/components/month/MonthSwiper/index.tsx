@@ -12,6 +12,8 @@ export interface MonthSwiperProps {
   onDate: (date: Date) => void
 }
 
+export type SwipeIncrementOption = 1 | -1
+
 const MonthSwiper: React.FC<MonthSwiperProps> = ({
   date,
   isOpen,
@@ -19,8 +21,6 @@ const MonthSwiper: React.FC<MonthSwiperProps> = ({
   onDropdown,
   onDate,
 }) => {
-  type SwipeIncrementOption = 1 | -1
-
   const swipe = (inc: SwipeIncrementOption) => () => {
     const now = getEnvDate()
     const nextDate = new Date(date.getFullYear(), date.getMonth())

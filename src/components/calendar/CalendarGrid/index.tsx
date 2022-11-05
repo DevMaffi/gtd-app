@@ -11,13 +11,13 @@ export interface CalendarGridProps {
   loading: boolean
 }
 
+export type CellType = 'prev' | 'next'
+
 const CalendarGrid: React.FC<CalendarGridProps> = ({
   date,
   tasks,
   loading,
 }) => {
-  type CellType = 'prev' | 'next'
-
   const prevDays = usePrevDays(date)
   const days = useDays(date)
   const nextDays = useNextDays(date)
