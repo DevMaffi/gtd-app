@@ -2,14 +2,16 @@ import { useState } from 'react'
 
 export type UseHttpReturnType = [() => Promise<void>, boolean, string]
 
-function useHttp(callback: () => Promise<void>): UseHttpReturnType {
+function useHttp(
+  callback: (...args: any[]) => Promise<void>
+): UseHttpReturnType {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
 
-  const httpFetch = async (): Promise<void> => {
+  const httpFetch = async (...args: any[]): Promise<void> => {
     try {
       setIsLoading(true)
-      await callback()
+      await callback(...args)
     } catch (error) {
       if (error instanceof Error) setError(error.message)
       setError('Unknown Error')
