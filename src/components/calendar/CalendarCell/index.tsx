@@ -9,7 +9,7 @@ export interface CalendarCellProps {
   prev: boolean
   next: boolean
   today: boolean
-  completed: boolean
+  passed: boolean
 }
 
 const CalendarCell: React.FC<CalendarCellProps> = ({
@@ -18,7 +18,7 @@ const CalendarCell: React.FC<CalendarCellProps> = ({
   prev,
   next,
   today,
-  completed,
+  passed,
 }) => {
   const rootClasses = new RootClasses('calendar__cell')
     .add({
@@ -32,9 +32,9 @@ const CalendarCell: React.FC<CalendarCellProps> = ({
       className: 'now',
     })
     .add({
-      condition: completed,
-      type: 'completed',
-      className: 'completed',
+      condition: passed,
+      type: 'passed',
+      className: 'passed',
     })
 
   return (

@@ -36,7 +36,7 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({
       )
 
       const today = compareDates(taskDueDate, now)
-      const completed = taskDueDate.getTime() < now.getTime() && !today
+      const passed = taskDueDate.getTime() < now.getTime() && !today
       const cellId = taskDueDate.toDateString()
 
       return (
@@ -47,7 +47,7 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({
           today={today}
           prev={type === 'prev'}
           next={type === 'next'}
-          completed={completed}
+          passed={passed}
         />
       )
     })

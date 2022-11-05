@@ -27,7 +27,7 @@ export default {
     longTitle: { control: 'boolean' },
     prev: { control: 'boolean', if: { arg: 'today', truthy: false } },
     today: { control: 'boolean' },
-    completed: { control: 'boolean', if: { arg: 'today', truthy: false } },
+    passed: { control: 'boolean', if: { arg: 'today', truthy: false } },
   },
 } as ComponentMeta<typeof StyledCalendarCell>
 
@@ -63,7 +63,7 @@ Previous.args = {
   dateNumber: 6,
   tasksAmount: 2,
   prev: true,
-  completed: true,
+  passed: true,
 }
 
 export const Today = Story.bind({})
@@ -73,11 +73,11 @@ Today.args = {
   today: true,
 }
 
-export const Completed = Story.bind({})
-Completed.args = {
+export const Passed = Story.bind({})
+Passed.args = {
   dateNumber: 6,
   tasksAmount: 2,
-  completed: true,
+  passed: true,
 }
 
 export const Overflowed = Story.bind({})
