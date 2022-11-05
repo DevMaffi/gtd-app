@@ -4,6 +4,15 @@ import { Bind } from 'types/decorators'
 
 class TasksApi implements ITasksClient {
   private tasks = {
+    [new Date(2021, 10, 30).toDateString()]: [
+      { _id: v4(), title: 'Task 1' },
+      { _id: v4(), title: 'Task 2' },
+      { _id: v4(), title: 'Task 3' },
+    ],
+    [new Date(2021, 11, 31).toDateString()]: [
+      { _id: v4(), title: 'Task 1' },
+      { _id: v4(), title: 'Task 2' },
+    ],
     [new Date(2022, 9, 27).toDateString()]: [
       { _id: v4(), title: 'Prepare for meeting' },
       { _id: v4(), title: 'Take 🐶 out for a walk' },
@@ -98,6 +107,15 @@ class TasksApi implements ITasksClient {
     [new Date(2022, 11, 4).toDateString()]: [
       { _id: v4(), title: 'Visit conference' },
       { _id: v4(), title: 'Watch movie with friends' },
+    ],
+    [new Date(2023, 0, 1).toDateString()]: [
+      { _id: v4(), title: 'Task 1' },
+      { _id: v4(), title: 'Task 2' },
+    ],
+    [new Date(2023, 1, 1).toDateString()]: [
+      { _id: v4(), title: 'Task 1' },
+      { _id: v4(), title: 'Task 2' },
+      { _id: v4(), title: 'Task 3' },
     ],
   }
 

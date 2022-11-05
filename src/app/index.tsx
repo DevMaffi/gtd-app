@@ -12,7 +12,7 @@ const App: React.FC = () => {
   const [date, setDate] = useState<Date>(getEnvDate())
   const [tasks, setTasks] = useState<ITasksResponse>({})
 
-  const prevYear = useRef<number>(0)
+  const yearsLoaded = useRef<number[]>([])
 
   const [fetchTasks, areTasksLoading, tasksError] = useHttp(
     async (): Promise<void> => {
@@ -31,13 +31,13 @@ const App: React.FC = () => {
        * prev year and first month of next year
        */
       const response = await tasksService.getByInterval(startDate, endDate)
-      setTasks(response)
+      setTasks({ ...tasks, ...response })
     }
   )
 
   useEffect(() => {
-    if (date.getFullYear() !== prevYear.current) {
-      prevYear.current = date.getFullYear()
+    if (!yearsLoaded.current.includes(date.getFullYear())) {
+      yearsLoaded.current.push(date.getFullYear())
       fetchTasks()
     }
   }, [date])
