@@ -13,7 +13,6 @@ export default {
   argTypes: {
     date: { control: 'object' },
     tasks: { control: 'object' },
-    tasksUpdates: { control: 'number', min: 0 },
   },
 } as ComponentMeta<typeof StyledCalendarItem>
 
@@ -42,5 +41,4 @@ export const Primary = Story.bind({})
 Primary.args = {
   date: getEnvDate(),
   tasks,
-  tasksUpdates: 0,
 }
