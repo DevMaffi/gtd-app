@@ -10,6 +10,8 @@ function useObserver({ ref, onEnter, onLeave }: UseObserverProps): void {
   const observer = useRef<IntersectionObserver | null>(null)
 
   useEffect(() => {
+    if (observer.current) observer.current.disconnect()
+
     const callback = (entries: IntersectionObserverEntry[]): void => {
       if (entries[0].isIntersecting) return onEnter()
       onLeave()
