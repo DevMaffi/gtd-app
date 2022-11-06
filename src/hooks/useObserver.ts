@@ -6,7 +6,7 @@ export interface UseObserverProps {
   onLeave: () => void
 }
 
-function useObserver({ ref, onEnter, onLeave }: UseObserverProps): void {
+const useObserver = ({ ref, onEnter, onLeave }: UseObserverProps): void => {
   const observer = useRef<IntersectionObserver | null>(null)
 
   useEffect(() => {
