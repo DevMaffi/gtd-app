@@ -1,20 +1,20 @@
 import data from 'data.json'
 
-export function getEnvDate(): Date {
+export const getEnvDate = (): Date => {
   if (process.env.NODE_ENV === 'development' && process.env.REACT_APP_DATE)
     return new Date(process.env.REACT_APP_DATE)
 
   return new Date()
 }
 
-export function getDayName(dayIndex: number): string {
+export const getDayName = (dayIndex: number): string => {
   const { days } = data.shortenings
 
   if (dayIndex === 0) return days[days.length - 1]
   return days[dayIndex - 1]
 }
 
-export function getDateString(date: number): string {
+export const getDateString = (date: number): string => {
   switch (date) {
     case 1:
     case 21:
@@ -31,7 +31,7 @@ export function getDateString(date: number): string {
   }
 }
 
-export function compareDates(prevDate: Date, nextDate: Date): boolean {
+export const compareDates = (prevDate: Date, nextDate: Date): boolean => {
   return (
     prevDate.getDate() === nextDate.getDate() &&
     prevDate.getMonth() === nextDate.getMonth() &&
