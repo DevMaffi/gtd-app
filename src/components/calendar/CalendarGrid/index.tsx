@@ -2,19 +2,17 @@ import { CalendarCell as Cell } from 'components/calendar'
 import { Loader } from 'components/UI'
 import { usePrevDays, useDays, useNextDays, useTypedSelector } from 'hooks'
 import { getEnvDate, compareDates } from 'utils/date'
-import { ITasksResponse } from 'model/interfaces'
 import './calendarGrid.sass'
-
-export interface CalendarGridProps {
-  tasks: ITasksResponse
-  loading: boolean
-}
 
 export type CellType = 'prev' | 'next'
 
-const CalendarGrid: React.FC<CalendarGridProps> = ({ tasks, loading }) => {
+const CalendarGrid: React.FC = () => {
   const timestamp = useTypedSelector(state => state.date)
   const date = new Date(timestamp)
+
+  const { tasks, areTasksLoading: loading } = useTypedSelector(
+    state => state.task
+  )
 
   const prevDays = usePrevDays(date)
   const days = useDays(date)
