@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-function useRendersCounter(): number {
+const useRendersCounter = (): number => {
   const counter = useRef<number>(0)
 
   useEffect(() => {
