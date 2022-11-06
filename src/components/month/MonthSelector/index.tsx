@@ -53,11 +53,7 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({ date, onDate }) => {
         yearOptions[yearIndex].value === now.getFullYear()
 
     return (monthIndex: number) => {
-      const optionDate = new Date(
-        date.getFullYear(),
-        monthIndex,
-        date.getDate()
-      )
+      const optionDate = new Date(date.getFullYear(), monthIndex, now.getDate())
       return compareDates(optionDate, now)
     }
   }
