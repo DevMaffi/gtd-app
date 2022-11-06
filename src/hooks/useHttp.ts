@@ -2,9 +2,9 @@ import { useState } from 'react'
 
 export type UseHttpReturnType = [() => Promise<void>, boolean, string]
 
-function useHttp(
+const useHttp = (
   callback: (...args: any[]) => Promise<void>
-): UseHttpReturnType {
+): UseHttpReturnType => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
 
