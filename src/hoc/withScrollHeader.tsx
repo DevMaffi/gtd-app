@@ -5,7 +5,7 @@ export interface WithScrollHeaderProps {
   topOffset: number
 }
 
-export interface IWithScrollHeader {
+export interface WithScrollHeaderComponentProps {
   scrollHeader: boolean
 }
 
