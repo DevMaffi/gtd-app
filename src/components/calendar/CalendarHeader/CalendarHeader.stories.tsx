@@ -3,7 +3,7 @@ import CalendarHeader, {
   CalendarHeaderProps,
 } from 'components/calendar/CalendarHeader'
 import withRootStyles from 'hoc/withRootStyles'
-import { getEnvDate } from 'utils/date'
+// import { getEnvDate } from 'utils/date'
 
 const StyledCalendarHeader = withRootStyles<CalendarHeaderProps>(CalendarHeader)
 
@@ -11,9 +11,9 @@ export default {
   title: 'Components/Calendar/Header',
   component: StyledCalendarHeader,
   argTypes: {
-    date: { control: 'object' },
+    // date: { control: 'object' },
     scrollHeader: { control: 'boolean' },
-    onDate: { action: 'clicked', table: { disable: true } },
+    // onDate: { action: 'clicked', table: { disable: true } },
   },
 } as ComponentMeta<typeof StyledCalendarHeader>
 
@@ -23,11 +23,11 @@ const Story: ComponentStory<typeof StyledCalendarHeader> = args => (
 
 export const Primary = Story.bind({})
 Primary.args = {
-  date: getEnvDate(),
+  // date: getEnvDate(),
 }
 
 export const ScrollHeader = Story.bind({})
 ScrollHeader.args = {
-  date: getEnvDate(),
+  // date: getEnvDate(),
   scrollHeader: true,
 }

@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { Dropdown } from 'components/dropdown'
 import { MonthSwiper } from 'components/month'
+import { useActions, useTypedSelector } from 'hooks'
 import { getEnvDate, compareDates } from 'utils/date'
 import {
   MonthSelectorDropdownView as DropdownView,
@@ -10,12 +11,12 @@ import {
 } from 'types/common'
 import data from 'data.json'
 
-export interface MonthSelectorProps {
-  date: Date
-  onDate: (date: Date) => void
-}
+const MonthSelector: React.FC = () => {
+  const timestamp = useTypedSelector(state => state.date)
+  const date = new Date(timestamp)
 
-const MonthSelector: React.FC<MonthSelectorProps> = ({ date, onDate }) => {
+  const { changeDate } = useActions()
+
   const yearOptions = useMemo<DropdownOption[]>(() => {
     const now = new Date(getEnvDate())
     const firstYear = now.getFullYear() - 3
@@ -80,7 +81,7 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({ date, onDate }) => {
       if (nextDate.getMonth() === now.getMonth())
         nextDate.setDate(now.getDate())
 
-      onDate(nextDate)
+      changeDate(nextDate.getTime())
     }
 
   const renderProp = ({
@@ -89,11 +90,9 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({ date, onDate }) => {
     onDropdown,
   }: DropdownRenderPropArgs<DropdownView>): React.ReactNode => (
     <MonthSwiper
-      date={date}
       isOpen={isOpen}
       dropdownView={dropdownView}
       onDropdown={onDropdown}
-      onDate={onDate}
     />
   )
 

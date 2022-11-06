@@ -1,14 +1,15 @@
 import { Heading, Button } from 'components/UI'
+import { useActions, useTypedSelector } from 'hooks'
 import { getEnvDate, getDayName, getDateString, compareDates } from 'utils/date'
 import RootClasses from 'utils/rootClasses'
 import './calendarTitle.sass'
 
-export interface CalendarTitleProps {
-  date: Date
-  onDate: (date: Date) => void
-}
+const CalendarTitle: React.FC = () => {
+  const timestamp = useTypedSelector(state => state.date)
+  const date = new Date(timestamp)
 
-const CalendarTitle: React.FC<CalendarTitleProps> = ({ date, onDate }) => {
+  const { changeDate } = useActions()
+
   let isNow = false
 
   const now = new Date(getEnvDate())
@@ -18,7 +19,9 @@ const CalendarTitle: React.FC<CalendarTitleProps> = ({ date, onDate }) => {
     date: getDateString(now.getDate()),
   }
 
-  const jumpBack = (): void => onDate(now)
+  const jumpBack = (): void => {
+    changeDate(now.getTime())
+  }
 
   if (compareDates(date, now)) isNow = true
   else

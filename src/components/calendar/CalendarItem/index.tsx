@@ -3,7 +3,6 @@ import { CalendarDays, CalendarGrid } from 'components/calendar'
 import { ITasksResponse } from 'model/interfaces'
 
 export interface CalendarProps {
-  date: Date
   tasks: ITasksResponse
   loading: boolean
   tasksError: string

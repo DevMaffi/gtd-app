@@ -5,15 +5,10 @@ import RootClasses from 'utils/rootClasses'
 import './calendarHeader.sass'
 
 export interface CalendarHeaderProps {
-  date: Date
   scrollHeader?: boolean
-  onDate: (date: Date) => void
 }
 
-const CalendarHeader: React.FC<CalendarHeaderProps> = ({
-  scrollHeader,
-  ...restProps
-}) => {
+const CalendarHeader: React.FC<CalendarHeaderProps> = ({ scrollHeader }) => {
   const rootClasses = new RootClasses(
     'calendar__header container flex bg-body'
   ).add({
@@ -26,8 +21,8 @@ const CalendarHeader: React.FC<CalendarHeaderProps> = ({
     <header className={rootClasses.toClassNameString()}>
       <div className="calendar__header-inner flex">
         <div className="calendar__header-date grid">
-          <CalendarTitle {...restProps} />
-          <MonthSelector {...restProps} />
+          <CalendarTitle />
+          <MonthSelector />
         </div>
         <Button className="calendar__header-button flex" ripple>
           <i className="ri-add-line"></i>

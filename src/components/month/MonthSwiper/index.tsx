@@ -1,26 +1,28 @@
 import { Button } from 'components/UI'
-import { MonthSelectorDropdownView as DropdownView } from 'types/common'
+import { useActions, useTypedSelector } from 'hooks'
 import { getEnvDate } from 'utils/date'
+import { MonthSelectorDropdownView as DropdownView } from 'types/common'
 import data from 'data.json'
 import './monthSwiper.sass'
 
 export interface MonthSwiperProps {
-  date: Date
   isOpen: boolean
   dropdownView: DropdownView
   onDropdown: (dropdownView: DropdownView) => void
-  onDate: (date: Date) => void
 }
 
 export type SwipeIncrementOption = 1 | -1
 
 const MonthSwiper: React.FC<MonthSwiperProps> = ({
-  date,
   isOpen,
   dropdownView,
   onDropdown,
-  onDate,
 }) => {
+  const timestamp = useTypedSelector(state => state.date)
+  const date = new Date(timestamp)
+
+  const { changeDate } = useActions()
+
   const swipe = (inc: SwipeIncrementOption) => () => {
     const now = getEnvDate()
     const nextDate = new Date(date.getFullYear(), date.getMonth())
@@ -30,7 +32,7 @@ const MonthSwiper: React.FC<MonthSwiperProps> = ({
 
     if (nextDate.getMonth() === now.getMonth()) nextDate.setDate(now.getDate())
 
-    onDate(nextDate)
+    changeDate(nextDate.getTime())
   }
 
   const displayDropdown = (): void => {

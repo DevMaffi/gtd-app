@@ -1,15 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
 import { CalendarView } from 'components/views'
+import { useHttp, useTypedSelector } from 'hooks'
 import TasksService from 'services/fakeTasksService'
-import { useHttp } from 'hooks'
-import { getEnvDate } from 'utils/date'
 import { ITasksResponse } from 'model/interfaces'
 import { TasksApi } from 'model/classes'
 
 const App: React.FC = () => {
   const tasksService = new TasksService(new TasksApi())
 
-  const [date, setDate] = useState<Date>(getEnvDate())
+  const timestamp = useTypedSelector(state => state.date)
+  const date = new Date(timestamp)
+
   const [tasks, setTasks] = useState<ITasksResponse>({})
 
   const yearsLoaded = useRef<number[]>([])
@@ -45,11 +46,9 @@ const App: React.FC = () => {
   return (
     <CalendarView
       topOffset={20}
-      date={date}
       tasks={tasks}
       loading={areTasksLoading}
       tasksError={tasksError}
-      onDate={setDate}
     />
   )
 }

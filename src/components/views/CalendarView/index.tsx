@@ -5,33 +5,24 @@ import withScrollHeader, {
 import { ITasksResponse } from 'model/interfaces'
 
 export interface CalendarViewProps {
-  date: Date
   tasks: ITasksResponse
   loading: boolean
   tasksError: string
-  onDate: (date: Date) => void
 }
 
 export type CalendarViewWithScrollHeaderProps = WithScrollHeaderComponentProps &
   CalendarViewProps
 
 const CalendarView: React.FC<CalendarViewWithScrollHeaderProps> = ({
-  date,
   scrollHeader,
   tasks,
   loading,
   tasksError,
-  onDate,
 }) => {
   return (
     <div className="calendar container">
-      <CalendarHeader date={date} scrollHeader={scrollHeader} onDate={onDate} />
-      <Calendar
-        date={date}
-        tasks={tasks}
-        loading={loading}
-        tasksError={tasksError}
-      />
+      <CalendarHeader scrollHeader={scrollHeader} />
+      <Calendar tasks={tasks} loading={loading} tasksError={tasksError} />
     </div>
   )
 }
