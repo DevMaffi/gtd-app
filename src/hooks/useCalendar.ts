@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
-export function usePrevDays(date: Date): number[] {
-  const prevDays = useMemo<number[]>(() => {
+export const usePrevDays = (date: Date): number[] => {
+  return useMemo<number[]>(() => {
     const prevLastDay = new Date(
       date.getFullYear(),
       date.getMonth(),
@@ -25,12 +25,10 @@ export function usePrevDays(date: Date): number[] {
 
     return prevDaysArr
   }, [date])
-
-  return prevDays
 }
 
-export function useDays(date: Date): number[] {
-  const days = useMemo<number[]>(() => {
+export const useDays = (date: Date): number[] => {
+  return useMemo<number[]>(() => {
     const lastDay = new Date(
       date.getFullYear(),
       date.getMonth() + 1,
@@ -45,12 +43,10 @@ export function useDays(date: Date): number[] {
 
     return daysArr
   }, [date])
-
-  return days
 }
 
-export function useNextDays(date: Date): number[] {
-  const nextDays = useMemo(() => {
+export const useNextDays = (date: Date): number[] => {
+  return useMemo(() => {
     const lastDayIndex = new Date(
       date.getFullYear(),
       date.getMonth() + 1,
@@ -67,6 +63,4 @@ export function useNextDays(date: Date): number[] {
 
     return nextDaysArr
   }, [date])
-
-  return nextDays
 }
