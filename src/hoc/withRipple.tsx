@@ -9,14 +9,11 @@ export type WithRippleReturnType<T> = React.FC<
   WithRippleProps & Omit<T, keyof WithRippleProps>
 >
 
-function withRipple<R extends HTMLElement, P extends { className?: string }>(
-  Component: React.FC<any>
-): WithRippleReturnType<P> {
-  const WithRipple: WithRippleReturnType<P> = ({
-    ripple,
-    className,
-    ...restProps
-  }) => {
+const withRipple =
+  <R extends HTMLElement, P extends { className?: string }>(
+    Component: React.FC<any>
+  ): WithRippleReturnType<P> =>
+  ({ ripple, className, ...restProps }) => {
     const ref = useRef<R>(null)
 
     const rootClasses = new RootClasses('ripple').add({
@@ -53,8 +50,5 @@ function withRipple<R extends HTMLElement, P extends { className?: string }>(
       </div>
     )
   }
-
-  return WithRipple
-}
 
 export default withRipple
