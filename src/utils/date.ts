@@ -20,12 +20,15 @@ export const getDateString = (date: number): string => {
     case 21:
     case 31:
       return `${date}st`
+
     case 2:
     case 22:
       return `${date}nd`
+
     case 3:
     case 23:
       return `${date}rd`
+
     default:
       return `${date}th`
   }
