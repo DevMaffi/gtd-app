@@ -16,4 +16,4 @@ const CalendarView: React.FC<ScheduleWithScrollHeaderProps> = ({
   )
 }
 
-export default withScrollHeader<{}>(CalendarView)
+export default withScrollHeader(CalendarView)

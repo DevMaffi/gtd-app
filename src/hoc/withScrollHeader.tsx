@@ -14,7 +14,9 @@ export type WithScrollHeaderReturnType<T> = React.FC<
 >
 
 const withScrollHeader =
-  <T,>(Component: React.FC<any>): WithScrollHeaderReturnType<T> =>
+  <T extends {} = {}>(
+    Component: React.FC<any>
+  ): WithScrollHeaderReturnType<T> =>
   ({ topOffset, ...restProps }) => {
     const [scrollHeader, setScrollHeader] = useState<boolean>(false)
     const firstElement = useRef<HTMLDivElement>(null)
