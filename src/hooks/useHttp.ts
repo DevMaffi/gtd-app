@@ -14,7 +14,7 @@ const useHttp = (
       await callback(...args)
     } catch (error) {
       if (error instanceof Error) setError(error.message)
-      setError('Unknown Error')
+      else setError('Unknown Error')
     } finally {
       setIsLoading(false)
     }
