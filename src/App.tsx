@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { CalendarView } from 'components/views'
+import Schedule from 'components/Schedule'
 import { useActions, useTypedSelector } from 'hooks'
 
 const App: React.FC = () => {
@@ -17,7 +17,7 @@ const App: React.FC = () => {
     }
   }, [date])
 
-  return <CalendarView topOffset={20} />
+  return <Schedule topOffset={20} />
 }
 
 export default App

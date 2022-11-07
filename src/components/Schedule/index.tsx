@@ -3,9 +3,9 @@ import withScrollHeader, {
   WithScrollHeaderComponentProps,
 } from 'hoc/withScrollHeader'
 
-export type CalendarViewWithScrollHeaderProps = WithScrollHeaderComponentProps
+export type ScheduleWithScrollHeaderProps = WithScrollHeaderComponentProps
 
-const CalendarView: React.FC<CalendarViewWithScrollHeaderProps> = ({
+const CalendarView: React.FC<ScheduleWithScrollHeaderProps> = ({
   scrollHeader,
 }) => {
   return (
