@@ -1,18 +1,27 @@
+import { createSelector } from '@reduxjs/toolkit'
+import { RootState } from 'app/store'
 import { CalendarCell as Cell } from 'components/calendar'
 import { Loader } from 'components/UI'
 import { usePrevDays, useDays, useNextDays, useTypedSelector } from 'hooks'
 import { getEnvDate, compareDates } from 'utils/date'
+import { DateState } from 'types/date'
+import { TaskState } from 'types/task'
 import './calendarGrid.sass'
 
 export type CellType = 'prev' | 'next'
 
 const CalendarGrid: React.FC = () => {
-  const timestamp = useTypedSelector(state => state.date)
-  const date = new Date(timestamp)
-
-  const { tasks, areTasksLoading: loading } = useTypedSelector(
-    state => state.task
+  const selectGridData = createSelector(
+    (state: RootState): DateState => state.date,
+    (state: RootState): TaskState => state.task,
+    (date, task) => ({
+      date: new Date(date),
+      task,
+    })
   )
+
+  const { date, task } = useTypedSelector(selectGridData)
+  const { tasks, areTasksLoading: loading } = task
 
   const prevDays = usePrevDays(date)
   const days = useDays(date)

@@ -1,10 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
-import { dateReducer, taskReducer } from 'app/reducers'
+import { counterReducer, dateReducer, taskReducer } from 'app/reducers'
 
 export const store = configureStore({
   reducer: {
     date: dateReducer,
     task: taskReducer,
+    counter: counterReducer,
   },
 })
 
