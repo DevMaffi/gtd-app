@@ -11,16 +11,19 @@ const counterReducer = (
   switch (action.type) {
     case CounterActionTypes.INCREMENT:
       return {
+        ...state,
         value: state.value + 1,
       }
 
     case CounterActionTypes.DECREMENT:
       return {
+        ...state,
         value: state.value - 1,
       }
 
     case CounterActionTypes.INCREMENT_BY_AMOUNT:
       return {
+        ...state,
         value: state.value + action.payload,
       }
 
