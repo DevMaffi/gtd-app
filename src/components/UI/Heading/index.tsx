@@ -1,4 +1,4 @@
-import RootClasses from 'utils/rootClasses'
+import classNames from 'classnames'
 import './heading.sass'
 
 export interface HeadingProps {
@@ -7,13 +7,14 @@ export interface HeadingProps {
 }
 
 const Heading: React.FC<HeadingProps> = ({ children, className }) => {
-  const rootClasses = new RootClasses('heading fs-900 text-light').add({
-    condition: !!className,
-    type: 'extra',
-    className: className ?? '',
-  })
+  const headingClasses = classNames(
+    'heading',
+    'fs-900',
+    'text-light',
+    className
+  )
 
-  return <h1 className={rootClasses.toClassNameString()}>{children}</h1>
+  return <h1 className={headingClasses}>{children}</h1>
 }
 
 export default Heading

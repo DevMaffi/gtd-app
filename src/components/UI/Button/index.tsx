@@ -1,6 +1,6 @@
 import React from 'react'
+import classNames from 'classnames'
 import withRipple from 'hoc/withRipple'
-import RootClasses from 'utils/rootClasses'
 import './button.sass'
 
 export type ButtonVariant = 'primary' | 'danger' | 'arrow' | 'pill'
@@ -19,29 +19,17 @@ const Button: React.FC<ButtonProps> = React.forwardRef<
   HTMLButtonElement,
   ButtonProps
 >(({ children, variant = 'primary', className, label, ...restProps }, ref) => {
-  const rootClasses = new RootClasses('button text-light')
-    .add({
-      condition: variant === 'danger',
-      type: 'danger',
-      className: 'bg-second',
-    })
-    .add({
-      condition: variant === 'arrow',
-      type: 'arrow',
-      className: 'button--arrow flex bg-container-light',
-    })
-    .add({
-      condition: variant === 'pill',
-      type: 'pill',
-      className: 'button--pill flex bg-container-light fs-200',
-    })
-    .add({
-      condition: !!className,
-      type: 'extra',
-      className: className ?? '',
-      alwaysPrimary: true,
-    })
-    .addPrimary('bg-first')
+  const buttonClasses = classNames(
+    'button',
+    'text-light',
+    {
+      'bg-second': variant === 'danger',
+      'button--arrow flex bg-container-light': variant === 'arrow',
+      'button--pill flex bg-container-light fs-200': variant === 'pill',
+    },
+    className,
+    { 'bg-first': variant === 'primary' }
+  )
 
   if (children && label)
     console.warn(
@@ -49,12 +37,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef<
     )
 
   return (
-    <button
-      ref={ref}
-      type="button"
-      className={rootClasses.toClassNameString()}
-      {...restProps}
-    >
+    <button ref={ref} type="button" className={buttonClasses} {...restProps}>
       {children || label}
     </button>
   )

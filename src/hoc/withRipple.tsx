@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import RootClasses from 'utils/rootClasses'
+import classNames from 'classnames'
 
 export interface WithRippleProps {
   ripple?: boolean
@@ -16,11 +16,7 @@ const withRipple =
   ({ ripple, className, ...restProps }) => {
     const ref = useRef<R>(null)
 
-    const rootClasses = new RootClasses('ripple').add({
-      condition: !!className,
-      type: 'extra',
-      className: className ?? '',
-    })
+    const withRippleClasses = classNames('ripple', className)
 
     const addRipple = (e: React.MouseEvent<HTMLDivElement>): void => {
       if (ripple) {
@@ -42,11 +38,7 @@ const withRipple =
 
     return (
       <div onClick={addRipple}>
-        <Component
-          ref={ref}
-          className={rootClasses.toClassNameString()}
-          {...restProps}
-        />
+        <Component ref={ref} className={withRippleClasses} {...restProps} />
       </div>
     )
   }

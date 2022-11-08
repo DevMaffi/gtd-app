@@ -1,7 +1,7 @@
+import classNames from 'classnames'
 import { CalendarTitle } from 'components/calendar'
 import { MonthSelector } from 'components/month'
 import { Button } from 'components/UI'
-import RootClasses from 'utils/rootClasses'
 import './calendarHeader.sass'
 
 export interface CalendarHeaderProps {
@@ -9,16 +9,18 @@ export interface CalendarHeaderProps {
 }
 
 const CalendarHeader: React.FC<CalendarHeaderProps> = ({ scrollHeader }) => {
-  const rootClasses = new RootClasses(
-    'calendar__header container flex bg-body'
-  ).add({
-    condition: !!scrollHeader,
-    type: 'scrollHeader',
-    className: 'scroll-header',
-  })
+  const headerClasses = classNames(
+    'calendar__header',
+    'container',
+    'flex',
+    'bg-body',
+    {
+      'scroll-header': scrollHeader,
+    }
+  )
 
   return (
-    <header className={rootClasses.toClassNameString()}>
+    <header className={headerClasses}>
       <div className="calendar__header-inner flex">
         <div className="calendar__header-date grid">
           <CalendarTitle />

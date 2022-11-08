@@ -1,4 +1,4 @@
-import RootClasses from 'utils/rootClasses'
+import classNames from 'classnames'
 import { DropdownOptionValue } from 'types/common'
 import './dropdownMenuItem.sass'
 
@@ -22,27 +22,21 @@ const DropdownMenuItem: React.FC<DropdownMenuItemProps> = ({
   className,
   ...restProps
 }) => {
-  const rootClasses = new RootClasses(
-    'dropdown__menu-item flex fs-300 text-light'
+  const dropdownMenuItemClasses = classNames(
+    'dropdown__menu-item',
+    'flex',
+    'fs-300',
+    'text-light',
+    {
+      active,
+      'bg-first': active,
+      default: defaultOption,
+    },
+    className
   )
-    .add({
-      condition: active,
-      type: 'active',
-      className: 'active bg-first',
-    })
-    .add({
-      condition: defaultOption,
-      type: 'default',
-      className: 'default',
-    })
-    .add({
-      condition: !!className,
-      type: 'extra',
-      className: className ?? '',
-    })
 
   return (
-    <span className={rootClasses.toClassNameString()} {...restProps}>
+    <span className={dropdownMenuItemClasses} {...restProps}>
       {data}
     </span>
   )

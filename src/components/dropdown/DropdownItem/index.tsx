@@ -1,6 +1,6 @@
 import { useState } from 'react'
+import classNames from 'classnames'
 import { DropdownMenu } from 'components/dropdown'
-import RootClasses from 'utils/rootClasses'
 import {
   ArrowFn,
   DropdownOption,
@@ -35,14 +35,12 @@ const Dropdown = <T,>({
 }: DropdownProps<T>) => {
   const [dropdownView, setDropdownView] = useState<T>(null!)
 
-  const rootClasses = new RootClasses('dropdown flex').add({
-    condition: !!dropdownView,
-    type: 'dropdownView',
-    className: 'open',
+  const dropdownClasses = classNames('dropdown', 'flex', {
+    open: dropdownView,
   })
 
   return (
-    <div className={rootClasses.toClassNameString()}>
+    <div className={dropdownClasses}>
       {render({
         dropdownView,
         isOpen: !!dropdownView,
