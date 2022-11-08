@@ -5,7 +5,7 @@ import RootClasses from 'utils/rootClasses'
 import './calendarTitle.sass'
 
 const CalendarTitle: React.FC = () => {
-  const timestamp = useTypedSelector(state => state.date)
+  const { timestamp } = useTypedSelector(state => state.date)
   const date = new Date(timestamp)
 
   const { changeDate } = useActions()

@@ -3,7 +3,7 @@ import Schedule from 'components/Schedule'
 import { useActions, useTypedSelector } from 'hooks'
 
 const App: React.FC = () => {
-  const timestamp = useTypedSelector(state => state.date)
+  const { timestamp } = useTypedSelector(state => state.date)
   const date = new Date(timestamp)
 
   const { fetchTasks } = useActions()

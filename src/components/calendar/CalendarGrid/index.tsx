@@ -4,7 +4,6 @@ import { CalendarCell as Cell } from 'components/calendar'
 import { Loader } from 'components/UI'
 import { usePrevDays, useDays, useNextDays, useTypedSelector } from 'hooks'
 import { getEnvDate, compareDates } from 'utils/date'
-import { DateState } from 'types/date'
 import { TaskState } from 'types/task'
 import './calendarGrid.sass'
 
@@ -12,10 +11,10 @@ export type CellType = 'prev' | 'next'
 
 const CalendarGrid: React.FC = () => {
   const selectGridData = createSelector(
-    (state: RootState): DateState => state.date,
+    (state: RootState): number => state.date.timestamp,
     (state: RootState): TaskState => state.task,
-    (date, task) => ({
-      date: new Date(date),
+    (timestamp, task) => ({
+      date: new Date(timestamp),
       task,
     })
   )

@@ -18,7 +18,7 @@ const MonthSwiper: React.FC<MonthSwiperProps> = ({
   dropdownView,
   onDropdown,
 }) => {
-  const timestamp = useTypedSelector(state => state.date)
+  const { timestamp } = useTypedSelector(state => state.date)
   const date = new Date(timestamp)
 
   const { changeDate } = useActions()

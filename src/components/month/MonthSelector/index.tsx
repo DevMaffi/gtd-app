@@ -12,7 +12,7 @@ import {
 import data from 'data.json'
 
 const MonthSelector: React.FC = () => {
-  const timestamp = useTypedSelector(state => state.date)
+  const { timestamp } = useTypedSelector(state => state.date)
   const date = new Date(timestamp)
 
   const { changeDate } = useActions()

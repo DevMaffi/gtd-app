@@ -1,4 +1,6 @@
-export type DateState = number
+export type DateState = {
+  timestamp: number
+}
 
 export enum DateActionTypes {
   SET_INITIAL_DATE = 'SET_INITIAL_DATE',
