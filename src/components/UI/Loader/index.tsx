@@ -1,11 +1,16 @@
 import { LottieOptions, useLottie } from 'lottie-react'
 import animationData from 'resources/lotties/loader.json'
+import './loader.sass'
 
 export interface LoaderProps {
   size?: string | number
 }
 
-const Loader: React.FC<LoaderProps> = ({ size = 150 }) => {
+export interface LoaderContainerProps extends LoaderProps {
+  isActive: boolean
+}
+
+const Loader: React.FC<LoaderProps> = ({ size }) => {
   const options: LottieOptions = {
     animationData: animationData,
     loop: true,
@@ -24,4 +29,19 @@ const Loader: React.FC<LoaderProps> = ({ size = 150 }) => {
   )
 }
 
-export default Loader
+const LoaderContainer: React.FC<LoaderContainerProps> = ({
+  isActive,
+  size = 150,
+}) => {
+  return (
+    <>
+      {isActive && (
+        <div className="loader flex">
+          <Loader size={size} />
+        </div>
+      )}
+    </>
+  )
+}
+
+export default LoaderContainer

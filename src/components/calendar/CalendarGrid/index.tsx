@@ -58,12 +58,8 @@ const CalendarGrid: React.FC = () => {
   }
 
   return (
-    <div className="calendar__grid ">
-      {loading && (
-        <div className="calendar__grid-loader flex">
-          <Loader />
-        </div>
-      )}
+    <div className="calendar__grid">
+      <Loader isActive={loading} />
       <div className="calendar__grid-inner grid">
         {renderCells(prevDays, 'prev')}
         {renderCells(days)}
