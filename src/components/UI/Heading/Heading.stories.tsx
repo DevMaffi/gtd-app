@@ -1,8 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Heading, { HeadingProps } from 'components/UI/Heading'
-import withRootStyles from 'hoc/withRootStyles'
+import withRootContext from 'hoc/withRootContext'
 
-const StyledHeading = withRootStyles<HeadingProps>(Heading)
+const RootedHeading = withRootContext<HeadingProps>(Heading)
 
 const headings = {
   primary: <>Primary - heading example</>,
@@ -15,7 +15,7 @@ const headings = {
 
 export default {
   title: 'Components/UI/Heading',
-  component: StyledHeading,
+  component: RootedHeading,
   argTypes: {
     children: {
       options: Object.keys(headings),
@@ -23,10 +23,10 @@ export default {
       control: 'radio',
     },
   },
-} as ComponentMeta<typeof StyledHeading>
+} as ComponentMeta<typeof RootedHeading>
 
-const Story: ComponentStory<typeof StyledHeading> = args => (
-  <StyledHeading {...args} />
+const Story: ComponentStory<typeof RootedHeading> = args => (
+  <RootedHeading {...args} />
 )
 
 export const Primary = Story.bind({})

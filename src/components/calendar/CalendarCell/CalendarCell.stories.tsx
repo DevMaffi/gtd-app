@@ -1,19 +1,19 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { CalendarCell } from 'components/calendar'
 import { CalendarCellProps } from 'components/calendar/CalendarCell'
-import withRootStyles from 'hoc/withRootStyles'
+import withRootContext from 'hoc/withRootContext'
 
 type CalendarCellStoriesProps = CalendarCellProps & {
   longTitle?: boolean
   tasksAmount?: number
 }
 
-const StyledCalendarCell =
-  withRootStyles<CalendarCellStoriesProps>(CalendarCell)
+const RootedCalendarCell =
+  withRootContext<CalendarCellStoriesProps>(CalendarCell)
 
 export default {
   title: 'Components/Calendar/Cell',
-  component: StyledCalendarCell,
+  component: RootedCalendarCell,
   decorators: [
     Story => (
       <div style={{ maxWidth: 200 }}>
@@ -29,9 +29,9 @@ export default {
     today: { control: 'boolean' },
     passed: { control: 'boolean', if: { arg: 'today', truthy: false } },
   },
-} as ComponentMeta<typeof StyledCalendarCell>
+} as ComponentMeta<typeof RootedCalendarCell>
 
-const Story: ComponentStory<typeof StyledCalendarCell> = ({
+const Story: ComponentStory<typeof RootedCalendarCell> = ({
   longTitle,
   tasksAmount,
   tasks,
@@ -42,7 +42,7 @@ const Story: ComponentStory<typeof StyledCalendarCell> = ({
     title: longTitle ? 'Lörem ipsum kesk yspegon' : `Task ${t + 1}`,
   }))
 
-  return <StyledCalendarCell tasks={tasks} {...args} />
+  return <RootedCalendarCell tasks={tasks} {...args} />
 }
 
 export const Primary = Story.bind({})

@@ -1,22 +1,24 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Loader, { LoaderProps } from 'components/UI/Loader'
-import withRootStyles from 'hoc/withRootStyles'
+import Loader, { LoaderContainerProps } from 'components/UI/Loader'
+import withRootContext from 'hoc/withRootContext'
 
-const StyledLoader = withRootStyles<LoaderProps>(Loader)
+const RootedLoader = withRootContext<LoaderContainerProps>(Loader)
 
 export default {
   title: 'Components/UI/Loader',
-  component: StyledLoader,
+  component: RootedLoader,
   argTypes: {
-    size: { control: { type: 'range', min: 100, max: 500, step: 50 } },
+    isActive: { control: 'boolean' },
+    size: { control: { type: 'range', min: 100, max: 300, step: 50 } },
   },
-} as ComponentMeta<typeof StyledLoader>
+} as ComponentMeta<typeof RootedLoader>
 
-const Story: ComponentStory<typeof StyledLoader> = args => (
-  <StyledLoader {...args} />
+const Story: ComponentStory<typeof RootedLoader> = args => (
+  <RootedLoader {...args} />
 )
 
 export const Primary = Story.bind({})
 Primary.args = {
+  isActive: true,
   size: 150,
 }

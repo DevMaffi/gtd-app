@@ -2,32 +2,26 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import CalendarHeader, {
   CalendarHeaderProps,
 } from 'components/calendar/CalendarHeader'
-import withRootStyles from 'hoc/withRootStyles'
-// import { getEnvDate } from 'utils/date'
+import withRootContext from 'hoc/withRootContext'
 
-const StyledCalendarHeader = withRootStyles<CalendarHeaderProps>(CalendarHeader)
+const RootedCalendarHeader =
+  withRootContext<CalendarHeaderProps>(CalendarHeader)
 
 export default {
   title: 'Components/Calendar/Header',
-  component: StyledCalendarHeader,
+  component: RootedCalendarHeader,
   argTypes: {
-    // date: { control: 'object' },
     scrollHeader: { control: 'boolean' },
-    // onDate: { action: 'clicked', table: { disable: true } },
   },
-} as ComponentMeta<typeof StyledCalendarHeader>
+} as ComponentMeta<typeof RootedCalendarHeader>
 
-const Story: ComponentStory<typeof StyledCalendarHeader> = args => (
-  <StyledCalendarHeader {...args} />
+const Story: ComponentStory<typeof RootedCalendarHeader> = args => (
+  <RootedCalendarHeader {...args} />
 )
 
 export const Primary = Story.bind({})
-Primary.args = {
-  // date: getEnvDate(),
-}
 
 export const ScrollHeader = Story.bind({})
 ScrollHeader.args = {
-  // date: getEnvDate(),
   scrollHeader: true,
 }
