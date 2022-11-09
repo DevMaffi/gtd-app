@@ -12,18 +12,18 @@ export const fetchTasks =
       dispatch({ type: TaskActionTypes.FETCH_TASKS_PENDING })
 
       /**
-       * @type {Date} - Last month of prev year
+       * @type {Date} - First day of last month in year before current date
        */
       const startDate = new Date(date.getFullYear(), -1, 1)
 
       /**
-       * @type {Date} - First month of next year
+       * @type {Date} - Last day of first month in year after current date
        */
       const endDate = new Date(date.getFullYear() + 1, 1, -1)
 
       /**
-       * @type {Object} - Object of tasks that are in between last month of
-       * prev year and first month of next year
+       * @type {Object} - Object of tasks that are in between startDate and
+       * endDate
        */
       const response = await tasksService.getByInterval(startDate, endDate)
 
