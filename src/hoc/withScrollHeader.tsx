@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import { useObserver } from 'hooks'
 
 export interface WithScrollHeaderProps {
-  topOffset: number
+  topOffset?: number
 }
 
 export interface WithScrollHeaderComponentProps {
@@ -17,7 +17,7 @@ const withScrollHeader =
   <T extends {} = {}>(
     Component: React.FC<any>
   ): WithScrollHeaderReturnType<T> =>
-  ({ topOffset, ...restProps }) => {
+  ({ topOffset = 20, ...restProps }) => {
     const [scrollHeader, setScrollHeader] = useState<boolean>(false)
     const firstElement = useRef<HTMLDivElement>(null)
 

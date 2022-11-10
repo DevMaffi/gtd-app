@@ -33,7 +33,7 @@ const App: React.FC = () => {
     }
   }, [date])
 
-  return <Schedule topOffset={20} />
+  return <Schedule />
 }
 
 export default App
