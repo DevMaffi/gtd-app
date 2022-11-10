@@ -5,7 +5,7 @@ import withScrollHeader, {
 
 export type ScheduleProps = WithScrollHeaderComponentProps
 
-const CalendarView: React.FC<ScheduleProps> = ({ scrollHeader }) => {
+const Schedule: React.FC<ScheduleProps> = ({ scrollHeader }) => {
   return (
     <div className="calendar container">
       <CalendarHeader scrollHeader={scrollHeader} />
@@ -14,4 +14,4 @@ const CalendarView: React.FC<ScheduleProps> = ({ scrollHeader }) => {
   )
 }
 
-export default withScrollHeader(CalendarView)
+export default withScrollHeader(Schedule)
