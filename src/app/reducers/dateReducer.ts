@@ -1,5 +1,5 @@
-import { DateAction, DateActionTypes, DateState } from 'types/date'
 import { getEnvDate } from 'utils/date'
+import { DateAction, DateActionTypes, DateState } from 'types/date'
 
 const initialState: DateState = {
   timestamp: getEnvDate().getTime(),
