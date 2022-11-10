@@ -1,5 +1,6 @@
 import { Dispatch } from '@reduxjs/toolkit'
 import { ITasksResponse } from 'model/interfaces'
+import { HttpFetchCallback } from 'types/common'
 import { TaskAction, TaskActionTypes } from 'types/task'
 
 export const fetchTasksPendingActionCreator = (): TaskAction => ({
@@ -21,7 +22,7 @@ export const fetchTasksRejectedActionCreator = (
 })
 
 export const fetchTasks =
-  (callback: (...args: any[]) => Promise<ITasksResponse>) =>
+  (callback: HttpFetchCallback<ITasksResponse>) =>
   async (dispatch: Dispatch<TaskAction>): Promise<void> => {
     try {
       dispatch(fetchTasksPendingActionCreator())

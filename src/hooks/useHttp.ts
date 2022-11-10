@@ -1,10 +1,9 @@
 import { useState } from 'react'
+import { HttpFetchCallback } from 'types/common'
 
 export type UseHttpReturnType = [() => Promise<void>, boolean, string]
 
-const useHttp = (
-  callback: (...args: any[]) => Promise<void>
-): UseHttpReturnType => {
+const useHttp = (callback: HttpFetchCallback<void>): UseHttpReturnType => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
 

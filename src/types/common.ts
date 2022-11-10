@@ -1,5 +1,7 @@
 export type ArrowFn<T = any> = (...args: any[]) => T
 
+export type HttpFetchCallback<T> = (...args: any[]) => Promise<T>
+
 export type DropdownOptionValue = string | number
 
 export type DropdownOption = {
