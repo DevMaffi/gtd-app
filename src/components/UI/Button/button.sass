@@ -12,8 +12,24 @@
   position: relative
   cursor: pointer
   overflow: hidden
+  transition: var(--tr-ease)
   z-index: var(--z-above)
 
+  &:disabled
+    background-color: hsl(var(--clr-container-light))
+    color: hsl(var(--clr-text))
+    cursor: initial
+
+  &:hover:not(:disabled)
+    box-shadow: 0px 6px 0px hsl(var(--clr-border-dark) / .25)
+    translate: 0 -2px
+
+  &:active:not(:disabled)
+    box-shadow: none !important
+    translate: initial
+
+.button--arrow,
+.button--pill
   &:before
     content: ''
     width: 100%
@@ -23,13 +39,11 @@
     transition: var(--tr-ease)
     z-index: var(--z-backdrop)
 
-  &:disabled
-    background-color: hsl(var(--clr-container-light))
-    color: hsl(var(--clr-text))
-    cursor: initial
+  &:hover:not(:disabled)
+    box-shadow: 0px 4px 0px hsl(var(--clr-border-dark) / .25)
 
-  &:hover:not(:disabled):before
-    background-color: hsl(var(--clr-text) / .1)
+    &:before
+      background-color: hsl(var(--clr-text) / .1)
 
 .button--arrow
   justify-content: center
