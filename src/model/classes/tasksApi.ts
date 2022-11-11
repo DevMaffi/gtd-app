@@ -8,6 +8,8 @@ class TasksApi implements ITasksClient {
       { _id: v4(), title: 'Task 1' },
       { _id: v4(), title: 'Task 2' },
       { _id: v4(), title: 'Task 3' },
+      { _id: v4(), title: 'Task 4' },
+      { _id: v4(), title: 'Task 5' },
     ],
     [new Date(2021, 11, 31).toDateString()]: [
       { _id: v4(), title: 'Task 1' },
@@ -32,6 +34,7 @@ class TasksApi implements ITasksClient {
       { _id: v4(), title: 'Take 🐶 out for a walk' },
       { _id: v4(), title: 'Deploy new site' },
       { _id: v4(), title: 'Meet with friends' },
+      { _id: v4(), title: 'Visit conference with boss' },
     ],
     [new Date(2022, 10, 4).toDateString()]: [
       { _id: v4(), title: 'Research v1 personas' },
@@ -52,6 +55,7 @@ class TasksApi implements ITasksClient {
       { _id: v4(), title: 'Multiple email logins' },
     ],
     [new Date(2022, 10, 13).toDateString()]: [
+      { _id: v4(), title: 'Take 🐶 out for a walk' },
       { _id: v4(), title: 'Add one of this emojis: 😇🐶🌮' },
       { _id: v4(), title: 'Define new emojis to be added' },
       { _id: v4(), title: 'Improve third party integrations' },
@@ -105,6 +109,7 @@ class TasksApi implements ITasksClient {
       { _id: v4(), title: 'Database tuning' },
     ],
     [new Date(2022, 11, 4).toDateString()]: [
+      { _id: v4(), title: 'Take 🐶 out for a walk' },
       { _id: v4(), title: 'Visit conference' },
       { _id: v4(), title: 'Watch movie with friends' },
     ],
