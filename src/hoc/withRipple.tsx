@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import classNames from 'classnames'
+import { getOffset } from 'utils/offset'
 
 export interface WithRippleProps {
   ripple?: boolean
@@ -10,35 +10,62 @@ export type WithRippleReturnType<T> = React.FC<
 >
 
 const withRipple =
-  <R extends HTMLElement, P extends { className?: string }>(
+  <R extends HTMLElement, P>(
     Component: React.FC<any>
   ): WithRippleReturnType<P> =>
-  ({ ripple, className, ...restProps }) => {
+  ({ ripple, ...restProps }) => {
     const ref = useRef<R>(null)
 
-    const withRippleClasses = classNames('ripple', className)
+    const playRippleEffect = (e: React.MouseEvent<HTMLDivElement>): void => {
+      if (!ripple) return
 
-    const addRipple = (e: React.MouseEvent<HTMLDivElement>): void => {
-      if (ripple) {
-        const target = e.target as HTMLDivElement
-        const x = e.clientX - target.offsetLeft
-        const y = e.clientY - target.offsetTop
+      const eventTarget = e.target as HTMLDivElement
+      const rippleContainer = eventTarget.parentNode as Element
 
-        const ripple = document.createElement('span') as HTMLSpanElement
-        ripple.style.left = `${x}px`
-        ripple.style.top = `${y}px`
+      let rippleElement: HTMLDivElement | null =
+        rippleContainer.querySelector('.ripple')
 
-        ripple.classList.add('ripple__blink')
+      let circleElement: HTMLSpanElement =
+        rippleElement?.querySelector('.ripple__circle')!
 
-        ripple.addEventListener('animationend', () => ripple.remove())
+      if (!rippleElement) {
+        rippleElement = document.createElement('div')
+        rippleElement.classList.add('ripple')
 
-        ref.current?.appendChild(ripple)
+        circleElement = document.createElement('span')
+        circleElement.classList.add('ripple__circle')
+
+        rippleElement.appendChild(circleElement)
+        ref.current?.appendChild(rippleElement)
       }
+
+      const offset = getOffset(rippleElement)
+      const x = e.clientX - offset.left
+      const y = e.clientY - offset.top
+
+      circleElement.style.cssText = `
+          top: ${y}px;
+          left: ${x}px;
+        `
+
+      rippleElement.classList.add('active')
+    }
+
+    const rippleAnimationEndHandler = (
+      e: React.AnimationEvent<HTMLSpanElement>
+    ): void => {
+      const eventTarget = e.target as HTMLSpanElement
+      const rippleElement = eventTarget.parentNode as HTMLDivElement
+
+      rippleElement.classList.remove('active')
     }
 
     return (
-      <div onClick={addRipple}>
-        <Component ref={ref} className={withRippleClasses} {...restProps} />
+      <div
+        onClick={playRippleEffect}
+        onAnimationEnd={rippleAnimationEndHandler}
+      >
+        <Component ref={ref} {...restProps} />
       </div>
     )
   }

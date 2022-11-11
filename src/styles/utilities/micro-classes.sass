@@ -1,3 +1,7 @@
+// Modules
+
+@use '../plugins/plugins-dir' as plugins
+
 /* MICRO CLASSES
 
 .scroll-header,
@@ -8,13 +12,19 @@
   padding-top: calc(var(--header-height) + 15px)
 
 .ripple
-  position: relative
+  width: 100%
+  height: 100%
+  +plugins.position(absolute, 0 null null 0)
   overflow: hidden
 
-.ripple > .ripple__blink
-  background-color: hsl(var(--clr-white) / .2)
+.ripple > .ripple__circle
+  width: 0
+  height: 0
+  background-color: hsl(var(--clr-white) / .25)
   border-radius: 50%
-  position: absolute
+  +plugins.position(absolute, 50% null null 50%)
   translate: -50% -50%
-  animation: ripple .8s linear
   pointer-events: none
+
+.ripple.active > .ripple__circle
+  animation: ripple 400ms ease-in
