@@ -34,15 +34,15 @@ export default {
 const Story: ComponentStory<typeof RootedCalendarCell> = ({
   longTitle,
   tasksAmount,
-  tasks,
+  // tasks,
   ...args
 }) => {
-  tasks = [...Array(tasksAmount).keys()].map(t => ({
-    _id: t.toString(),
-    title: longTitle ? 'Lörem ipsum kesk yspegon' : `Task ${t + 1}`,
-  }))
+  // tasks = [...Array(tasksAmount).keys()].map(t => ({
+  //   _id: t.toString(),
+  //   title: longTitle ? 'Lörem ipsum kesk yspegon' : `Task ${t + 1}`,
+  // }))
 
-  return <RootedCalendarCell tasks={tasks} {...args} />
+  return <RootedCalendarCell {...args} />
 }
 
 export const Primary = Story.bind({})

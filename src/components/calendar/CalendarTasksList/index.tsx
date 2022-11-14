@@ -1,18 +1,25 @@
 import { CalendarTaskItem } from 'components/calendar'
-import { ITask } from 'model/interfaces'
+import { useTypedSelector } from 'hooks'
 import './calendarTasks.sass'
 
 export interface CalendarTasksListProps {
-  tasks: ITask[]
+  dueDate: string
 }
 
-const CalendarTasksList: React.FC<CalendarTasksListProps> = ({ tasks }) => {
+const CalendarTasksList: React.FC<CalendarTasksListProps> = ({ dueDate }) => {
+  const { tasks } = useTypedSelector(state => state.task)
+  const dueDateTasks = tasks[dueDate]
+
   return (
-    <div className="calendar__tasks grid">
-      {tasks.map(t => (
-        <CalendarTaskItem key={t._id} task={t} />
-      ))}
-    </div>
+    <>
+      {dueDateTasks && (
+        <div className="calendar__tasks grid">
+          {dueDateTasks.map(t => (
+            <CalendarTaskItem key={t._id} task={t} dueDate={dueDate} />
+          ))}
+        </div>
+      )}
+    </>
   )
 }
 

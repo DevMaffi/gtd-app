@@ -28,6 +28,18 @@ const taskReducer = (state = initialState, action: TaskAction): TaskState => {
         tasksError: action.payload,
       }
 
+    case TaskActionTypes.START_TASK_DRUGGING:
+      return {
+        ...state,
+        taskDruggingMeta: action.payload,
+      }
+
+    case TaskActionTypes.UPDATE_TASKS:
+      return {
+        ...state,
+        tasks: action.payload,
+      }
+
     default:
       return state
   }

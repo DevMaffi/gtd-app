@@ -4,7 +4,6 @@ import { CalendarCell as Cell } from 'components/calendar'
 import { Loader } from 'components/UI'
 import { usePrevDays, useDays, useNextDays, useTypedSelector } from 'hooks'
 import { getEnvDate, compareDates } from 'utils/date'
-import { TaskState } from 'types/task'
 import './calendarGrid.sass'
 
 export type CellType = 'prev' | 'next'
@@ -12,15 +11,14 @@ export type CellType = 'prev' | 'next'
 const CalendarGrid: React.FC = () => {
   const selectGridData = createSelector(
     (state: RootState): number => state.date.timestamp,
-    (state: RootState): TaskState => state.task,
-    (timestamp, task) => ({
+    (state: RootState): boolean => state.task.areTasksLoading,
+    (timestamp, areTasksLoading) => ({
       date: new Date(timestamp),
-      task,
+      loading: areTasksLoading,
     })
   )
 
-  const { date, task } = useTypedSelector(selectGridData)
-  const { tasks, areTasksLoading: loading } = task
+  const { date, loading } = useTypedSelector(selectGridData)
 
   const prevDays = usePrevDays(date)
   const days = useDays(date)
@@ -41,13 +39,13 @@ const CalendarGrid: React.FC = () => {
 
       const today = compareDates(taskDueDate, now)
       const passed = taskDueDate.getTime() < now.getTime() && !today
-      const cellId = taskDueDate.toDateString()
+      const dueDateId = taskDueDate.toDateString()
 
       return (
         <Cell
           key={d}
+          dueDate={dueDateId}
           dateNumber={d}
-          tasks={tasks[cellId]}
           today={today}
           prev={type === 'prev'}
           next={type === 'next'}

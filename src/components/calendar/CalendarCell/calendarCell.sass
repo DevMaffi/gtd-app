@@ -9,7 +9,11 @@
   padding: .75rem .875rem .75rem .75rem
   border: 1px solid hsl(var(--clr-container-light))
   text-align: right
+  transition: var(--tr-ease)
   overflow: hidden
+
+.calendar__cell.active
+  background-color: hsl(var(--clr-container-dark) / .25)
 
 .calendar__cell.today > span
   display: inline-block

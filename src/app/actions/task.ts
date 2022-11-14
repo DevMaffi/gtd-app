@@ -1,5 +1,5 @@
 import { Dispatch } from '@reduxjs/toolkit'
-import { ITasksResponse } from 'model/interfaces'
+import { ITask, ITasksResponse } from 'model/interfaces'
 import { HttpFetchCallback } from 'types/common'
 import { TaskAction, TaskActionTypes } from 'types/task'
 
@@ -36,3 +36,16 @@ export const fetchTasks =
       dispatch(fetchTasksRejectedActionCreator(message))
     }
   }
+
+export const startTaskDrugging = (
+  selectedTask: ITask,
+  prevDueDate: string
+): TaskAction => ({
+  type: TaskActionTypes.START_TASK_DRUGGING,
+  payload: { selectedTask, prevDueDate },
+})
+
+export const updateTasks = (tasks: ITasksResponse): TaskAction => ({
+  type: TaskActionTypes.UPDATE_TASKS,
+  payload: tasks,
+})
