@@ -27,7 +27,7 @@ export default {
     longTitle: { control: 'boolean' },
     prev: { control: 'boolean', if: { arg: 'today', truthy: false } },
     today: { control: 'boolean' },
-    passed: { control: 'boolean', if: { arg: 'today', truthy: false } },
+    overdue: { control: 'boolean', if: { arg: 'today', truthy: false } },
   },
 } as ComponentMeta<typeof RootedCalendarCell>
 
@@ -63,7 +63,7 @@ Previous.args = {
   dateNumber: 6,
   tasksAmount: 2,
   prev: true,
-  passed: true,
+  overdue: true,
 }
 
 export const Today = Story.bind({})
@@ -73,11 +73,11 @@ Today.args = {
   today: true,
 }
 
-export const Passed = Story.bind({})
-Passed.args = {
+export const Overdue = Story.bind({})
+Overdue.args = {
   dateNumber: 6,
   tasksAmount: 2,
-  passed: true,
+  overdue: true,
 }
 
 export const Overflowed = Story.bind({})

@@ -38,7 +38,7 @@ const CalendarGrid: React.FC = () => {
       )
 
       const today = compareDates(taskDueDate, now)
-      const passed = taskDueDate.getTime() < now.getTime() && !today
+      const overdue = taskDueDate.getTime() < now.getTime() && !today
       const dueDateId = taskDueDate.toDateString()
 
       return (
@@ -49,7 +49,7 @@ const CalendarGrid: React.FC = () => {
           today={today}
           prev={type === 'prev'}
           next={type === 'next'}
-          passed={passed}
+          overdue={overdue}
         />
       )
     })

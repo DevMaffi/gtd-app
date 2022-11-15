@@ -10,7 +10,7 @@ export interface CalendarCellProps {
   prev: boolean
   next: boolean
   today: boolean
-  passed: boolean
+  overdue: boolean
 }
 
 const CalendarCell: React.FC<CalendarCellProps> = ({
@@ -19,7 +19,7 @@ const CalendarCell: React.FC<CalendarCellProps> = ({
   prev,
   next,
   today,
-  passed,
+  overdue,
 }) => {
   const { tasks, taskDruggingMeta } = useTypedSelector(state => state.task)
 
@@ -28,7 +28,7 @@ const CalendarCell: React.FC<CalendarCellProps> = ({
   const cellClasses = classNames('calendar__cell', {
     'text-light': !prev && !next,
     today,
-    passed,
+    overdue,
   })
 
   const getCellElement = (eventTarget: Element): HTMLDivElement => {
