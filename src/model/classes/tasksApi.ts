@@ -10,7 +10,7 @@ class TasksApi implements ITasksClient {
     month: this.envDate.getMonth(),
   }
 
-  private tasks = {
+  private tasks: ITasksResponse = {
     [new Date(this.date.year - 1, 11, 0).toDateString()]: [
       { _id: v4(), title: 'Task 1' },
       { _id: v4(), title: 'Task 2' },
