@@ -16,7 +16,7 @@ const withRipple =
   ({ ripple, ...restProps }) => {
     const ref = useRef<R>(null)
 
-    const playRippleEffect = (e: React.MouseEvent<HTMLDivElement>): void => {
+    const playRippleEffect = (e: React.MouseEvent<Element>): void => {
       if (!ripple) return
 
       const eventTarget = e.target as HTMLDivElement
