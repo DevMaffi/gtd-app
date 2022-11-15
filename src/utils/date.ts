@@ -7,7 +7,7 @@ export const getEnvDate = (): Date => {
   return new Date()
 }
 
-export const getDayName = (dayIndex: number): string => {
+export const getShortDayName = (dayIndex: number): string => {
   const { days } = data.shortenings
 
   if (dayIndex === 0) return days[days.length - 1]

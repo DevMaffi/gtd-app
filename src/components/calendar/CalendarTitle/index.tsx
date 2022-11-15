@@ -1,7 +1,12 @@
 import classNames from 'classnames'
 import { Heading, Button } from 'components/UI'
 import { useActions, useTypedSelector } from 'hooks'
-import { getEnvDate, getDayName, getDateString, compareDates } from 'utils/date'
+import {
+  getEnvDate,
+  getShortDayName,
+  getDateString,
+  compareDates,
+} from 'utils/date'
 import './calendarTitle.sass'
 
 const CalendarTitle: React.FC = () => {
@@ -12,7 +17,7 @@ const CalendarTitle: React.FC = () => {
 
   const now = new Date(getEnvDate())
   const today = {
-    day: getDayName(now.getDay()),
+    day: getShortDayName(now.getDay()),
     date: getDateString(now.getDate()),
   }
   const isNow = compareDates(date, now)
