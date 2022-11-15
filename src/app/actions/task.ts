@@ -1,6 +1,6 @@
 import { Dispatch } from '@reduxjs/toolkit'
-import { ITask, ITasksResponse } from 'model/interfaces'
 import { HttpFetchCallback } from 'types/common'
+import { ITask, ITasksResponse } from 'model/interfaces'
 import { TaskAction, TaskActionTypes } from 'types/task'
 
 export const fetchTasksPendingActionCreator = (): TaskAction => ({
