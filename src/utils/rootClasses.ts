@@ -33,7 +33,7 @@ class RootClasses implements RootClassesService {
   add({ condition, type, className, alwaysPrimary, remove }: AddMethodArgs) {
     if (!condition) return this
     if (!alwaysPrimary) this.primary = false
-    if (remove) console.log('remove')
+    if (remove) this.remove({ condition: true, types: remove, alwaysPrimary })
 
     this.cl[type] = className
 
