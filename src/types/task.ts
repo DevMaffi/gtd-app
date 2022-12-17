@@ -1,6 +1,6 @@
 import { ITask, ITasksResponse } from 'model/interfaces'
 
-export interface TaskDruggingMeta {
+export interface DruggingTaskMeta {
   selectedTask: ITask
   prevDueDate: string
 }
@@ -9,7 +9,7 @@ export type TaskState = {
   tasks: ITasksResponse
   areTasksLoading: boolean
   tasksError: string | null
-  taskDruggingMeta?: TaskDruggingMeta
+  druggingTaskMeta?: DruggingTaskMeta
 }
 
 export enum TaskActionTypes {
@@ -36,7 +36,7 @@ interface FetchTasksRejectedAction {
 
 interface StartTaskDruggingAction {
   type: TaskActionTypes.START_TASK_DRUGGING
-  payload: TaskDruggingMeta
+  payload: DruggingTaskMeta
 }
 
 interface UpdateTasks {

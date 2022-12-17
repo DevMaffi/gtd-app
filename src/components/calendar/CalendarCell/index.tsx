@@ -21,7 +21,7 @@ const CalendarCell: React.FC<CalendarCellProps> = ({
   today,
   overdue,
 }) => {
-  const { tasks, taskDruggingMeta } = useTypedSelector(state => state.task)
+  const { tasks, druggingTaskMeta } = useTypedSelector(state => state.task)
 
   const { updateTasks } = useActions()
 
@@ -72,16 +72,16 @@ const CalendarCell: React.FC<CalendarCellProps> = ({
 
     cellElement.classList.remove('active')
 
-    if (!taskDruggingMeta || dueDate === taskDruggingMeta.prevDueDate) return
+    if (!druggingTaskMeta || dueDate === druggingTaskMeta.prevDueDate) return
 
     const tasksCopy: ITasksResponse = { ...tasks }
-    tasksCopy[taskDruggingMeta.prevDueDate] = [
-      ...tasks[taskDruggingMeta.prevDueDate],
-    ].filter(t => t._id !== taskDruggingMeta.selectedTask._id)
+    tasksCopy[druggingTaskMeta.prevDueDate] = [
+      ...tasks[druggingTaskMeta.prevDueDate],
+    ].filter(t => t._id !== druggingTaskMeta.selectedTask._id)
 
     tasksCopy[dueDate] = [
       ...(tasks[dueDate] || []),
-      taskDruggingMeta.selectedTask,
+      druggingTaskMeta.selectedTask,
     ]
 
     updateTasks(tasksCopy)

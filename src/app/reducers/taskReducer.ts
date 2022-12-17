@@ -31,7 +31,7 @@ const taskReducer = (state = initialState, action: TaskAction): TaskState => {
     case TaskActionTypes.START_TASK_DRUGGING:
       return {
         ...state,
-        taskDruggingMeta: action.payload,
+        druggingTaskMeta: action.payload,
       }
 
     case TaskActionTypes.UPDATE_TASKS:
