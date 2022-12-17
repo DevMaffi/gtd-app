@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - uses: DevMaffi/gtd-app
+      - uses: DevMaffi/gtd-app.git
         with:
           target-url: ${{ secrets.TARGET_URL }}
           target-username: ${{ secrets.TARGET_USERNAME }}
