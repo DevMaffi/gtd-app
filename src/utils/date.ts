@@ -8,10 +8,10 @@ export const getEnvDate = (): Date => {
 }
 
 export const getShortDayName = (dayIndex: number): string => {
-  const { days } = data.shortenings
+  const { days } = data
 
-  if (dayIndex === 0) return days[days.length - 1]
-  return days[dayIndex - 1]
+  if (dayIndex === 0) return days[days.length - 1].abbr
+  return days[dayIndex - 1].abbr
 }
 
 export const getDateString = (date: number): string => {

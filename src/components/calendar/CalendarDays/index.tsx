@@ -4,9 +4,9 @@ import './calendarDays.sass'
 const CalendarDays: React.FC = () => {
   return (
     <div className="calendar__days flex bg-body">
-      {data.shortenings.days.map(m => (
-        <div key={m} className="calendar__day bg-container-light fs-600">
-          {m}
+      {data.days.map(d => (
+        <div key={d._id} className="calendar__day bg-container-light fs-600">
+          {d.abbr}
         </div>
       ))}
     </div>

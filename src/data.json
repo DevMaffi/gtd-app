@@ -1,19 +1,101 @@
 {
-  "shortenings": {
-    "months": [
-      { "_id": "1", "value": "Jan" },
-      { "_id": "2", "value": "Feb" },
-      { "_id": "3", "value": "Mar" },
-      { "_id": "4", "value": "Apr" },
-      { "_id": "5", "value": "May" },
-      { "_id": "6", "value": "Jun" },
-      { "_id": "7", "value": "Jul" },
-      { "_id": "8", "value": "Aug" },
-      { "_id": "9", "value": "Sep" },
-      { "_id": "10", "value": "Oct" },
-      { "_id": "11", "value": "Nov" },
-      { "_id": "12", "value": "Dec" }
-    ],
-    "days": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-  }
+  "months": [
+    {
+      "_id": 1,
+      "value": "January",
+      "abbr": "Jan"
+    },
+    {
+      "_id": 2,
+      "value": "February",
+      "abbr": "Feb"
+    },
+    {
+      "_id": 3,
+      "value": "March",
+      "abbr": "Mar"
+    },
+    {
+      "_id": 4,
+      "value": "April",
+      "abbr": "Apr"
+    },
+    {
+      "_id": 5,
+      "value": "May",
+      "abbr": "May"
+    },
+    {
+      "_id": 6,
+      "value": "June",
+      "abbr": "Jun"
+    },
+    {
+      "_id": 7,
+      "value": "July",
+      "abbr": "Jul"
+    },
+    {
+      "_id": 8,
+      "value": "August",
+      "abbr": "Aug"
+    },
+    {
+      "_id": 9,
+      "value": "September",
+      "abbr": "Sep"
+    },
+    {
+      "_id": 10,
+      "value": "October",
+      "abbr": "Oct"
+    },
+    {
+      "_id": 11,
+      "value": "November",
+      "abbr": "Nov"
+    },
+    {
+      "_id": 12,
+      "value": "December",
+      "abbr": "Dec"
+    }
+  ],
+  "days": [
+    {
+      "_id": 1,
+      "value": "Monday",
+      "abbr": "Mon"
+    },
+    {
+      "_id": 2,
+      "value": "Tuesday",
+      "abbr": "Tue"
+    },
+    {
+      "_id": 3,
+      "value": "Wednesday",
+      "abbr": "Wed"
+    },
+    {
+      "_id": 4,
+      "value": "Thursday",
+      "abbr": "Thu"
+    },
+    {
+      "_id": 5,
+      "value": "Friday",
+      "abbr": "Fri"
+    },
+    {
+      "_id": 6,
+      "value": "Saturday",
+      "abbr": "Sat"
+    },
+    {
+      "_id": 7,
+      "value": "Sunday",
+      "abbr": "Sun"
+    }
+  ]
 }

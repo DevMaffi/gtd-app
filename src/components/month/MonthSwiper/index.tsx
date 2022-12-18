@@ -53,8 +53,7 @@ const MonthSwiper: React.FC<MonthSwiperProps> = ({
         className="month-swiper__button"
         ripple
       >
-        {!isOpen && data.shortenings.months[date.getMonth()].value}{' '}
-        {date.getFullYear()}
+        {!isOpen && data.months[date.getMonth()].abbr} {date.getFullYear()}
       </Button>
       <Button onClick={swipe(1)} variant="arrow">
         <i className="ri-arrow-right-s-line"></i>

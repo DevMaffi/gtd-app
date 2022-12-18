@@ -31,7 +31,14 @@ const MonthSelector: React.FC = () => {
     return options
   }, [])
 
-  const monthOptions = data.shortenings.months
+  const monthOptions = useMemo<DropdownOption[]>(
+    () =>
+      data.months.map(m => ({
+        _id: m._id,
+        value: m.abbr,
+      })),
+    []
+  )
 
   const getOptions = (dropdownView: DropdownView): DropdownOption[] => {
     if (dropdownView === 'year') return yearOptions
