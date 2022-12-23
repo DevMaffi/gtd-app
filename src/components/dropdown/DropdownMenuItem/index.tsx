@@ -1,6 +1,12 @@
 import classNames from 'classnames'
-import { DropdownOptionValue } from 'types/common'
 import './dropdownMenuItem.sass'
+
+export type DropdownOptionValue = string | number
+
+export type DropdownOption = {
+  readonly _id: string | number
+  value: DropdownOptionValue
+}
 
 export interface BaseDropdownMenuItemProps {
   data: DropdownOptionValue

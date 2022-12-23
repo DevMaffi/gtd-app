@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import classNames from 'classnames'
 import { DropdownMenu } from 'components/dropdown'
-import {
-  ArrowFn,
-  DropdownOption,
-  SetDropdownFn,
-  DropdownRenderPropArgs,
-} from 'types/common'
+import { DropdownOption } from 'components/dropdown/DropdownMenuItem'
+import { ArrowFn } from 'types/common'
 import './dropdown.sass'
+
+export interface DropdownRenderPropArgs<T> {
+  isOpen: boolean
+  dropdownView: T
+  onDropdown: (dropdownView: T) => void
+}
 
 export type DropdownRenderProp<T> = ({
   isOpen,
@@ -16,14 +18,14 @@ export type DropdownRenderProp<T> = ({
 }: DropdownRenderPropArgs<T>) => React.ReactNode
 
 export interface DropdownProps<T> {
+  on: DropdownRenderProp<T>
   setOptions: (dropdownView: T) => DropdownOption[]
   isActive: (dropdownView: T) => ArrowFn<boolean>
   isDefault: (dropdownView: T) => ArrowFn<boolean>
   onSelect: (
     dropdownView: T,
-    onDropdown: SetDropdownFn<T>
+    onDropdown: (setDropdownView: T) => void
   ) => ArrowFn<(optionIndex: number) => any>
-  on: DropdownRenderProp<T>
 }
 
 const Dropdown = <T,>({

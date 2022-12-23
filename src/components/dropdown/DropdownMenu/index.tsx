@@ -1,5 +1,7 @@
-import { DropdownMenuItem } from 'components/dropdown'
-import { ArrowFn, DropdownOption, SetDropdownFn } from 'types/common'
+import DropdownMenuItem, {
+  DropdownOption,
+} from 'components/dropdown/DropdownMenuItem'
+import { ArrowFn } from 'types/common'
 import './dropdownMenu.sass'
 
 export interface DropdownMenuProps<T> {
@@ -7,7 +9,7 @@ export interface DropdownMenuProps<T> {
   isActive: (optionIndex: number) => boolean
   isDefault: (optionIndex: number) => boolean
   onSelect: (optionIndex: number) => ArrowFn<void>
-  onDropdown: SetDropdownFn<T>
+  onDropdown: (dropdownView: T) => void
 }
 
 const DropdownMenu = <T,>({

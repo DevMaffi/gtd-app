@@ -1,14 +1,15 @@
 import { Button } from 'components/UI'
 import { useActions, useTypedSelector } from 'hooks'
 import { getEnvDate } from 'utils/date'
-import { MonthSelectorDropdownView as DropdownView } from 'types/common'
 import data from 'data.json'
 import './monthSwiper.sass'
 
+export type MonthSwiperDropdownView = 'year' | 'month' | null
+
 export interface MonthSwiperProps {
   isOpen: boolean
-  dropdownView: DropdownView
-  onDropdown: (dropdownView: DropdownView) => void
+  dropdownView: MonthSwiperDropdownView
+  onDropdown: (dropdownView: MonthSwiperDropdownView) => void
 }
 
 export type SwipeIncrementOption = 1 | -1

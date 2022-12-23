@@ -1,14 +1,12 @@
 import { useMemo } from 'react'
 import { Dropdown } from 'components/dropdown'
-import { MonthSwiper } from 'components/month'
+import { DropdownRenderProp } from 'components/dropdown/DropdownItem'
+import { DropdownOption } from 'components/dropdown/DropdownMenuItem'
+import MonthSwiper, {
+  MonthSwiperDropdownView as DropdownView,
+} from 'components/month/MonthSwiper'
 import { useActions, useTypedSelector } from 'hooks'
 import { getEnvDate, compareDates } from 'utils/date'
-import {
-  MonthSelectorDropdownView as DropdownView,
-  DropdownOption,
-  DropdownRenderPropArgs,
-  SetDropdownFn,
-} from 'types/common'
 import data from 'data.json'
 
 const MonthSelector: React.FC = () => {
@@ -25,7 +23,10 @@ const MonthSelector: React.FC = () => {
 
     const range = [...Array(12).keys()]
     range.forEach(i =>
-      options.push({ _id: (i + 1).toString(), value: firstYear + i })
+      options.push({
+        _id: i + 1,
+        value: firstYear + i,
+      })
     )
 
     return options
@@ -67,9 +68,12 @@ const MonthSelector: React.FC = () => {
   }
 
   const selectMonth =
-    (dropdownView: DropdownView, onDropdown: SetDropdownFn<DropdownView>) =>
+    (
+      dropdownView: DropdownView,
+      onDropdown: (dropdownView: DropdownView) => void
+    ) =>
     (optionIndex: number) =>
-    () => {
+    (): void => {
       const now = getEnvDate()
       const nextDate = new Date(date.getFullYear(), date.getMonth())
 
@@ -91,11 +95,11 @@ const MonthSelector: React.FC = () => {
       changeDate(nextDate.getTime())
     }
 
-  const renderProp = ({
+  const renderProp: DropdownRenderProp<DropdownView> = ({
     isOpen,
     dropdownView,
     onDropdown,
-  }: DropdownRenderPropArgs<DropdownView>): React.ReactNode => (
+  }) => (
     <MonthSwiper
       isOpen={isOpen}
       dropdownView={dropdownView}
