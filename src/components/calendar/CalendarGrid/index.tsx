@@ -26,6 +26,8 @@ const CalendarGrid: React.FC = () => {
 
   const now = new Date(getEnvDate())
 
+  let isTodaySet = false
+
   const renderCells = (days: number[], type?: CellType): JSX.Element[] => {
     let monthInc = 0
     if (type) monthInc = type === 'prev' ? -1 : 1
@@ -37,13 +39,15 @@ const CalendarGrid: React.FC = () => {
         d
       )
 
-      const today = compareDates(taskDueDate, now)
-      const overdue = taskDueDate.getTime() < now.getTime() && !today
+      let today = false
+      if (!isTodaySet) today = compareDates(taskDueDate, now)
+
+      const overdue = !today && taskDueDate.getTime() < now.getTime()
       const dueDateId = taskDueDate.toDateString()
 
       return (
         <Cell
-          key={d}
+          key={dueDateId}
           dueDate={dueDateId}
           dateNumber={d}
           today={today}
