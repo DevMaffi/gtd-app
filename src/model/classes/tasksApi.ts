@@ -140,12 +140,12 @@ class TasksApi implements ITasksClient {
   }
 
   @Bind
-  async getAll(): Promise<ITasksResponse> {
+  async getAll() {
     return this.tasks
   }
 
   @Bind
-  async getByInterval(startDate: Date, endDate: Date): Promise<ITasksResponse> {
+  async getByInterval(startDate: Date, endDate: Date) {
     await this.delay(500)
 
     const start = new Date(
