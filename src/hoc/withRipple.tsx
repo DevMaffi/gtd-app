@@ -10,7 +10,7 @@ export type WithRippleReturnType<T> = React.FC<
 >
 
 const withRipple =
-  <R extends HTMLElement, P>(
+  <R extends HTMLElement, P extends {} = {}>(
     Component: React.FC<any>
   ): WithRippleReturnType<P> =>
   ({ ripple, ...restProps }) => {
