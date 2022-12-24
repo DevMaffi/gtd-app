@@ -20,21 +20,21 @@ export const fetchTasksRejectedActionCreator = (
   payload: message,
 })
 
-export const fetchTasks =
-  (callback: HttpFetchCallback<ITasksResponse>) =>
-  async (dispatch: Dispatch<TaskAction>): Promise<void> => {
+export const fetchTasks = (callback: HttpFetchCallback<ITasksResponse>) => {
+  return async (dispatch: Dispatch<TaskAction>): Promise<void> => {
     try {
       dispatch(fetchTasksPendingActionCreator())
 
       const response = await callback()
       dispatch(fetchTasksFulfilledActionCreator(response))
     } catch (error) {
-      let message: string = 'Unknown Error'
+      let message = 'Unknown Error'
       if (error instanceof Error) message = error.message
 
       dispatch(fetchTasksRejectedActionCreator(message))
     }
   }
+}
 
 export const startTaskDrugging = (
   selectedTask: ITask,
