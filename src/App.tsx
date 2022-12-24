@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
 import Schedule from 'components/Schedule'
 import { useActions, useTypedSelector } from 'hooks'
-import { ITasksResponse } from 'model/interfaces'
 import { tasksService } from 'config/services'
+import { ITasksResponse } from 'model/interfaces'
 
 const App: React.FC = () => {
   const { timestamp } = useTypedSelector(state => state.date)
