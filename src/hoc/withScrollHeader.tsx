@@ -30,7 +30,7 @@ const withScrollHeader =
     })
 
     return (
-      <>
+      <div style={{ position: 'relative' }}>
         <div
           ref={firstElement}
           style={{
@@ -40,7 +40,7 @@ const withScrollHeader =
           }}
         ></div>
         <Component scrollHeader={scrollHeader} {...restProps} />
-      </>
+      </div>
     )
   }
 
