@@ -1,12 +1,13 @@
 import classNames from 'classnames'
 import { CalendarTasksList } from 'components/calendar'
 import { useActions, useTypedSelector } from 'hooks'
-import { ITasksResponse } from 'model/interfaces'
+import { ITask, ITasksResponse } from 'model/interfaces'
 import './calendarCell.sass'
 
 export interface CalendarCellProps {
   dueDate: string
   dateNumber: number
+  attachedTasks: ITask[]
   prev: boolean
   next: boolean
   today: boolean
@@ -16,6 +17,7 @@ export interface CalendarCellProps {
 const CalendarCell: React.FC<CalendarCellProps> = ({
   dueDate,
   dateNumber,
+  attachedTasks,
   prev,
   next,
   today,
@@ -80,7 +82,7 @@ const CalendarCell: React.FC<CalendarCellProps> = ({
     ].filter(t => t._id !== druggingTaskMeta.selectedTask._id)
 
     tasksCopy[dueDate] = [
-      ...(tasks[dueDate] || []),
+      ...(attachedTasks || []),
       druggingTaskMeta.selectedTask,
     ]
 
@@ -95,7 +97,7 @@ const CalendarCell: React.FC<CalendarCellProps> = ({
       className={cellClasses}
     >
       <span data-date-number>{dateNumber}</span>
-      <CalendarTasksList dueDate={dueDate} />
+      <CalendarTasksList dueDate={dueDate} tasks={attachedTasks} />
     </div>
   )
 }
