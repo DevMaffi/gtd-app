@@ -1,5 +1,5 @@
 import { Button } from 'components/UI'
-import { useActions, useTypedSelector } from 'hooks'
+import { useActions, useStateDate } from 'hooks'
 import { getEnvDate } from 'utils/date'
 import data from 'data.json'
 import './monthSwiper.sass'
@@ -19,8 +19,7 @@ const MonthSwiper: React.FC<MonthSwiperProps> = ({
   dropdownView,
   onDropdown,
 }) => {
-  const { timestamp } = useTypedSelector(state => state.date)
-  const date = new Date(timestamp)
+  const date = useStateDate()
 
   const { changeDate } = useActions()
 

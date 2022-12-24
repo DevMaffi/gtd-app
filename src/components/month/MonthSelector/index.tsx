@@ -5,13 +5,12 @@ import { DropdownOption } from 'components/dropdown/DropdownMenuItem'
 import MonthSwiper, {
   MonthSwiperDropdownView as DropdownView,
 } from 'components/month/MonthSwiper'
-import { useActions, useTypedSelector } from 'hooks'
+import { useActions, useStateDate } from 'hooks'
 import { getEnvDate, compareDates } from 'utils/date'
 import data from 'data.json'
 
 const MonthSelector: React.FC = () => {
-  const { timestamp } = useTypedSelector(state => state.date)
-  const date = new Date(timestamp)
+  const date = useStateDate()
 
   const { changeDate } = useActions()
 

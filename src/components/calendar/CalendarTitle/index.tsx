@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { Heading, Button } from 'components/UI'
-import { useActions, useTypedSelector } from 'hooks'
+import { useActions, useStateDate } from 'hooks'
 import {
   getEnvDate,
   getShortDayName,
@@ -10,8 +10,7 @@ import {
 import './calendarTitle.sass'
 
 const CalendarTitle: React.FC = () => {
-  const { timestamp } = useTypedSelector(state => state.date)
-  const date = new Date(timestamp)
+  const date = useStateDate()
 
   const { changeDate } = useActions()
 
